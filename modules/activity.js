@@ -129,6 +129,11 @@ angular.module('app.activity', ['app.resource'])
                 var load = document.getElementsByClassName('loading');
                 load[0].style.display = 'none';
             },time);
+        };
+
+        this.showLoading = function(){
+            var load = document.getElementsByClassName('loading');
+            load[0].style.display = 'block';
         }
 
     }]);

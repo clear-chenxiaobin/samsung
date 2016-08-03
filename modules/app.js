@@ -11,7 +11,7 @@ angular.module('app',[
     'app.room'
 ])
     .run(['$rootScope', '$http', 'ActivityManager','ResourceManager', function ($rootScope, $http, ActivityManager,ResourceManager) {
-        //ActivityManager.hideLoading(3000);
+        ActivityManager.hideLoading(3000);
 
                 ResourceManager.initialize();
 
