@@ -8,7 +8,8 @@ angular.module('app.en-US', [])
                 cue: 'Please select language as you like',
                 welcome_text:'Welcome to Hilton！You will enjoy comfortable guest room, tasty food, full equipments and perfect service here. Thanks for your strong support.  We are sincerely looking forward to your visit！',
                 press1:'Press',
-                press2:'Enter'
+                press2:'Enter',
+                name:'Guest'
             },
             index:{
                 guestName:'Dear ',

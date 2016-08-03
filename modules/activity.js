@@ -77,4 +77,11 @@ angular.module('app.activity', ['app.resource'])
             return activityStack;
         };
 
+        this.hideLoading = function(time){
+            setTimeout(function(){
+                var load = document.getElementsByClassName('loading');
+                load[0].style.display = 'none';
+            },time);
+        }
+
     }]);

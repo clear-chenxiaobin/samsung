@@ -9,7 +9,11 @@
 </head>
 
 <body ng-app="app"  ng-keyup="onkeyup($event)" ng-keydown="onkeydown($event)" ng-controller="RootController">
-
+    <div class="loading">
+        <div class="load-container load5">
+            <div class="loader">Loading...</div>
+        </div>
+    </div>
     <!-- view stack -->
     <ul class="activity-stack-container">
         <li ng-repeat="activity in activityStack" ng-show="$index==activityStack.length - 1 && !activity._hide">
@@ -39,5 +43,4 @@
     <script src="modules/lang/zh-CN.js"></script>
     <script src="modules/lang/en-US.js"></script>
 </body>
-
 </html>

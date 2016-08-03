@@ -11,22 +11,9 @@ angular.module('app',[
     'app.room'
 ])
     .run(['$rootScope', '$http', 'ActivityManager','ResourceManager', function ($rootScope, $http, ActivityManager,ResourceManager) {
+        //ActivityManager.hideLoading(3000);
 
-                //判断localStorage中房间号是否存在，不存在则跳转至home页面设置房间号
-                //if(!window.localStorage.room){
-                //    ActivityManager.startActivity('room');
-                //}else {
-                //    ActivityManager.startActivity('welcome');
-                //}
-        // 获取主配置文件
-        var cfg = ResourceManager.getConfigurations();
-        $http.get(cfg.mainConfigUrl()).success(function (mainJSON) {
-
-            // 获取目录配置文件
-            var menuConfigUrl = cfg.serverUrl() + mainJSON.MainView_Json_URL;
-            $http.get(menuConfigUrl).success(function (menuJSON) {
-                ResourceManager.initialize(typeof mainJSON === 'string' ? JSON.parse(mainJSON) : mainJSON,
-                    typeof menuJSON === 'string' ? JSON.parse(menuJSON) : menuJSON);
+                ResourceManager.initialize();
 
                 //判断localStorage中房间号是否存在，不存在则跳转至home页面设置房间号
                 if(!window.localStorage.room){
@@ -34,8 +21,6 @@ angular.module('app',[
                 }else {
                     ActivityManager.startActivity('welcome');
                 }
-            });
-        });
 
     }])
         .controller('RootController',['$scope', 'ActivityManager', 'COMMON_KEYS', function ($scope, ActivityManager, COMMON_KEYS) {
@@ -72,11 +57,9 @@ angular.module('app',[
         $scope.onkeydown = function (ev) {
             var key = keyMapping[ev.keyCode];
             if (key === COMMON_KEYS.KEY_MENU) {
-                if (ActivityManager.getActiveActivity().shouldDisplayMenu()) {
                     $scope.showMenu = !$scope.showMenu;
                     $scope.$broadcast('menu.toggle', $scope.showMenu);
-                }
-            } else if (key === COMMON_KEYS.KEY_ENTER && ActivityManager.getActiveActivity().triggerBottom() && $scope.showMenu == false) {
+            } else if (key === COMMON_KEYS.KEY_ENTER && $scope.showMenu == false) {
                 $scope.showMenu = !$scope.showMenu;
                 $scope.$broadcast('menu.toggle', $scope.showMenu);
             } else if (!$scope.showMenu) {
