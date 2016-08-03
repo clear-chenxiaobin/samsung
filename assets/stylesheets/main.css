@@ -12,6 +12,7 @@ body {
     overflow: hidden;
     background: url("../images/bg_window.png") no-repeat;
     background-size: cover;
+    position: absolute;
 }
 
 li {
@@ -21,13 +22,14 @@ li {
 /*welcome page*/
 .logo {
     position: absolute;
-    left: 12px;
-    top: 27px;
+    left: 32px;
+    top: 18px;
 }
 
 .welcome-text-container {
     width: 936px;
     padding: 0 172px;
+    margin-top: 211.3px;
 }
 
 .welcome-title {
@@ -43,6 +45,8 @@ li {
     font-size: 32px;
     margin-top: 23.3px;
     line-height: 42.7px;
+    color: #ffffff;
+    text-indent:2em;
 }
 
 /*loading块*/
