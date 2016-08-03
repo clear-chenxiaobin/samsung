@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<?php  header('Access-Control-Allow-Origin:*'); ?>
+<head>
+    <meta charset="UTF-8">
+    <title>Blue VoD</title>
+    <link rel="stylesheet" href="assets/stylesheets/main.css" />
+
+</head>
+
+<body ng-app="app"  ng-keyup="onkeyup($event)" ng-keydown="onkeydown($event)" ng-controller="RootController">
+
+    <!-- view stack -->
+    <ul class="activity-stack-container">
+        <li ng-repeat="activity in activityStack" ng-show="$index==activityStack.length - 1 && !activity._hide">
+            <ng-include src="activity.templateUrl" class="include-content"  ng-class="{'menu-visible': showMenu}"></ng-include>
+        </li>
+    </ul>
+
+    <!-- Plugins -->
+    <object id="pluginPlayer" border=0 classid="clsid:SAMSUNG-INFOLINK-PLAYER"></object>
+    <object id="pluginAudio" border=0 classid="clsid:SAMSUNG-INFOLINK-AUDIO"></object>
+    <object id="pluginObjectTVMW" border=0 classid="clsid:SAMSUNG-INFOLINK-TVMW"></object>
+    <object id="pluginSef" border=0 classid="clsid:SAMSUNG-INFOLINK-SEF"></object>
+    <!-- Common API -->
+    <script type="text/javascript" language="javascript" src="$MANAGER_WIDGET/Common/API/Widget.js"></script>
+    <script type="text/javascript" language="javascript" src="$MANAGER_WIDGET/Common/API/TVKeyValue.js"></script>
+    <script type="text/javascript" language="javascript" src="$MANAGER_WIDGET/Common/API/Plugin.js"></script>
+
+    <script type="text/javascript" language="javascript" src="modules/mock.js"></script>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <!--<script src="bower_components/angular/angular-route.min.js"></script>-->
+    <script src="modules/app.js"></script>
+    <script src="modules/welcome.js"></script>
+    <script src="modules/activity.js"></script>
+    <script src="modules/resource.js"></script>
+    <script src="modules/room.js"></script>
+    <script src="modules/lang/zh-CN.js"></script>
+    <script src="modules/lang/en-US.js"></script>
+</body>
+
+</html>
