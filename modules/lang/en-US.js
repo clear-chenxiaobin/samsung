@@ -6,7 +6,7 @@ angular.module('app.en-US', [])
             lang:'en-US',
             welcome: {
                 cue: 'Please select language as you like',
-                welcome_text:'欢迎来到希尔顿酒店！我们将为您提供温馨舒适的客房、美味可口的佳肴、现代齐全的设施设备和尽善尽美的服务。感谢您对我们的支持，期待您的光临！',
+                welcome_text:'Welcome to Hilton！You will enjoy comfortable guest room, tasty food, full equipments and perfect service here. Thanks for your strong support.  We are sincerely looking forward to your visit！',
                 press1:'Press',
                 press2:'Enter'
             },
