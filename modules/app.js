@@ -8,16 +8,10 @@ angular.module('app',[
     'app.welcome',
     'app.zh-CN',
     'app.en-US',
-    'app.room'
+    'app.room',
+    'app.menu'
 ])
     .run(['$rootScope', '$http', 'ActivityManager','ResourceManager', function ($rootScope, $http, ActivityManager,ResourceManager) {
-
-                //判断localStorage中房间号是否存在，不存在则跳转至home页面设置房间号
-                //if(!window.localStorage.room){
-                //    ActivityManager.startActivity('room');
-                //}else {
-                //    ActivityManager.startActivity('welcome');
-                //}
         // 获取主配置文件
         var cfg = ResourceManager.getConfigurations();
         $http.get(cfg.mainConfigUrl()).success(function (mainJSON) {
@@ -62,36 +56,29 @@ angular.module('app',[
             keyMapping[tvKey.KEY_UP] = COMMON_KEYS.KEY_UP;
             keyMapping[tvKey.KEY_DOWN] = COMMON_KEYS.KEY_DOWN;
             keyMapping[tvKey.KEY_ENTER] = COMMON_KEYS.KEY_ENTER;
-            keyMapping[tvKey.KEY_1] = COMMON_KEYS.KEY_MENU;
-            keyMapping[tvKey.KEY_2] = COMMON_KEYS.KEY_BACK;
+            keyMapping[tvKey.KEY_RED] = COMMON_KEYS.KEY_MENU;
+            keyMapping[tvKey.KEY_RETURN] = COMMON_KEYS.KEY_BACK;
             keyMapping[tvKey.KEY_VOL_UP] = COMMON_KEYS.KEY_VOL_UP;
             keyMapping[tvKey.KEY_VOL_DOWN] = COMMON_KEYS.KEY_VOL_DOWN;
             keyMapping[tvKey.KEY_MUTE] = COMMON_KEYS.KEY_MUTE;
         }
 
+        var handler = function(event){
+            var widgetAPI = new Common.API.Widget();
+            widgetAPI.sendReadyEvent();
+            widgetAPI.blockNavigation(event);
+        };
+
         $scope.onkeydown = function (ev) {
             var key = keyMapping[ev.keyCode];
-            if (key === COMMON_KEYS.KEY_MENU) {
-                if (ActivityManager.getActiveActivity().shouldDisplayMenu()) {
-                    $scope.showMenu = !$scope.showMenu;
-                    $scope.$broadcast('menu.toggle', $scope.showMenu);
-                }
-            } else if (key === COMMON_KEYS.KEY_ENTER && ActivityManager.getActiveActivity().triggerBottom() && $scope.showMenu == false) {
-                $scope.showMenu = !$scope.showMenu;
-                $scope.$broadcast('menu.toggle', $scope.showMenu);
-            } else if (!$scope.showMenu) {
+            if (ActivityManager.getActiveActivity().isMenu()) {
                 ActivityManager.getActiveActivity().keyDown(key);
             } else {
                 $scope.$broadcast('menu.keydown', key);
             }
+            document.removeEventListener("keydown", handler, false);
+            document.addEventListener("keydown", handler, false);
         };
-
-        $scope.onkeyup = function (ev) {
-            var key = keyMapping[ev.keyCode];
-            if (!$scope.showMenu) {
-                ActivityManager.getActiveActivity().keyUp(key);
-            }
-        }
 
         $scope.activityStack = ActivityManager.getActivityStack();
     }])

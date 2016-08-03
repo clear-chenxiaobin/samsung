@@ -1,38 +1,45 @@
 /* main */
-*{
+* {
     margin: 0;
     padding: 0;
 }
-body{
-    font-family: "Microsoft Yahei","微软雅黑";
-    font-weight: 100;
-}
-li{
-    list-style: none;
-}
-/* body */
+
 body {
+    font-family: "Microsoft Yahei", "微软雅黑";
+    font-weight: 100;
+    width: 1280px;
+    height: 720px;
+    overflow: hidden;
     background: url("../images/bg_window.png") no-repeat;
 }
+
+li {
+    list-style: none;
+}
+
 /*welcome page*/
-.logo{
+.logo {
     position: absolute;
     left: 12px;
     top: 27px;
 }
-.welcome-text-container{
+
+.welcome-text-container {
     font-family: 宋体b8b\4f53;
     width: 936px;
     padding: 0 172px;
 }
-.welcome-title{
+
+.welcome-title {
     color: #FFD38B;
     font-size: 32px;
 }
-.guest-name{
+
+.guest-name {
     font-size: 38px;
 }
-.welcome-text{
+
+.welcome-text {
     font-size: 32px;
     margin-top: 23.3px;
     line-height: 42.7px;
