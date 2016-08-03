@@ -1,0 +1,81 @@
+.menu-item-container {
+    overflow: hidden;
+}
+
+.menu-item-container > ul {
+    margin-top: 146px;
+    margin-left: 68px;
+    width: 1500px;
+}
+
+.menu-item-container > ul > li {
+    float: left;
+    margin: 0px 13px;
+}
+
+.menu-item-container > ul > li img {
+    width: 254px;
+    position: relative;
+}
+
+.animation {
+    animation: zoom 0.5s forwards;
+    -moz-animation: zoom 0.5s forwards; /* Firefox */
+    -webkit-animation: zoom 0.5s forwards; /* Safari 和 Chrome */
+    -o-animation: zoom 0.5s forwards;
+}
+
+@keyframes zoom {
+    from {
+        width: 254px;
+        height: 452px;
+        top: 0;
+    }
+    to {
+        width: 284px;
+        height: 505px;
+        top: -26.5px;
+    }
+}
+
+@-moz-keyframes zoom /* Firefox */
+{
+    from {
+        width: 254px;
+        height: 452px;
+        top: 0;
+    }
+    to {
+        width: 284px;
+        height: 505px;
+        top: -26.5px;
+    }
+}
+
+@-webkit-keyframes zoom /* Safari 和 Chrome */
+{
+    from {
+        width: 254px;
+        height: 452px;
+        top: 0;
+    }
+    to {
+        width: 284px;
+        height: 505px;
+        top: -26.5px;
+    }
+}
+
+@-o-keyframes zoom /* Opera */
+{
+    from {
+        width: 254px;
+        height: 452px;
+        top: 0;
+    }
+    to {
+        width: 284px;
+        height: 505px;
+        top: -26.5px;
+    }
+}
