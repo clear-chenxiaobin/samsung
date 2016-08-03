@@ -8,19 +8,20 @@ angular.module('app',[
     'app.welcome',
     'app.zh-CN',
     'app.en-US',
-    'app.room'
+    'app.room',
+    'app.menu'
 ])
     .run(['$rootScope', '$http', 'ActivityManager','ResourceManager', function ($rootScope, $http, ActivityManager,ResourceManager) {
         ActivityManager.hideLoading(3000);
 
-                ResourceManager.initialize();
+        ResourceManager.initialize();
 
-                //判断localStorage中房间号是否存在，不存在则跳转至home页面设置房间号
-                if(!window.localStorage.room){
-                    ActivityManager.startActivity('room');
-                }else {
-                    ActivityManager.startActivity('welcome');
-                }
+        //判断localStorage中房间号是否存在，不存在则跳转至home页面设置房间号
+        if(!window.localStorage.room){
+            ActivityManager.startActivity('room');
+        }else {
+            ActivityManager.startActivity('welcome');
+        }
 
     }])
         .controller('RootController',['$scope', 'ActivityManager', 'COMMON_KEYS', function ($scope, ActivityManager, COMMON_KEYS) {

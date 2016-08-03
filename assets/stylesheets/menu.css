@@ -11,11 +11,16 @@
 .menu-item-container > ul > li {
     float: left;
     margin: 0px 13px;
+    width: 254px;
+    height: 478.5px;
+    position: relative;
 }
 
 .menu-item-container > ul > li img {
     width: 254px;
-    position: relative;
+    position: absolute;
+    left: 0;
+    margin-left: 0;
 }
 
 .animation {
@@ -30,11 +35,13 @@
         width: 254px;
         height: 452px;
         top: 0;
+        left: 0;
     }
     to {
         width: 284px;
         height: 505px;
         top: -26.5px;
+        left: -15px;
     }
 }
 
@@ -44,11 +51,13 @@
         width: 254px;
         height: 452px;
         top: 0;
+        left: 0;
     }
     to {
         width: 284px;
         height: 505px;
         top: -26.5px;
+        left: -15px;
     }
 }
 
@@ -58,11 +67,13 @@
         width: 254px;
         height: 452px;
         top: 0;
+        left: 0;
     }
     to {
         width: 284px;
         height: 505px;
         top: -26.5px;
+        left: -15px;
     }
 }
 
@@ -72,10 +83,12 @@
         width: 254px;
         height: 452px;
         top: 0;
+        left: 0;
     }
     to {
         width: 284px;
         height: 505px;
         top: -26.5px;
+        left: -15px;
     }
 }
