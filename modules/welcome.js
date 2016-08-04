@@ -40,7 +40,8 @@ angular.module('app.welcome', [])
                     ActivityManager.startActivity('menu');
                     break;
                 case COMMON_KEYS.KEY_UP:
-                    ActivityManager.hideLoading(3000);
+                    activity.finish();
+                    ActivityManager.startActivity('movie');
                     break;
                 case COMMON_KEYS.KEY_DOWN:
                     ActivityManager.showLoading();

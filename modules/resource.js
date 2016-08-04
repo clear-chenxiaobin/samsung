@@ -15,7 +15,6 @@ angular.module('app.resource', [])
             langString;
 
         this.initialize = function () {
-
             i18nResource = {};
             i18nResource['zh-CN'] = {};
             i18nResource['en-US'] = {};
