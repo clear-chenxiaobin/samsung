@@ -7,9 +7,8 @@ angular.module('app.activity', ['app.resource'])
     .service('ActivityManager',['ResourceManager', function (ResourceManager) {
         var activityStack = [];
 
-        function Activity(id, poster) {
+        function Activity(id) {
             this.templateUrl = 'partials/' + id + '.html';
-            this.poster = 'assets/images/' + poster;
             this._hide = false;
             this._isMenu = false;
         }
@@ -112,8 +111,8 @@ angular.module('app.activity', ['app.resource'])
             this.startActivity(id);
         };
 
-        this.startActivity = function (id, poster) {
-            var activity = new Activity(id, poster);
+        this.startActivity = function (id) {
+            var activity = new Activity(id);
             activityStack.push(activity);
         };
 
