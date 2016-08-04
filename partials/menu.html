@@ -2,7 +2,7 @@
     <div class="logo"><img src="assets/images/logo.png" width="100px" height="83.3px"></div>
     <div class="menu-item-container">
         <ul id="menu-item-list">
-            <li ng-repeat="menuItem in menuItems" ng-class="{'selected': selectedMenuItemIndex==$index}">
+            <li ng-repeat="menuItem in menuItems" ng-class="{'selected': selectedMenuItemIndex==$index}" repeat-finish>
                 <img ng-src="{{menuItem.pic}}">
             </li>
         </ul>

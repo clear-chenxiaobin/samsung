@@ -5,7 +5,7 @@ angular.module('app.welcome', [])
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
         activity.isMenu(true);
-        activity.loadI18NResource(function () {
+        activity.loadI18NResource(function (res) {
             var i18nText;
             if(ResourceManager.getLocale()){
                 i18nText  = ResourceManager.getLocale();

@@ -73,6 +73,10 @@ angular.module('app',[
         };
 
         $scope.activityStack = ActivityManager.getActivityStack();
+
+        //$scope.$on('menu.created', function (ev) {
+        //    ActivityManager.getActiveActivity().animate(0,'menu-item-list','animation');
+        //})
     }])
     .constant('COMMON_KEYS', {
         KEY_LEFT    : 0,

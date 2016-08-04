@@ -13,6 +13,8 @@ body {
     background: url("../images/bg_window.png") no-repeat;
     background-size: cover;
     position: absolute;
+    left: 50%;
+    margin-left: -640px;
 }
 
 li {
