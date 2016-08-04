@@ -20,7 +20,7 @@ angular.module('app',[
         if(!window.localStorage.room){
             ActivityManager.startActivity('room');
         }else {
-            ActivityManager.startActivity('welcome');
+            ActivityManager.startActivity('welcome', 'bg_welcome.png');
         }
 
     }])
@@ -63,11 +63,7 @@ angular.module('app',[
 
         $scope.onkeydown = function (ev) {
             var key = keyMapping[ev.keyCode];
-            if (ActivityManager.getActiveActivity().isMenu()) {
-                ActivityManager.getActiveActivity().keyDown(key);
-            } else {
-                $scope.$broadcast('menu.keydown', key);
-            }
+            ActivityManager.getActiveActivity().keyDown(key);
             document.removeEventListener("keydown", handler, false);
             document.addEventListener("keydown", handler, false);
         };

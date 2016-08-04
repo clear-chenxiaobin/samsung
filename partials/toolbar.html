@@ -1,0 +1,21 @@
+<div class="content-footer toolbar" ng-show="showToolbar">
+    <ul class="left">
+        <li ng-repeat="item in leftItems">
+            <label>{{item.chooseLeft}}</label>
+            <img ng-src="{{item.icon}}" ng-if="item.icon">
+            <label>{{item.chooseRight}}</label>
+        </li>
+    </ul>
+    <div class="center">
+        <label>{{menu.left}}</label>
+        <img ng-src="{{menu.icon}}" ng-if="menu.icon">
+        <label>{{menu.right}}</label>
+    </div>
+    <ul class="right">
+        <li ng-repeat="item in rightItems">
+            <label>{{item.backleft}}</label>
+            <img ng-src="{{item.icon}}" ng-if="item.icon">
+            <label>{{item.backRight}}</label>
+        </li>
+    </ul>
+</div>

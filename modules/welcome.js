@@ -20,6 +20,7 @@ angular.module('app.welcome', [])
             $scope.roomNumber = i18nText.index.roomNumber + window.localStorage.room;
             $scope.press1 = i18nText.welcome.press1;
             $scope.press2 = i18nText.welcome.press2;
+            $scope.poster = 'assets/images/bg_welcome.png'
         });
         var languages = ['zh-CN', 'en-US'],
             languageIndex = 0;

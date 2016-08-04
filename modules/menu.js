@@ -43,8 +43,8 @@ angular.module('app.menu', [])
             $scope.$emit("menu.created", true);
         }
 
-        $scope.$on('menu.keydown', function (ev, key) {
-            switch (key) {
+        activity.onKeyDown(function (keyCode) {
+            switch (keyCode) {
                 case COMMON_KEYS.KEY_LEFT:
                     if ($scope.selectedMenuItemIndex > 0) {
                         $scope.selectedMenuItemIndex--;
@@ -57,6 +57,9 @@ angular.module('app.menu', [])
                         $scope.selectedMenuItemIndex++;
                         activity.remove($scope.selectedMenuItemIndex - 1, 'menu-item-list', 'animation');
                         activity.animate($scope.selectedMenuItemIndex, 'menu-item-list', 'animation');
+                        if ($scope.selectedMenuItemIndex > 4) {
+
+                        }
                     }
                     break;
                 case COMMON_KEYS.KEY_ENTER:
