@@ -1,0 +1,66 @@
+/*movie page*/
+.movie-item-container{
+    width: 100%;
+    height: 720px;
+}
+#movie-detail-container{
+    width: 100%;
+    height: 58.15%;
+    background-size: cover;
+}
+#movie-list-container{
+    width: 100%;
+    height: 41.8%;
+}
+.movie-head{
+    height: 106.7px;
+    position: relative;
+    top: 2px;
+}
+.movie-icon{
+    width: 40px;
+    height: 40px;
+    margin-left: 31.3px;
+    margin-top: 32.7px;
+    float: left;
+}
+.movie-text{
+    margin-left: 13.3px;
+    margin-top: 35.3px;
+    font-size: 25.3px;
+    color: #F8C7A4;
+    float: left;
+}
+.movie-type{
+    /*height: 173.53px;*/
+    margin: 34px 32px;
+    width: 66.67px;
+    float: left;
+}
+.top-arrow{
+    width: 18.87px;
+    height: 18.87px;
+}
+.bot-arrow{
+    width: 18.87px;
+    height: 18.87px;
+    margin-top: 18.67px;
+}
+.type-name{
+    margin-top: 42.6px;
+    height: 46.67px;
+    text-align: center;
+    font-size: 33.33px;
+    color: #ffffff;
+}
+.type-index{
+    height: 28px;
+    font-size: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+.movie-image-container{
+    float: left;
+    width: 1149px;
+    height: 100%;
+}
