@@ -3,9 +3,10 @@
 angular.module('app.menu', [])
     .controller('MenuController', ['$scope', 'ActivityManager', 'COMMON_KEYS', function ($scope, ActivityManager, COMMON_KEYS) {
         var activity = ActivityManager.getActiveActivity();
+        menuBind();
 
         //activity.loadI18NResource(function (res) {
-            menuBind();
+        //
         //})
 
         function menuBind() {
@@ -29,7 +30,7 @@ angular.module('app.menu', [])
             $scope.selectedMenuItemIndex = 0;
         }
 
-        //activity.animate(0,'menu-item-list','animation');
+
 
         $scope.$on('menu.keydown', function (ev, key) {
             switch (key) {
