@@ -38,6 +38,8 @@ angular.module('app.menu', [])
                 {index: 2, name: '电影点播', pic: 'assets/images/service_normal.png'},
                 {index: 3, name: '电影点播', pic: 'assets/images/cityintro_normal.png'},
                 {index: 4, name: '电影点播', pic: 'assets/images/foodservice_normal.png'},
+                {index: 5, name: '电影点播', pic: 'assets/images/foodservice_normal.png'},
+                {index: 6, name: '电影点播', pic: 'assets/images/foodservice_normal.png'}
             ]
             $scope.selectedMenuItemIndex = 0;
             $scope.menuStyleLeft = '68px';
@@ -53,7 +55,7 @@ angular.module('app.menu', [])
                         activity.remove($scope.selectedMenuItemIndex + 1, 'menu-item-list', 'animation');
                         activity.animate($scope.selectedMenuItemIndex, 'menu-item-list', 'animation');
                         if ($scope.selectedMenuItemIndex < $scope.menuItems.length - 4) {
-                            $scope.menuStyleLeft = (68 - ($scope.menuItems.length - $scope.selectedMenuItemIndex - 5) * 310) + 'px';
+                            $scope.menuStyleLeft = (68 - $scope.selectedMenuItemIndex * 280) + 'px';
                         }
                     }
                     break;
@@ -63,7 +65,7 @@ angular.module('app.menu', [])
                         activity.remove($scope.selectedMenuItemIndex - 1, 'menu-item-list', 'animation');
                         activity.animate($scope.selectedMenuItemIndex, 'menu-item-list', 'animation');
                         if ($scope.selectedMenuItemIndex > 3) {
-                            $scope.menuStyleLeft = (68 - ($scope.selectedMenuItemIndex - 3) * 310) + 'px';
+                            $scope.menuStyleLeft = (68 - ($scope.selectedMenuItemIndex - 3) * 280) + 'px';
                         }
                     }
                     break;
