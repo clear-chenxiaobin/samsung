@@ -14,6 +14,9 @@ angular.module('app.menu', [])
     }])
     .controller('MenuController', ['$scope', 'ActivityManager', 'COMMON_KEYS', 'MenuService', function ($scope, ActivityManager, COMMON_KEYS, MenuService) {
         var activity = ActivityManager.getActiveActivity();
+        var moveCount = 0,
+            currentSelect = 0;
+
         activity.initialize($scope);
         ActivityManager.showLoading();
         ActivityManager.hideLoading(500);
@@ -71,8 +74,10 @@ angular.module('app.menu', [])
                         $scope.selectedMenuItemIndex--;
                         activity.remove($scope.selectedMenuItemIndex + 1, 'menu-item-list', 'animation');
                         activity.animate($scope.selectedMenuItemIndex, 'menu-item-list', 'animation');
-                        if ($scope.selectedMenuItemIndex < $scope.menuItems.length - 4) {
-                            $scope.menuStyleLeft = (68 - $scope.selectedMenuItemIndex * 280) + 'px';
+                        if (currentSelect > 0) currentSelect--;
+                        if (currentSelect == 0 && moveCount > 0) {
+                            moveCount--;
+                            $scope.menuStyleLeft = (68 - moveCount * 280) + 'px';
                         }
                     }
                     break;
@@ -81,8 +86,10 @@ angular.module('app.menu', [])
                         $scope.selectedMenuItemIndex++;
                         activity.remove($scope.selectedMenuItemIndex - 1, 'menu-item-list', 'animation');
                         activity.animate($scope.selectedMenuItemIndex, 'menu-item-list', 'animation');
-                        if ($scope.selectedMenuItemIndex > 3) {
-                            $scope.menuStyleLeft = (68 - ($scope.selectedMenuItemIndex - 3) * 280) + 'px';
+                        if (currentSelect < 4) currentSelect++;
+                        if (currentSelect == 4) {
+                            moveCount++;
+                            $scope.menuStyleLeft = (68 - moveCount * 280) + 'px';
                         }
                     }
                     break;
