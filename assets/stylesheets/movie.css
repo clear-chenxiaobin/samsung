@@ -74,6 +74,10 @@
     transition: transform 0.75s;
     opacity: 1;
     position: relative;
+    height:216px;
+    width: 144.67px;
+    margin-right: 20px;
+    margin-top: 34.67px;
 }
 /*降低透明度动画*/
 .opacityReduce{

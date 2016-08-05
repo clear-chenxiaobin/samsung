@@ -96,6 +96,7 @@ angular.module('app.activity', ['app.resource'])
                 var target1 = document.getElementById('type'+ number1).children;
                 for(var i=0;i<target1.length;i++) {
                     this.transform(target1[i], "rotateX(90deg)");
+                    this.removeClass(target1[i], 'opacityAdd');
                     this.addClass(target1[i], 'opacityReduce');
                     target1[i].style.top = '-145px';
                 }
@@ -116,6 +117,7 @@ angular.module('app.activity', ['app.resource'])
                 var target1 = document.getElementById('type'+ number1).children;
                 for(var i=0;i<target1.length;i++) {
                     this.transform(target1[i], "rotateX(-90deg)");
+                    this.removeClass(target1[i], 'opacityAdd');
                     this.addClass(target1[i], 'opacityReduce');
                     target1[i].style.top = '145px';
                 }
