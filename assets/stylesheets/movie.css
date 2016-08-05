@@ -63,6 +63,17 @@
     float: left;
     width: 1149px;
     height: 100%;
+    position: relative;
+}
+.type-container{
+    position: absolute;
+}
+.rotate_img{
+    -webkit-transition: -webkit-transform 0.75s;
+    -moz-transition: -moz-transform 0.75s;
+    transition: transform 0.75s;
+    opacity: 1;
+    position: relative;
 }
 /*降低透明度动画*/
 .opacityReduce{

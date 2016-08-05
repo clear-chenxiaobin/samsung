@@ -73,6 +73,63 @@ angular.module('app.activity', ['app.resource'])
             this.addClass(target, className);
         }
 
+        Activity.prototype.rotateUp = function(num){
+            if(num == 0) {
+                var number = num;
+                var target = document.getElementById('type' + number).children;
+                for(var i=0;i<target.length;i++){
+                    this.transform(target[i],"rotateX(0deg)");
+                    this.removeClass(target[i], 'opacityReduce');
+                    this.addClass(target[i], 'opacityAdd');
+                    target[i].style.top = '0px';
+                }
+            }else{
+                var number = num;
+                var target = document.getElementById('type' + number).children;
+                for(var i=0;i<target.length;i++){
+                    this.transform(target[i],"rotateX(0deg)");
+                    this.removeClass(target[i], 'opacityReduce');
+                    this.addClass(target[i], 'opacityAdd');
+                    target[i].style.top = '0px';
+                }
+                var number1 = num+1;
+                var target1 = document.getElementById('type'+ number1).children;
+                for(var i=0;i<target1.length;i++) {
+                    this.transform(target1[i], "rotateX(90deg)");
+                    this.addClass(target1[i], 'opacityReduce');
+                    target1[i].style.top = '-145px';
+                }
+            }
+        }
+
+
+        Activity.prototype.rotateDown = function(num){
+            if(num==-1){
+                var target = document.getElementsByClassName('rotate_img');
+                for(var i=0;i<target.length;i++){
+                    this.transform(target[i],"rotateX(-90deg)");
+                    this.addClass(target[i], 'opacityReduce');
+                    target[i].style.top = '145px';
+                }
+            }else{
+                var number1 = num+1;
+                var target1 = document.getElementById('type'+ number1).children;
+                for(var i=0;i<target1.length;i++) {
+                    this.transform(target1[i], "rotateX(-90deg)");
+                    this.addClass(target1[i], 'opacityReduce');
+                    target1[i].style.top = '145px';
+                }
+                var number = num;
+                var target = document.getElementById('type' + number).children;
+                for(var i=0;i<target.length;i++){
+                    this.transform(target[i],"rotateX(0deg)");
+                    this.removeClass(target[i], 'opacityReduce');
+                    this.addClass(target[i], 'opacityAdd');
+                    target[i].style.top = '0px';
+                }
+            }
+        }
+
         Activity.prototype.remove = function (num,sel,className){
             var target = document.getElementById(sel).children[num].children[0];
             this.removeClass(target,className);

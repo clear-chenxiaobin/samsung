@@ -15,8 +15,8 @@
                 <div class="bot-arrow"></div>
             </div>
             <div class="movie-image-container">
-                    <div ng-repeat="type in movie" id="type{{$index}}">
-                        <img ng-repeat="movie in type.list" ng-src="{{movie.img}}" class="rotate_img">
+                    <div ng-repeat="type in movie" id="type{{$index}}" class="type-container">
+                        <img ng-repeat="movie in type.list" ng-src="{{movie.img}}" class="rotate_img" repeat-finish>
                     </div>
             </div>
         </div>
