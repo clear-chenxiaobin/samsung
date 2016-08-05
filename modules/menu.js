@@ -53,13 +53,13 @@ angular.module('app.menu', [])
             //    });
             //}
             $scope.menuItems = [
-                {index: 0, name: '电影点播', pic: 'assets/images/movie_normal.png', activityId: 'movie'},
-                {index: 1, name: '电视直播', pic: 'assets/images/tv_normal.png', activityId: 'movie'},
-                {index: 2, name: '电影点播', pic: 'assets/images/service_normal.png', activityId: 'movie'},
-                {index: 3, name: '电影点播', pic: 'assets/images/cityintro_normal.png', activityId: 'movie'},
-                {index: 4, name: '电影点播', pic: 'assets/images/foodservice_normal.png', activityId: 'movie'},
-                {index: 5, name: '电影点播', pic: 'assets/images/foodservice_normal.png', activityId: 'movie'},
-                {index: 6, name: '电影点播', pic: 'assets/images/foodservice_normal.png', activityId: 'movie'}
+                {index: 0, name: '电视直播', pic: 'assets/images/tv_normal.png', icon: 'assets/images/icon_tv.png', activityId: 'live'},
+                {index: 1, name: '电影点播', pic: 'assets/images/movie_normal.png', icon: 'assets/images/icon_movie.png', activityId: 'movie'},
+                {index: 2, name: '酒店服务', pic: 'assets/images/service_normal.png', icon: 'assets/images/icon_service.png', activityId: 'movie'},
+                {index: 3, name: '电影点播', pic: 'assets/images/cityinfo_normal.png', icon: 'assets/images/icon_cityinfo.png', activityId: 'movie'},
+                {index: 4, name: '城市介绍', pic: 'assets/images/roomservice_normal.png', icon: 'assets/images/icon_roomservice.png', activityId: 'movie'},
+                {index: 5, name: '客房送餐', pic: 'assets/images/restaraunt_normal.png', icon: 'assets/images/icon_restaraunt.png', activityId: 'movie'},
+                {index: 6, name: '客房送餐', pic: 'assets/images/restaraunt_normal.png', icon: 'assets/images/icon_restaraunt.png', activityId: 'movie'}
             ]
             $scope.selectedMenuItemIndex = 0;
             $scope.menuStyleLeft = '68px';
