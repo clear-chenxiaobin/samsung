@@ -96,4 +96,19 @@ li {
     }
 }
 
+.toolbar {
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+    color: white;
+    font-size: 18px;
+    word-spacing: 5px;
+    letter-spacing: 2px;
+    opacity: 0.6;
+}
+
+.toolbar-img {
+    top: 11px !important;
+}
+
 

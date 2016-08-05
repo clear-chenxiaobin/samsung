@@ -15,10 +15,14 @@ angular.module('app.menu', [])
     .controller('MenuController', ['$scope', 'ActivityManager', 'COMMON_KEYS', function ($scope, ActivityManager, COMMON_KEYS) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
-        menuBind();
+        ActivityManager.showLoading();
+        ActivityManager.hideLoading(500);
 
         activity.loadI18NResource(function (res) {
-
+            menuBind();
+            $scope.select = {left: '按', icon: 'assets/images/icon_toolbar_select.png', right: '进行选择'};
+            $scope.ok = {left: '按', icon: 'assets/images/icon_toolbar_ok.png', right: '确认'};
+            $scope.menu = {left: '按', icon: 'assets/images/icon_toolbar_menu.png', right: '返回菜单页'};
         })
 
         function menuBind() {
