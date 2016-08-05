@@ -12,7 +12,7 @@ angular.module('app.menu', [])
             }
         }
     }])
-    .controller('MenuController', ['$scope', 'ActivityManager', 'COMMON_KEYS', function ($scope, ActivityManager, COMMON_KEYS) {
+    .controller('MenuController', ['$scope', 'ActivityManager', 'COMMON_KEYS', 'MenuService', function ($scope, ActivityManager, COMMON_KEYS, MenuService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
         ActivityManager.showLoading();
@@ -20,9 +20,22 @@ angular.module('app.menu', [])
 
         activity.loadI18NResource(function (res) {
             menuBind();
-            $scope.select = {left: '按', icon: 'assets/images/icon_toolbar_select.png', right: '进行选择'};
-            $scope.ok = {left: '按', icon: 'assets/images/icon_toolbar_ok.png', right: '确认'};
-            $scope.menu = {left: '按', icon: 'assets/images/icon_toolbar_menu.png', right: '返回菜单页'};
+            var toolvarData = MenuService.getLanguage().toolbar;
+            $scope.select = {
+                left: toolvarData.left,
+                icon: 'assets/images/icon_toolbar_select.png',
+                right: toolvarData.selsct
+            };
+            $scope.ok = {
+                left: toolvarData.left,
+                icon: 'assets/images/icon_toolbar_ok.png',
+                right: toolvarData.ok
+            };
+            $scope.menu = {
+                left: toolvarData.left,
+                icon: 'assets/images/icon_toolbar_menu.png',
+                right: toolvarData.menu
+            };
         })
 
         function menuBind() {
@@ -82,4 +95,13 @@ angular.module('app.menu', [])
                     break;
             }
         });
+    }])
+    .service('MenuService', ['ResourceManager', function (ResourceManager) {
+        this.getMenu = function () {
+            return ResourceManager.getI18NResource();
+        }
+
+        this.getLanguage = function () {
+            return ResourceManager.getLocale();
+        }
     }]);
