@@ -33,13 +33,13 @@ angular.module('app.menu', [])
             //    });
             //}
             $scope.menuItems = [
-                {index: 0, name: '电影点播', pic: 'assets/images/movie_normal.png'},
-                {index: 1, name: '电视直播', pic: 'assets/images/tv_normal.png'},
-                {index: 2, name: '电影点播', pic: 'assets/images/service_normal.png'},
-                {index: 3, name: '电影点播', pic: 'assets/images/cityintro_normal.png'},
-                {index: 4, name: '电影点播', pic: 'assets/images/foodservice_normal.png'},
-                {index: 5, name: '电影点播', pic: 'assets/images/foodservice_normal.png'},
-                {index: 6, name: '电影点播', pic: 'assets/images/foodservice_normal.png'}
+                {index: 0, name: '电影点播', pic: 'assets/images/movie_normal.png', activityId: 'movie'},
+                {index: 1, name: '电视直播', pic: 'assets/images/tv_normal.png', activityId: 'movie'},
+                {index: 2, name: '电影点播', pic: 'assets/images/service_normal.png', activityId: 'movie'},
+                {index: 3, name: '电影点播', pic: 'assets/images/cityintro_normal.png', activityId: 'movie'},
+                {index: 4, name: '电影点播', pic: 'assets/images/foodservice_normal.png', activityId: 'movie'},
+                {index: 5, name: '电影点播', pic: 'assets/images/foodservice_normal.png', activityId: 'movie'},
+                {index: 6, name: '电影点播', pic: 'assets/images/foodservice_normal.png', activityId: 'movie'}
             ]
             $scope.selectedMenuItemIndex = 0;
             $scope.menuStyleLeft = '68px';
@@ -72,7 +72,6 @@ angular.module('app.menu', [])
                 case COMMON_KEYS.KEY_ENTER:
                     ActivityManager.go($scope.menuItems[$scope.selectedMenuItemIndex].activityId, 2);
                     activity.isMenu(false);
-                    $scope.$emit('activity.created');
                     break;
                 case COMMON_KEYS.KEY_BACK:
                     activity.finish();
