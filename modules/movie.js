@@ -9,6 +9,7 @@ angular.module('app.movie',[])
                     //console.log('ng-repeat执行完毕');
                     ActivityManager.getActiveActivity().rotateDown(-1);
                     ActivityManager.getActiveActivity().rotateUp(0);
+                    ActivityManager.getActiveActivity().movieAnimate(0,'type0','choseMovie')
                 }
             }
         }
@@ -110,7 +111,7 @@ angular.module('app.movie',[])
         var movieID = 1;
         ActivityManager.showLoading();
         choseMovie(movieID);
-        ActivityManager.hideLoading(2000);
+        ActivityManager.hideLoading(500);
         function changeMovieType(typeID){
             $scope.movieList = $scope.movie[typeID].list;
 
@@ -128,27 +129,29 @@ angular.module('app.movie',[])
                 var number = num;
                 var target = document.getElementById('type' + number).children;
                 for(var i=0;i<target.length;i++){
-                    activity.transform(target[i],"rotateX(0deg)");
-                    activity.removeClass(target[i], 'opacityReduce');
-                    activity.addClass(target[i], 'opacityAdd');
-                    target[i].style.top = '0px';
+                    activity.transform(target[i].children[0],"rotateX(0deg)");
+                    activity.removeClass(target[i].children[0], 'opacityReduce');
+                    activity.addClass(target[i].children[0], 'opacityAdd');
+                    target[i].children[0].style.top = '33.3px';
                 }
             }else{
                 var number = num;
                 var target = document.getElementById('type' + number).children;
                 for(var i=0;i<target.length;i++){
-                    activity.transform(target[i],"rotateX(0deg)");
-                    activity.removeClass(target[i], 'opacityReduce');
-                    activity.addClass(target[i], 'opacityAdd');
-                    target[i].style.top = '0px';
+                    activity.transform(target[i].children[0],"rotateX(0deg)");
+                    activity.removeClass(target[i].children[0], 'opacityReduce');
+                    activity.removeClass(target[i].children[0], 'choseMovie');
+                    activity.addClass(target[i].children[0], 'opacityAdd');
+                    target[i].children[0].style.top = '33.3px';
                 }
                 var number1 = num - 1;
                 var target1 = document.getElementById('type'+ number1).children;
                 for(var i=0;i<target1.length;i++) {
-                    activity.transform(target1[i], "rotateX(90deg)");
-                    activity.removeClass(target1[i], 'opacityAdd');
-                    activity.addClass(target1[i], 'opacityReduce');
-                    target1[i].style.top = '-145px';
+                    activity.transform(target1[i].children[0], "rotateX(90deg)");
+                    activity.removeClass(target1[i].children[0], 'opacityAdd');
+                    activity.removeClass(target1[i].children[0], 'choseMovie');
+                    activity.addClass(target1[i].children[0], 'opacityReduce');
+                    target1[i].children[0].style.top = '-145px';
                 }
             }
         }
@@ -166,18 +169,20 @@ angular.module('app.movie',[])
                 var number1 = num+1;
                 var target1 = document.getElementById('type'+ number1).children;
                 for(var i=0;i<target1.length;i++) {
-                    activity.transform(target1[i], "rotateX(-90deg)");
-                    activity.removeClass(target1[i], 'opacityAdd');
-                    activity.addClass(target1[i], 'opacityReduce');
-                    target1[i].style.top = '145px';
+                    activity.transform(target1[i].children[0], "rotateX(-90deg)");
+                    activity.removeClass(target1[i].children[0], 'opacityAdd');
+                    activity.removeClass(target1[i].children[0], 'choseMovie');
+                    activity.addClass(target1[i].children[0], 'opacityReduce');
+                    target1[i].children[0].style.top = '145px';
                 }
                 var number = num;
                 var target = document.getElementById('type' + number).children;
                 for(var i=0;i<target.length;i++){
-                    activity.transform(target[i],"rotateX(0deg)");
-                    activity.removeClass(target[i], 'opacityReduce');
-                    activity.addClass(target[i], 'opacityAdd');
-                    target[i].style.top = '0px';
+                    activity.transform(target[i].children[0],"rotateX(0deg)");
+                    activity.removeClass(target[i].children[0], 'opacityReduce');
+                    activity.removeClass(target[i].children[0], 'choseMovie');
+                    activity.addClass(target[i].children[0], 'opacityAdd');
+                    target[i].children[0].style.top = '33.3px';
                 }
             }
         }
@@ -186,15 +191,17 @@ angular.module('app.movie',[])
         activity.onKeyDown(function (keyCode) {
             switch (keyCode) {
                 case COMMON_KEYS.KEY_LEFT:
-                    if(movieID>1) {
-                        movieID -= 1;
-                        choseMovie(movieID);
-                    }
+                    $scope.movieIndex-=1;
+                    //choseMovie(movieID);
+                    activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
+                    activity.removeAnimate($scope.movieIndex+1,'type'+$scope.typeIndex,'choseMovie')
                     break;
                 case COMMON_KEYS.KEY_RIGHT:
                     //TODO:加入movieType的length判断
-                    movieID+=1;
-                    choseMovie(movieID);
+                    $scope.movieIndex+=1;
+                    //choseMovie(movieID);
+                    activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
+                    activity.removeAnimate($scope.movieIndex-1,'type'+$scope.typeIndex,'choseMovie')
                     break;
                 case COMMON_KEYS.KEY_MENU:
                     ActivityManager.startActivity('menu');
@@ -207,12 +214,16 @@ angular.module('app.movie',[])
                         $scope.typeIndex++;
                     }
                     rotateUp($scope.typeIndex);
+                    $scope.movieIndex = 0;
+                    activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
                     break;
                 case COMMON_KEYS.KEY_DOWN:
                     if ($scope.typeIndex > 0) {
                         $scope.typeIndex--;
                     }
                     rotateDown($scope.typeIndex);
+                    $scope.movieIndex = 0;
+                    activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
                     break;
             }
         });

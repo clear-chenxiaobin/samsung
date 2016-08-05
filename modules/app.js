@@ -13,7 +13,7 @@ angular.module('app',[
     'app.movie'
 ])
     .run(['$rootScope', '$http', 'ActivityManager','ResourceManager', function ($rootScope, $http, ActivityManager,ResourceManager) {
-        ActivityManager.hideLoading(3000);
+        ActivityManager.hideLoading(500);
 
         ResourceManager.initialize();
 

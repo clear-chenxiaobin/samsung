@@ -68,16 +68,24 @@
 .type-container{
     position: absolute;
 }
+.img-container{
+    position: relative;
+    float: left;
+    width: 116px;
+    height: 173.3px;
+    margin-right: 20px;
+}
 .rotate_img{
     -webkit-transition: -webkit-transform 0.75s;
     -moz-transition: -moz-transform 0.75s;
     transition: transform 0.75s;
     opacity: 1;
-    position: relative;
-    height:216px;
-    width: 144.67px;
-    margin-right: 20px;
-    margin-top: 34.67px;
+    position: absolute;
+    height:173.3px;
+    width: 116px;
+    left: 0;
+    top: 0px;
+    /*margin-top: 34.67px;*/
 }
 /*降低透明度动画*/
 .opacityReduce{
@@ -141,4 +149,71 @@
 {
     from {opacity: 0;}
     to {opacity: 1;}
+}
+
+/*选择电影动画*/
+.choseMovie {
+    animation: chose 0.5s forwards;
+    -moz-animation: chose 0.5s forwards; /* Firefox */
+    -webkit-animation: chose 0.5s forwards; /* Safari 和 Chrome */
+    -o-animation: chose 0.5s forwards;
+}
+
+@keyframes chose {
+    from {
+        width: 116px;
+        height:173.3px;
+    }
+    to {
+        width: 144.67px;
+        height: 216px;
+        top: 12.66px;
+        left: -14.33px;
+        margin-right: -9px;
+    }
+}
+
+@-moz-keyframes chose /* Firefox */
+{
+    from {
+        width: 116px;
+        height:173.3px;
+    }
+    to {
+        width: 144.67px;
+        height: 216px;
+        top: 12.66px;
+        left: -14.33px;
+        margin-right: -9px;
+    }
+}
+
+@-webkit-keyframes chose /* Safari 和 Chrome */
+{
+    from {
+        width: 116px;
+        height:173.3px;
+    }
+    to {
+        width: 144.67px;
+        height: 216px;
+        top: 12.66px;
+        left: -14.33px;
+        margin-right: -9px;
+    }
+}
+
+@-o-keyframes chose /* Opera */
+{
+    from {
+        width: 116px;
+        height:173.3px;
+    }
+    to {
+        width: 144.67px;
+        height: 216px;
+        top: 12.66px;
+        left: -14.33px;
+        margin-right: -9px;
+    }
 }

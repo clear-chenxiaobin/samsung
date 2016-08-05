@@ -73,32 +73,50 @@ angular.module('app.activity', ['app.resource'])
             this.addClass(target, className);
         }
 
+        Activity.prototype.movieAnimate = function (num,sel,className){
+            var targetAll = document.getElementById(sel).children.length;
+            for(var i=0;i<targetAll;i++){
+                var target1 = document.getElementById(sel).children[i].children[0];
+                //target1.style='';
+                this.removeClass(target1,'opacityAdd');
+            }
+            var target = document.getElementById(sel).children[num].children[0];
+            this.addClass(target, className);
+        }
+
+        Activity.prototype.removeAnimate = function (num,sel,className){
+            var target = document.getElementById(sel).children[num].children[0];
+            this.removeClass(target,className);
+        }
+
         Activity.prototype.rotateUp = function(num){
             if(num == 0) {
                 var number = num;
                 var target = document.getElementById('type' + number).children;
                 for(var i=0;i<target.length;i++){
-                    this.transform(target[i],"rotateX(0deg)");
-                    this.removeClass(target[i], 'opacityReduce');
-                    this.addClass(target[i], 'opacityAdd');
-                    target[i].style.top = '0px';
+                    this.transform(target[i].children[0],"rotateX(0deg)");
+                    this.removeClass(target[i].children[0], 'opacityReduce');
+                    this.addClass(target[i].children[0], 'opacityAdd');
+                    target[i].children[0].style.top = '33.3px';
                 }
             }else{
                 var number = num;
                 var target = document.getElementById('type' + number).children;
                 for(var i=0;i<target.length;i++){
-                    this.transform(target[i],"rotateX(0deg)");
-                    this.removeClass(target[i], 'opacityReduce');
-                    this.addClass(target[i], 'opacityAdd');
-                    target[i].style.top = '0px';
+                    this.transform(target[i].children[0],"rotateX(0deg)");
+                    this.removeClass(target[i].children[0], 'opacityReduce');
+                    this.removeClass(target[i].children[0], 'choseMovie');
+                    this.addClass(target[i].children[0], 'opacityAdd');
+                    target[i].children[0].style.top = '33.3px';
                 }
-                var number1 = num+1;
+                var number1 = num - 1;
                 var target1 = document.getElementById('type'+ number1).children;
                 for(var i=0;i<target1.length;i++) {
-                    this.transform(target1[i], "rotateX(90deg)");
-                    this.removeClass(target1[i], 'opacityAdd');
-                    this.addClass(target1[i], 'opacityReduce');
-                    target1[i].style.top = '-145px';
+                    this.transform(target1[i].children[0], "rotateX(90deg)");
+                    this.removeClass(target1[i].children[0], 'opacityAdd');
+                    this.removeClass(target1[i].children[0], 'choseMovie');
+                    this.addClass(target1[i].children[0], 'opacityReduce');
+                    this[i].children[0].style.top = '-145px';
                 }
             }
         }
@@ -116,18 +134,20 @@ angular.module('app.activity', ['app.resource'])
                 var number1 = num+1;
                 var target1 = document.getElementById('type'+ number1).children;
                 for(var i=0;i<target1.length;i++) {
-                    this.transform(target1[i], "rotateX(-90deg)");
-                    this.removeClass(target1[i], 'opacityAdd');
-                    this.addClass(target1[i], 'opacityReduce');
-                    target1[i].style.top = '145px';
+                    this.transform(target1[i].children[0], "rotateX(-90deg)");
+                    this.removeClass(target1[i].children[0], 'opacityAdd');
+                    this.removeClass(target1[i].children[0], 'choseMovie');
+                    this.addClass(target1[i].children[0], 'opacityReduce');
+                    target1[i].children[0].style.top = '145px';
                 }
                 var number = num;
                 var target = document.getElementById('type' + number).children;
                 for(var i=0;i<target.length;i++){
-                    this.transform(target[i],"rotateX(0deg)");
-                    this.removeClass(target[i], 'opacityReduce');
-                    this.addClass(target[i], 'opacityAdd');
-                    target[i].style.top = '0px';
+                    this.transform(target[i].children[0],"rotateX(0deg)");
+                    this.removeClass(target[i].children[0], 'opacityReduce');
+                    this.removeClass(target[i].children[0], 'choseMovie');
+                    this.addClass(target[i].children[0], 'opacityAdd');
+                    target[i].children[0].style.top = '33.3px';
                 }
             }
         }
