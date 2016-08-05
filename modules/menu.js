@@ -12,13 +12,33 @@ angular.module('app.menu', [])
             }
         }
     }])
-    .controller('MenuController', ['$scope', 'ActivityManager', 'COMMON_KEYS', function ($scope, ActivityManager, COMMON_KEYS) {
+    .controller('MenuController', ['$scope', 'ActivityManager', 'COMMON_KEYS', 'MenuService', function ($scope, ActivityManager, COMMON_KEYS, MenuService) {
         var activity = ActivityManager.getActiveActivity();
+        var moveCount = 0,
+            currentSelect = 0;
+
         activity.initialize($scope);
-        menuBind();
+        ActivityManager.showLoading();
+        ActivityManager.hideLoading(500);
 
         activity.loadI18NResource(function (res) {
-
+            menuBind();
+            var toolvarData = MenuService.getLanguage().toolbar;
+            $scope.select = {
+                left: toolvarData.left,
+                icon: 'assets/images/icon_toolbar_select.png',
+                right: toolvarData.selsct
+            };
+            $scope.ok = {
+                left: toolvarData.left,
+                icon: 'assets/images/icon_toolbar_ok.png',
+                right: toolvarData.ok
+            };
+            $scope.menu = {
+                left: toolvarData.left,
+                icon: 'assets/images/icon_toolbar_menu.png',
+                right: toolvarData.menu
+            };
         })
 
         function menuBind() {
@@ -33,13 +53,13 @@ angular.module('app.menu', [])
             //    });
             //}
             $scope.menuItems = [
-                {index: 0, name: '电影点播', pic: 'assets/images/movie_normal.png'},
-                {index: 1, name: '电视直播', pic: 'assets/images/tv_normal.png'},
-                {index: 2, name: '电影点播', pic: 'assets/images/service_normal.png'},
-                {index: 3, name: '电影点播', pic: 'assets/images/cityintro_normal.png'},
-                {index: 4, name: '电影点播', pic: 'assets/images/foodservice_normal.png'},
-                {index: 5, name: '电影点播', pic: 'assets/images/foodservice_normal.png'},
-                {index: 6, name: '电影点播', pic: 'assets/images/foodservice_normal.png'}
+                {index: 0, name: '电影点播', pic: 'assets/images/movie_normal.png', activityId: 'movie'},
+                {index: 1, name: '电视直播', pic: 'assets/images/tv_normal.png', activityId: 'movie'},
+                {index: 2, name: '电影点播', pic: 'assets/images/service_normal.png', activityId: 'movie'},
+                {index: 3, name: '电影点播', pic: 'assets/images/cityintro_normal.png', activityId: 'movie'},
+                {index: 4, name: '电影点播', pic: 'assets/images/foodservice_normal.png', activityId: 'movie'},
+                {index: 5, name: '电影点播', pic: 'assets/images/foodservice_normal.png', activityId: 'movie'},
+                {index: 6, name: '电影点播', pic: 'assets/images/foodservice_normal.png', activityId: 'movie'}
             ]
             $scope.selectedMenuItemIndex = 0;
             $scope.menuStyleLeft = '68px';
@@ -54,8 +74,10 @@ angular.module('app.menu', [])
                         $scope.selectedMenuItemIndex--;
                         activity.remove($scope.selectedMenuItemIndex + 1, 'menu-item-list', 'animation');
                         activity.animate($scope.selectedMenuItemIndex, 'menu-item-list', 'animation');
-                        if ($scope.selectedMenuItemIndex < $scope.menuItems.length - 4) {
-                            $scope.menuStyleLeft = (68 - $scope.selectedMenuItemIndex * 280) + 'px';
+                        if (currentSelect > 0) currentSelect--;
+                        if (currentSelect == 0 && moveCount > 0) {
+                            moveCount--;
+                            $scope.menuStyleLeft = (68 - moveCount * 280) + 'px';
                         }
                     }
                     break;
@@ -64,19 +86,29 @@ angular.module('app.menu', [])
                         $scope.selectedMenuItemIndex++;
                         activity.remove($scope.selectedMenuItemIndex - 1, 'menu-item-list', 'animation');
                         activity.animate($scope.selectedMenuItemIndex, 'menu-item-list', 'animation');
-                        if ($scope.selectedMenuItemIndex > 3) {
-                            $scope.menuStyleLeft = (68 - ($scope.selectedMenuItemIndex - 3) * 280) + 'px';
+                        if (currentSelect < 4) currentSelect++;
+                        if (currentSelect == 4) {
+                            moveCount++;
+                            $scope.menuStyleLeft = (68 - moveCount * 280) + 'px';
                         }
                     }
                     break;
                 case COMMON_KEYS.KEY_ENTER:
                     ActivityManager.go($scope.menuItems[$scope.selectedMenuItemIndex].activityId, 2);
                     activity.isMenu(false);
-                    $scope.$emit('activity.created');
                     break;
                 case COMMON_KEYS.KEY_BACK:
                     activity.finish();
                     break;
             }
         });
+    }])
+    .service('MenuService', ['ResourceManager', function (ResourceManager) {
+        this.getMenu = function () {
+            return ResourceManager.getI18NResource();
+        }
+
+        this.getLanguage = function () {
+            return ResourceManager.getLocale();
+        }
     }]);

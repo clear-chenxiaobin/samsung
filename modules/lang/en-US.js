@@ -16,16 +16,11 @@ angular.module('app.en-US', [])
                 roomNumber:'Room Number:'
             },
             toolbar: {
-                ok: 'Click OK button to select category',
-                weather_ok:'Click OK button to select city',
-                order_ok:'Click OK button to select meal',
-                up_down: 'Click Up and Down to move option',
-                left_right: 'Click Left and Right to change image',
-                cart_l_r:'Click Left and Right to change number',
-                weather_open:'Click OK button to open cities list',
-                back: 'Click back',
-                menu: 'Click to open the menu',
-                menuText: 'MENU'
+                left: 'Press',
+                selsct: 'Select',
+                ok: 'Confirm',
+                back: 'Back',
+                menu: 'To Return The Menu',
             },
             weather: {
                 title: 'weather',

@@ -16,16 +16,11 @@ angular.module('app.zh-CN', [])
                 roomNumber: '房间号:'
             },
             toolbar: {
-                ok: '按OK选择分类',
-                weather_ok:'按OK选择分类',
-                order_ok:'按OK选择分类',
-                up_down: '按上下移动选项',
-                left_right: '按左右切换图片',
-                cart_l_r:'按左右修改数量',
-                weather_open:'按OK打开城市列表',
-                back: '点击 返回',
-                menu: '点击 打开菜单',
-                menuText: '菜 单'
+                left: '按',
+                selsct: '进行选择',
+                ok: '确认',
+                back: '返回',
+                menu: '返回菜单页',
             },
             weather:{
                 title:'天气',
