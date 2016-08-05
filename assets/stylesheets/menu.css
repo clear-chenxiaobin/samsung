@@ -4,8 +4,7 @@
 
 .menu-item-container > ul {
     margin-top: 146px;
-    margin-left: 68px;
-    width: 1500px;
+    position: relative;
 }
 
 .menu-item-container > ul > li {
