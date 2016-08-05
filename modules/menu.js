@@ -38,9 +38,13 @@ angular.module('app.menu', [])
                 {index: 2, name: '电影点播', pic: 'assets/images/service_normal.png'},
                 {index: 3, name: '电影点播', pic: 'assets/images/cityintro_normal.png'},
                 {index: 4, name: '电影点播', pic: 'assets/images/foodservice_normal.png'},
+                {index: 5, name: '电影点播', pic: 'assets/images/foodservice_normal.png'},
+                {index: 6, name: '电影点播', pic: 'assets/images/foodservice_normal.png'}
             ]
             $scope.selectedMenuItemIndex = 0;
-            $scope.$emit("menu.created", true);
+            $scope.menuStyleLeft = '68px';
+            $scope.menuStyleWidth = 310 + $scope.menuItems.length * 280 + 100 + 'px';
+
         }
 
         activity.onKeyDown(function (keyCode) {
@@ -50,6 +54,9 @@ angular.module('app.menu', [])
                         $scope.selectedMenuItemIndex--;
                         activity.remove($scope.selectedMenuItemIndex + 1, 'menu-item-list', 'animation');
                         activity.animate($scope.selectedMenuItemIndex, 'menu-item-list', 'animation');
+                        if ($scope.selectedMenuItemIndex < $scope.menuItems.length - 4) {
+                            $scope.menuStyleLeft = (68 - $scope.selectedMenuItemIndex * 280) + 'px';
+                        }
                     }
                     break;
                 case COMMON_KEYS.KEY_RIGHT:
@@ -57,8 +64,8 @@ angular.module('app.menu', [])
                         $scope.selectedMenuItemIndex++;
                         activity.remove($scope.selectedMenuItemIndex - 1, 'menu-item-list', 'animation');
                         activity.animate($scope.selectedMenuItemIndex, 'menu-item-list', 'animation');
-                        if ($scope.selectedMenuItemIndex > 4) {
-
+                        if ($scope.selectedMenuItemIndex > 3) {
+                            $scope.menuStyleLeft = (68 - ($scope.selectedMenuItemIndex - 3) * 280) + 'px';
                         }
                     }
                     break;
