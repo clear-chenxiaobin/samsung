@@ -1,6 +1,18 @@
 'use strict';
 
 angular.module('app.movie',[])
+    .directive('repeatFinish', ['ActivityManager', function (ActivityManager) {
+        return {
+            link: function (scope, element, attr) {
+                //监听渲染是否完成
+                if (scope.$last == true) {
+                    //console.log('ng-repeat执行完毕');
+                    ActivityManager.getActiveActivity().rotateDown(-1);
+                    ActivityManager.getActiveActivity().rotateUp(0);
+                }
+            }
+        }
+    }])
     .controller('MovieController',['$scope', 'ResourceManager', 'ActivityManager', 'COMMON_KEYS', function ($scope, ResourceManager, ActivityManager, COMMON_KEYS) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
@@ -130,12 +142,13 @@ angular.module('app.movie',[])
                     activity.addClass(target[i], 'opacityAdd');
                     target[i].style.top = '0px';
                 }
-                var number1 = num+1;
+                var number1 = num - 1;
                 var target1 = document.getElementById('type'+ number1).children;
                 for(var i=0;i<target1.length;i++) {
                     activity.transform(target1[i], "rotateX(90deg)");
+                    activity.removeClass(target1[i], 'opacityAdd');
                     activity.addClass(target1[i], 'opacityReduce');
-                    target1[i].style.top = '-115px';
+                    target1[i].style.top = '-145px';
                 }
             }
         }
@@ -147,15 +160,16 @@ angular.module('app.movie',[])
                 for(var i=0;i<target.length;i++){
                     activity.transform(target[i],"rotateX(-90deg)");
                     activity.addClass(target[i], 'opacityReduce');
-                    target[i].style.top = '100px';
+                    target[i].style.top = '145px';
                 }
             }else{
                 var number1 = num+1;
                 var target1 = document.getElementById('type'+ number1).children;
                 for(var i=0;i<target1.length;i++) {
                     activity.transform(target1[i], "rotateX(-90deg)");
+                    activity.removeClass(target1[i], 'opacityAdd');
                     activity.addClass(target1[i], 'opacityReduce');
-                    target1[i].style.top = '100px';
+                    target1[i].style.top = '145px';
                 }
                 var number = num;
                 var target = document.getElementById('type' + number).children;
@@ -168,8 +182,6 @@ angular.module('app.movie',[])
             }
         }
 
-        //rotateDown(-1);
-        //rotateUp(0);
 
         activity.onKeyDown(function (keyCode) {
             switch (keyCode) {
@@ -191,7 +203,7 @@ angular.module('app.movie',[])
                     ActivityManager.startActivity('menu');
                     break;
                 case COMMON_KEYS.KEY_UP:
-                    if ($scope.typeIndex < $scope.movie.length) {
+                    if ($scope.typeIndex < $scope.movie.length-1) {
                         $scope.typeIndex++;
                     }
                     rotateUp($scope.typeIndex);
