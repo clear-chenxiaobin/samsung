@@ -41,6 +41,9 @@ angular.module('app.menu', [])
                 icon: 'assets/images/icon_toolbar_menu.png',
                 right: toolvarData.menu
             };
+            $scope.menuFinish = function () {
+                console.log('渲染完之后的操作')
+            }
         })
 
         function menuBind() {
@@ -55,16 +58,16 @@ angular.module('app.menu', [])
             //    });
             //}
             $scope.menuItems = [
-                {index: 0, name: '电视直播', pic: 'assets/images/tv_normal.png', icon: 'assets/images/icon_tv.png', activityId: 'live'},
-                {index: 1, name: '电影点播', pic: 'assets/images/movie_normal.png', icon: 'assets/images/icon_movie.png', activityId: 'movie'},
-                {index: 2, name: '酒店服务', pic: 'assets/images/service_normal.png', icon: 'assets/images/icon_service.png', activityId: 'movie'},
-                {index: 3, name: '电影点播', pic: 'assets/images/cityinfo_normal.png', icon: 'assets/images/icon_cityinfo.png', activityId: 'movie'},
-                {index: 4, name: '城市介绍', pic: 'assets/images/roomservice_normal.png', icon: 'assets/images/icon_roomservice.png', activityId: 'movie'},
-                {index: 5, name: '客房送餐', pic: 'assets/images/restaraunt_normal.png', icon: 'assets/images/icon_restaraunt.png', activityId: 'movie'},
-                {index: 6, name: '客房送餐', pic: 'assets/images/restaraunt_normal.png', icon: 'assets/images/icon_restaraunt.png', activityId: 'movie'}
+                {index: 0, name: '电视直播', pic: 'assets/images/menu_tv.png', activityId: 'live'},
+                {index: 1, name: '电影点播', pic: 'assets/images/menu_movie.png', activityId: 'movie'},
+                {index: 2, name: '酒店服务', pic: 'assets/images/menu_service.png', activityId: 'movie'},
+                {index: 3, name: '电影点播', pic: 'assets/images/menu_cityinfo.png', activityId: 'movie'},
+                {index: 4, name: '城市介绍', pic: 'assets/images/menu_roomfood.png', activityId: 'movie'},
+                {index: 5, name: '客房送餐', pic: 'assets/images/menu_restaraunt.png', activityId: 'movie'},
+                {index: 6, name: '客房送餐', pic: 'assets/images/menu_restaraunt.png', activityId: 'movie'}
             ]
             $scope.selectedMenuItemIndex = 0;
-            $scope.menuStyleLeft = '68px';
+            $scope.menuStyleLeft = '80px';
             $scope.menuStyleWidth = 310 + $scope.menuItems.length * 280 + 100 + 'px';
 
         }
@@ -74,25 +77,23 @@ angular.module('app.menu', [])
                 case COMMON_KEYS.KEY_LEFT:
                     if ($scope.selectedMenuItemIndex > 0) {
                         $scope.selectedMenuItemIndex--;
-                        activity.remove($scope.selectedMenuItemIndex + 1, 'menu-item-list', 'animation');
-                        activity.animate($scope.selectedMenuItemIndex, 'menu-item-list', 'animation');
-                        if (currentSelect > 0) currentSelect--;
+                        activity.remove($scope.selectedMenuItemIndex + 1, 'menu-item-list', 'menu-animation');
+                        activity.animate($scope.selectedMenuItemIndex, 'menu-item-list', 'menu-animation');
                         if (currentSelect == 0 && moveCount > 0) {
                             moveCount--;
-                            $scope.menuStyleLeft = (68 - moveCount * 280) + 'px';
-                        }
+                            $scope.menuStyleLeft = (80 - moveCount * 280) + 'px';
+                        } else if (currentSelect > 0) currentSelect--;
                     }
                     break;
                 case COMMON_KEYS.KEY_RIGHT:
                     if ($scope.selectedMenuItemIndex < $scope.menuItems.length - 1) {
                         $scope.selectedMenuItemIndex++;
-                        activity.remove($scope.selectedMenuItemIndex - 1, 'menu-item-list', 'animation');
-                        activity.animate($scope.selectedMenuItemIndex, 'menu-item-list', 'animation');
-                        if (currentSelect < 4) currentSelect++;
-                        if (currentSelect == 4) {
+                        activity.remove($scope.selectedMenuItemIndex - 1, 'menu-item-list', 'menu-animation');
+                        activity.animate($scope.selectedMenuItemIndex, 'menu-item-list', 'menu-animation');
+                        if (currentSelect == 3) {
                             moveCount++;
-                            $scope.menuStyleLeft = (68 - moveCount * 280) + 'px';
-                        }
+                            $scope.menuStyleLeft = (80 - moveCount * 280) + 'px';
+                        } else if (currentSelect < 3) currentSelect++;
                     }
                     break;
                 case COMMON_KEYS.KEY_ENTER:

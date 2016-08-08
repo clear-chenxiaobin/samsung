@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.movie',[])
+angular.module('app.movie', [])
     .directive('repeatFinish', ['ActivityManager', function (ActivityManager) {
         return {
             link: function(scope,element,attr){
@@ -11,7 +11,7 @@ angular.module('app.movie',[])
             }
         }
     }])
-    .controller('MovieController',['$scope', 'ResourceManager', 'ActivityManager', 'COMMON_KEYS', function ($scope, ResourceManager, ActivityManager, COMMON_KEYS) {
+    .controller('MovieController', ['$scope', 'ResourceManager', 'ActivityManager', 'COMMON_KEYS', function ($scope, ResourceManager, ActivityManager, COMMON_KEYS) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
         activity.isMenu(true);
@@ -23,6 +23,11 @@ angular.module('app.movie',[])
             //$scope.roomNumber = i18nText.index.roomNumber + window.localStorage.room;
             //$scope.press1 = i18nText.welcome.press1;
             //$scope.press2 = i18nText.welcome.press2;
+
+            //controller里对应的处理函数
+            $scope.movieFinish = function () {
+                console.log('渲染完之后的操作')
+            }
         });
         $scope.movieFinish = function(){
             ActivityManager.getActiveActivity().rotateDown(-1);
@@ -33,77 +38,77 @@ angular.module('app.movie',[])
         $scope.movieIndex = 0;
         $scope.movie = [
             {
-                type:'动作',
-                list:[
+                type: '动作',
+                list: [
                     {
-                        name:'火星救援',
-                        img:'assets/images/movie1.png',
-                        bgimg:'assets/images/banner1.png'
+                        name: '火星救援',
+                        img: 'assets/images/movie1.png',
+                        bgimg: 'assets/images/banner1.png'
                     },
                     {
-                        name:'侏罗纪世界',
-                        img:'assets/images/movie2.png',
-                        bgimg:'assets/images/banner2.png'
+                        name: '侏罗纪世界',
+                        img: 'assets/images/movie2.png',
+                        bgimg: 'assets/images/banner2.png'
                     },
                     {
-                        name:'海底总动员1',
-                        img:'assets/images/movie3.png',
-                        bgimg:'assets/images/banner3.png'
+                        name: '海底总动员1',
+                        img: 'assets/images/movie3.png',
+                        bgimg: 'assets/images/banner3.png'
                     }
                 ]
             },
             {
-                type:'科幻',
-                list:[
+                type: '科幻',
+                list: [
                     {
-                        name:'海底总动员1',
-                        img:'assets/images/movie3.png',
-                        bgimg:'assets/images/banner3.png'
+                        name: '海底总动员1',
+                        img: 'assets/images/movie3.png',
+                        bgimg: 'assets/images/banner3.png'
                     },
                     {
-                        name:'海底总动员1',
-                        img:'assets/images/movie3.png',
-                        bgimg:'assets/images/banner3.png'
+                        name: '海底总动员1',
+                        img: 'assets/images/movie3.png',
+                        bgimg: 'assets/images/banner3.png'
                     },
                     {
-                        name:'侏罗纪世界',
-                        img:'assets/images/movie2.png',
-                        bgimg:'assets/images/banner2.png'
+                        name: '侏罗纪世界',
+                        img: 'assets/images/movie2.png',
+                        bgimg: 'assets/images/banner2.png'
                     },
                     {
-                        name:'火星救援',
-                        img:'assets/images/movie1.png',
-                        bgimg:'assets/images/banner1.png'
+                        name: '火星救援',
+                        img: 'assets/images/movie1.png',
+                        bgimg: 'assets/images/banner1.png'
                     }
                 ]
             },
             {
-                type:'爱情',
-                list:[
+                type: '爱情',
+                list: [
                     {
-                        name:'火星救援',
-                        img:'assets/images/movie1.png',
-                        bgimg:'assets/images/banner1.png'
+                        name: '火星救援',
+                        img: 'assets/images/movie1.png',
+                        bgimg: 'assets/images/banner1.png'
                     },
                     {
-                        name:'侏罗纪世界',
-                        img:'assets/images/movie2.png',
-                        bgimg:'assets/images/banner2.png'
+                        name: '侏罗纪世界',
+                        img: 'assets/images/movie2.png',
+                        bgimg: 'assets/images/banner2.png'
                     },
                     {
-                        name:'侏罗纪世界',
-                        img:'assets/images/movie2.png',
-                        bgimg:'assets/images/banner2.png'
+                        name: '侏罗纪世界',
+                        img: 'assets/images/movie2.png',
+                        bgimg: 'assets/images/banner2.png'
                     },
                     {
-                        name:'海底总动员1',
-                        img:'assets/images/movie3.png',
-                        bgimg:'assets/images/banner3.png'
+                        name: '海底总动员1',
+                        img: 'assets/images/movie3.png',
+                        bgimg: 'assets/images/banner3.png'
                     },
                     {
-                        name:'海底总动员1',
-                        img:'assets/images/movie3.png',
-                        bgimg:'assets/images/banner3.png'
+                        name: '海底总动员1',
+                        img: 'assets/images/movie3.png',
+                        bgimg: 'assets/images/banner3.png'
                     }
                 ]
             }
@@ -114,46 +119,47 @@ angular.module('app.movie',[])
         ActivityManager.showLoading();
         choseMovie(movieID);
         ActivityManager.hideLoading(500);
-        function changeMovieType(typeID){
+        function changeMovieType(typeID) {
             $scope.movieList = $scope.movie[typeID].list;
 
         }
-        function choseMovie(movieID){
+
+        function choseMovie(movieID) {
             var movieDetail = document.getElementById('movie-detail-container');
             activity.removeClass(movieDetail, 'bgAdd');
             //movieDetail.style.backgroundImage = "";
             var imageURL = $scope.movie[$scope.typeIndex].list[$scope.movieIndex].bgimg;
-            var URLStr = 'url('+ imageURL+')';
+            var URLStr = 'url(' + imageURL + ')';
             movieDetail.style.backgroundImage = URLStr;
             activity.addClass(movieDetail, 'bgAdd');
-            setTimeout(function(){
+            setTimeout(function () {
                 activity.removeClass(movieDetail, 'bgAdd');
-            },500);
+            }, 500);
         }
 
-        function rotateUp(num){
-            if(num == 0) {
+        function rotateUp(num) {
+            if (num == 0) {
                 var number = num;
                 var target = document.getElementById('type' + number).children;
-                for(var i=0;i<target.length;i++){
-                    activity.transform(target[i].children[0],"rotateX(0deg)");
+                for (var i = 0; i < target.length; i++) {
+                    activity.transform(target[i].children[0], "rotateX(0deg)");
                     activity.removeClass(target[i].children[0], 'opacityReduce');
                     activity.addClass(target[i].children[0], 'opacityAdd');
                     target[i].children[0].style.top = '33.3px';
                 }
-            }else{
+            } else {
                 var number = num;
                 var target = document.getElementById('type' + number).children;
-                for(var i=0;i<target.length;i++){
-                    activity.transform(target[i].children[0],"rotateX(0deg)");
+                for (var i = 0; i < target.length; i++) {
+                    activity.transform(target[i].children[0], "rotateX(0deg)");
                     activity.removeClass(target[i].children[0], 'opacityReduce');
                     activity.removeClass(target[i].children[0], 'choseMovie');
                     activity.addClass(target[i].children[0], 'opacityAdd');
                     target[i].children[0].style.top = '33.3px';
                 }
                 var number1 = num - 1;
-                var target1 = document.getElementById('type'+ number1).children;
-                for(var i=0;i<target1.length;i++) {
+                var target1 = document.getElementById('type' + number1).children;
+                for (var i = 0; i < target1.length; i++) {
                     activity.transform(target1[i].children[0], "rotateX(90deg)");
                     activity.removeClass(target1[i].children[0], 'opacityAdd');
                     activity.removeClass(target1[i].children[0], 'choseMovie');
@@ -164,18 +170,18 @@ angular.module('app.movie',[])
         }
 
 
-        function rotateDown(num){
-            if(num==-1){
+        function rotateDown(num) {
+            if (num == -1) {
                 var target = document.getElementsByClassName('rotate_img');
-                for(var i=0;i<target.length;i++){
-                    activity.transform(target[i],"rotateX(-90deg)");
+                for (var i = 0; i < target.length; i++) {
+                    activity.transform(target[i], "rotateX(-90deg)");
                     activity.addClass(target[i], 'opacityReduce');
                     target[i].style.top = '145px';
                 }
-            }else{
-                var number1 = num+1;
-                var target1 = document.getElementById('type'+ number1).children;
-                for(var i=0;i<target1.length;i++) {
+            } else {
+                var number1 = num + 1;
+                var target1 = document.getElementById('type' + number1).children;
+                for (var i = 0; i < target1.length; i++) {
                     activity.transform(target1[i].children[0], "rotateX(-90deg)");
                     activity.removeClass(target1[i].children[0], 'opacityAdd');
                     activity.removeClass(target1[i].children[0], 'choseMovie');
@@ -184,8 +190,8 @@ angular.module('app.movie',[])
                 }
                 var number = num;
                 var target = document.getElementById('type' + number).children;
-                for(var i=0;i<target.length;i++){
-                    activity.transform(target[i].children[0],"rotateX(0deg)");
+                for (var i = 0; i < target.length; i++) {
+                    activity.transform(target[i].children[0], "rotateX(0deg)");
                     activity.removeClass(target[i].children[0], 'opacityReduce');
                     activity.removeClass(target[i].children[0], 'choseMovie');
                     activity.addClass(target[i].children[0], 'opacityAdd');
@@ -198,19 +204,19 @@ angular.module('app.movie',[])
         activity.onKeyDown(function (keyCode) {
             switch (keyCode) {
                 case COMMON_KEYS.KEY_LEFT:
-                    if($scope.movieIndex>0){
-                        $scope.movieIndex-=1;
+                    if ($scope.movieIndex > 0) {
+                        $scope.movieIndex -= 1;
                         choseMovie($scope.movieIndex);
-                        activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
-                        activity.removeAnimate($scope.movieIndex+1,'type'+$scope.typeIndex,'choseMovie')
+                        activity.movieAnimate($scope.movieIndex, 'type' + $scope.typeIndex, 'choseMovie');
+                        activity.removeAnimate($scope.movieIndex + 1, 'type' + $scope.typeIndex, 'choseMovie')
                     }
                     break;
                 case COMMON_KEYS.KEY_RIGHT:
-                    if( $scope.movieIndex<$scope.movie[$scope.typeIndex].list.length - 1){
-                        $scope.movieIndex+=1;
+                    if ($scope.movieIndex < $scope.movie[$scope.typeIndex].list.length - 1) {
+                        $scope.movieIndex += 1;
                         choseMovie($scope.movieIndex);
-                        activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
-                        activity.removeAnimate($scope.movieIndex-1,'type'+$scope.typeIndex,'choseMovie')
+                        activity.movieAnimate($scope.movieIndex, 'type' + $scope.typeIndex, 'choseMovie');
+                        activity.removeAnimate($scope.movieIndex - 1, 'type' + $scope.typeIndex, 'choseMovie')
                     }
                     break;
                 case COMMON_KEYS.KEY_MENU:
@@ -225,16 +231,16 @@ angular.module('app.movie',[])
                         rotateDown($scope.typeIndex);
                         $scope.movieIndex = 0;
                         choseMovie($scope.movieIndex);
-                        activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
+                        activity.movieAnimate($scope.movieIndex, 'type' + $scope.typeIndex, 'choseMovie');
                     }
                     break;
                 case COMMON_KEYS.KEY_DOWN:
-                    if ($scope.typeIndex < $scope.movie.length-1) {
+                    if ($scope.typeIndex < $scope.movie.length - 1) {
                         $scope.typeIndex++;
                         rotateUp($scope.typeIndex);
                         $scope.movieIndex = 0;
                         choseMovie($scope.movieIndex);
-                        activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
+                        activity.movieAnimate($scope.movieIndex, 'type' + $scope.typeIndex, 'choseMovie');
                     }
                     break;
                 case COMMON_KEYS.KEY_BACK:
