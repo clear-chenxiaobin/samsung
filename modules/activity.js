@@ -155,6 +155,10 @@ angular.module('app.activity', ['app.resource'])
         Activity.prototype.remove = function (num,sel,className){
             var target = document.getElementById(sel).children[num].children[0];
             this.removeClass(target,className);
+            if (document.getElementById(sel).children[num].children[2] != undefined) {
+
+            }
+
         }
 
         Activity.prototype.hasClass = function (obj, cls) {
