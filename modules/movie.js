@@ -118,10 +118,15 @@ angular.module('app.movie',[])
         }
         function choseMovie(movieID){
             var movieDetail = document.getElementById('movie-detail-container');
+            activity.removeClass(movieDetail, 'bgAdd');
             //movieDetail.style.backgroundImage = "";
-            var imageURL = 'assets/images/banner'+ movieID + '.png';
+            var imageURL = $scope.movie[$scope.typeIndex].list[$scope.movieIndex].bgimg;
             var URLStr = 'url('+ imageURL+')';
             movieDetail.style.backgroundImage = URLStr;
+            activity.addClass(movieDetail, 'bgAdd');
+            setTimeout(function(){
+                activity.removeClass(movieDetail, 'bgAdd');
+            },500);
         }
 
         function rotateUp(num){
@@ -151,7 +156,7 @@ angular.module('app.movie',[])
                     activity.removeClass(target1[i].children[0], 'opacityAdd');
                     activity.removeClass(target1[i].children[0], 'choseMovie');
                     activity.addClass(target1[i].children[0], 'opacityReduce');
-                    target1[i].children[0].style.top = '-145px';
+                    target1[i].children[0].style.top = '-85px';
                 }
             }
         }
@@ -191,17 +196,20 @@ angular.module('app.movie',[])
         activity.onKeyDown(function (keyCode) {
             switch (keyCode) {
                 case COMMON_KEYS.KEY_LEFT:
-                    $scope.movieIndex-=1;
-                    //choseMovie(movieID);
-                    activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
-                    activity.removeAnimate($scope.movieIndex+1,'type'+$scope.typeIndex,'choseMovie')
+                    if($scope.movieIndex>0){
+                        $scope.movieIndex-=1;
+                        choseMovie($scope.movieIndex);
+                        activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
+                        activity.removeAnimate($scope.movieIndex+1,'type'+$scope.typeIndex,'choseMovie')
+                    }
                     break;
                 case COMMON_KEYS.KEY_RIGHT:
-                    //TODO:加入movieType的length判断
-                    $scope.movieIndex+=1;
-                    //choseMovie(movieID);
-                    activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
-                    activity.removeAnimate($scope.movieIndex-1,'type'+$scope.typeIndex,'choseMovie')
+                    if( $scope.movieIndex<$scope.movie[$scope.typeIndex].list.length - 1){
+                        $scope.movieIndex+=1;
+                        choseMovie($scope.movieIndex);
+                        activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
+                        activity.removeAnimate($scope.movieIndex-1,'type'+$scope.typeIndex,'choseMovie')
+                    }
                     break;
                 case COMMON_KEYS.KEY_MENU:
                     ActivityManager.startActivity('menu');
@@ -210,20 +218,22 @@ angular.module('app.movie',[])
                     ActivityManager.startActivity('menu');
                     break;
                 case COMMON_KEYS.KEY_UP:
-                    if ($scope.typeIndex < $scope.movie.length-1) {
-                        $scope.typeIndex++;
-                    }
-                    rotateUp($scope.typeIndex);
-                    $scope.movieIndex = 0;
-                    activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
-                    break;
-                case COMMON_KEYS.KEY_DOWN:
                     if ($scope.typeIndex > 0) {
                         $scope.typeIndex--;
+                        rotateDown($scope.typeIndex);
+                        $scope.movieIndex = 0;
+                        choseMovie($scope.movieIndex);
+                        activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
                     }
-                    rotateDown($scope.typeIndex);
-                    $scope.movieIndex = 0;
-                    activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
+                    break;
+                case COMMON_KEYS.KEY_DOWN:
+                    if ($scope.typeIndex < $scope.movie.length-1) {
+                        $scope.typeIndex++;
+                        rotateUp($scope.typeIndex);
+                        $scope.movieIndex = 0;
+                        choseMovie($scope.movieIndex);
+                        activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
+                    }
                     break;
             }
         });
