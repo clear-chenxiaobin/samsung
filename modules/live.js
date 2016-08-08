@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('app.menu', [])
-    .controller('MenuController', ['$scope', 'ActivityManager', 'COMMON_KEYS', 'MenuService', function ($scope, ActivityManager, COMMON_KEYS, MenuService) {
+    .controller('LiveController', ['$scope', 'ActivityManager', 'COMMON_KEYS', function ($scope, ActivityManager, COMMON_KEYS) {
         var activity = ActivityManager.getActiveActivity();
+
     }]);

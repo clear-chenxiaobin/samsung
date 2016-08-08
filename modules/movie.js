@@ -3,13 +3,10 @@
 angular.module('app.movie',[])
     .directive('repeatFinish', ['ActivityManager', function (ActivityManager) {
         return {
-            link: function (scope, element, attr) {
-                //监听渲染是否完成
-                if (scope.$last == true) {
-                    //console.log('ng-repeat执行完毕');
-                    ActivityManager.getActiveActivity().rotateDown(-1);
-                    ActivityManager.getActiveActivity().rotateUp(0);
-                    ActivityManager.getActiveActivity().movieAnimate(0,'type0','choseMovie')
+            link: function(scope,element,attr){
+                if(scope.$last == true){
+                    scope.$eval( attr.repeatFinish );
+                    scope.$last = false;
                 }
             }
         }
@@ -27,6 +24,11 @@ angular.module('app.movie',[])
             //$scope.press1 = i18nText.welcome.press1;
             //$scope.press2 = i18nText.welcome.press2;
         });
+        $scope.movieFinish = function(){
+            ActivityManager.getActiveActivity().rotateDown(-1);
+            ActivityManager.getActiveActivity().rotateUp(0);
+            ActivityManager.getActiveActivity().movieAnimate(0,'type0','choseMovie')
+        }
         $scope.typeIndex = 0;
         $scope.movieIndex = 0;
         $scope.movie = [
@@ -234,6 +236,9 @@ angular.module('app.movie',[])
                         choseMovie($scope.movieIndex);
                         activity.movieAnimate($scope.movieIndex,'type'+$scope.typeIndex,'choseMovie');
                     }
+                    break;
+                case COMMON_KEYS.KEY_BACK:
+                    activity.finish();
                     break;
             }
         });

@@ -39,10 +39,6 @@ angular.module('app.welcome', [])
                 case COMMON_KEYS.KEY_ENTER:
                     ActivityManager.startActivity('menu');
                     break;
-                case COMMON_KEYS.KEY_UP:
-                    activity.finish();
-                    ActivityManager.startActivity('movie');
-                    break;
                 case COMMON_KEYS.KEY_DOWN:
                     ActivityManager.showLoading();
                     break;

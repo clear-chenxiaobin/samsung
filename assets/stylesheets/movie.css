@@ -136,8 +136,8 @@
 
 /*选择电影动画*/
 .choseMovie {
-    animation: chose 0.2s forwards;
-    -moz-animation: chose 0.2s forwards; /* Firefox */
+    animation: chose 0.1s forwards;
+    -moz-animation: chose 0.1s forwards; /* Firefox */
 }
 
 @keyframes chose {
