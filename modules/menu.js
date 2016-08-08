@@ -3,20 +3,19 @@
 angular.module('app.menu', [])
     .directive('repeatFinish', ['ActivityManager', function (ActivityManager) {
         return {
-            link: function (scope, element, attr) {
-                //监听渲染是否完成
-                if (scope.$last == true) {
-                    try {
-                        //console.log('ng-repeat执行完毕');
-                        ActivityManager.getActiveActivity().animate(0, 'menu-item-list', 'menu-animation');
-                    } catch (e) {
-                    }
+            link: function(scope,element,attr){
+                if(scope.$last == true){
+                    scope.$eval( attr.repeatFinish );
+                    scope.$last = false;
                 }
             }
         }
     }])
     .controller('MenuController', ['$scope', 'ActivityManager', 'COMMON_KEYS', 'MenuService', function ($scope, ActivityManager, COMMON_KEYS, MenuService) {
         var activity = ActivityManager.getActiveActivity();
+        $scope.menuFinish = function () {
+            ActivityManager.getActiveActivity().animate(0, 'menu-item-list', 'animation');
+        }
         var moveCount = 0,
             currentSelect = 0;
 

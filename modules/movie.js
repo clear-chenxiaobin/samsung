@@ -3,17 +3,10 @@
 angular.module('app.movie', [])
     .directive('repeatFinish', ['ActivityManager', function (ActivityManager) {
         return {
-            link: function (scope, element, attr) {
-                //监听渲染是否完成
-                if (scope.$last == true) {
-                    try {
-                        //console.log('ng-repeat执行完毕');
-                        ActivityManager.getActiveActivity().rotateDown(-1);
-                        ActivityManager.getActiveActivity().rotateUp(0);
-                        ActivityManager.getActiveActivity().movieAnimate(0, 'type0', 'choseMovie')
-                    } catch (e) {
-                    }
-
+            link: function(scope,element,attr){
+                if(scope.$last == true){
+                    scope.$eval( attr.repeatFinish );
+                    scope.$last = false;
                 }
             }
         }
@@ -36,6 +29,11 @@ angular.module('app.movie', [])
                 console.log('渲染完之后的操作')
             }
         });
+        $scope.movieFinish = function(){
+            ActivityManager.getActiveActivity().rotateDown(-1);
+            ActivityManager.getActiveActivity().rotateUp(0);
+            ActivityManager.getActiveActivity().movieAnimate(0,'type0','choseMovie')
+        }
         $scope.typeIndex = 0;
         $scope.movieIndex = 0;
         $scope.movie = [
