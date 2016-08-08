@@ -20,6 +20,7 @@
     position: absolute;
     left: 0;
     margin-left: 0;
+    border-radius: 5px;
 }
 
 .menu-item-container > ul > li> i img {
@@ -28,27 +29,11 @@
     margin-left: 67px;
 }
 
-.menu-item-container > ul > li.selected> span {
-    /*position: relative;*/
-    /*top: 278.5px;*/
-    /*left: 79px;*/
-    /*font-size: 24px;*/
-    /*color: #ffffff;*/
+.menu-animation {
+    -webkit-animation: meue-zoom 0.3s forwards;	/* Safari 和 Chrome */
 }
 
-.menu-item-container > ul > li> span {
-    position: relative;
-    top: 275px;
-    left: 85px;
-    font-size: 20px;
-    color: #ffffff;
-}
-
-.animation {
-    -webkit-animation: zoom 0.5s forwards;	/* Safari 和 Chrome */
-}
-
-@-webkit-keyframes zoom /* Safari 和 Chrome */
+@-webkit-keyframes meue-zoom /* Safari 和 Chrome */
 {
     from {
         width: 254px;

@@ -17,7 +17,7 @@
             <div class="movie-image-container">
                     <div ng-repeat="type in movie" id="type{{$index}}" class="type-container">
                         <div ng-repeat="movie in type.list" class="img-container">
-                            <img ng-src="{{movie.img}}" class="rotate_img" repeat-finish>
+                            <img ng-src="{{movie.img}}" class="rotate_img" repeat-finish="movieFinish();">
                         </div>
                     </div>
             </div>
