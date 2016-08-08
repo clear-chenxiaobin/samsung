@@ -25,7 +25,5 @@ angular.module('app.service', [])
             };
         })
 
-        $scope.services = {
-            []
-        }
+        $scope.services = [];
     }]);

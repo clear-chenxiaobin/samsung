@@ -13,9 +13,6 @@ angular.module('app.menu', [])
     }])
     .controller('MenuController', ['$scope', 'ActivityManager', 'COMMON_KEYS', 'MenuService', function ($scope, ActivityManager, COMMON_KEYS, MenuService) {
         var activity = ActivityManager.getActiveActivity();
-        $scope.menuFinish = function () {
-            ActivityManager.getActiveActivity().animate(0, 'menu-item-list', 'animation');
-        }
         var moveCount = 0,
             currentSelect = 0;
 
@@ -41,6 +38,9 @@ angular.module('app.menu', [])
                 icon: 'assets/images/icon_toolbar_menu.png',
                 right: toolvarData.menu
             };
+            $scope.menuFinish = function () {
+                ActivityManager.getActiveActivity().animate(0, 'menu-item-list', 'menu-animation');
+            }
         })
 
         function menuBind() {
@@ -64,7 +64,7 @@ angular.module('app.menu', [])
                 {index: 6, name: '客房送餐', pic: 'assets/images/menu_restaraunt.png', activityId: 'movie'}
             ]
             $scope.selectedMenuItemIndex = 0;
-            $scope.menuStyleLeft = '80px';
+            $scope.menuStyleLeft = '78px';
             $scope.menuStyleWidth = 310 + $scope.menuItems.length * 280 + 100 + 'px';
 
         }
@@ -78,7 +78,7 @@ angular.module('app.menu', [])
                         activity.animate($scope.selectedMenuItemIndex, 'menu-item-list', 'menu-animation');
                         if (currentSelect == 0 && moveCount > 0) {
                             moveCount--;
-                            $scope.menuStyleLeft = (80 - moveCount * 280) + 'px';
+                            $scope.menuStyleLeft = (78 - moveCount * 280) + 'px';
                         } else if (currentSelect > 0) currentSelect--;
                     }
                     break;
@@ -89,7 +89,7 @@ angular.module('app.menu', [])
                         activity.animate($scope.selectedMenuItemIndex, 'menu-item-list', 'menu-animation');
                         if (currentSelect == 3) {
                             moveCount++;
-                            $scope.menuStyleLeft = (80 - moveCount * 280) + 'px';
+                            $scope.menuStyleLeft = (78 - moveCount * 280) + 'px';
                         } else if (currentSelect < 3) currentSelect++;
                     }
                     break;
