@@ -3,7 +3,9 @@
     <div class="menu-item-container">
         <ul id="menu-item-list" ng-style="{left: menuStyleLeft, width: menuStyleWidth}">
             <li ng-repeat="menuItem in menuItems" ng-class="{'selected': selectedMenuItemIndex==$index}" repeat-finish="menuFinish();">
+                <div id="menutest"></div>
                 <img ng-src="{{menuItem.pic}}">
+
             </li>
         </ul>
     </div>

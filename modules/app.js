@@ -10,7 +10,8 @@ angular.module('app',[
     'app.en-US',
     'app.room',
     'app.menu',
-    'app.movie'
+    'app.movie',
+    //'app.live'
 ])
     .run(['$rootScope', '$http', 'ActivityManager','ResourceManager', function ($rootScope, $http, ActivityManager,ResourceManager) {
         ActivityManager.hideLoading(500);
