@@ -11,9 +11,6 @@
 }
 .bgAdd{
     animation: add 1.75s forwards;
-    -moz-animation: add 1.75s forwards;	/* Firefox */
-    -webkit-animation: add 1.75s forwards;	/* Safari 和 Chrome */
-    -o-animation: add 1.75s forwards;
 }
 #movie-list-container{
     width: 100%;
@@ -83,8 +80,6 @@
     margin-right: 20px;
 }
 .rotate_img{
-    -webkit-transition: -webkit-transform 0.75s;
-    -moz-transition: -moz-transform 0.75s;
     transition: transform 0.75s;
     opacity: 1;
     position: absolute;
@@ -97,9 +92,6 @@
 /*降低透明度动画*/
 .opacityReduce{
     animation: reduce 0.75s forwards;
-    -moz-animation: reduce 0.75s forwards;	/* Firefox */
-    -webkit-animation: reduce 0.75s forwards;	/* Safari 和 Chrome */
-    -o-animation: reduce 0.75s forwards;
 }
 
 @keyframes reduce
@@ -108,30 +100,10 @@
     to {opacity: 0;}
 }
 
-@-moz-keyframes reduce /* Firefox */
-{
-    from {opacity: 1;}
-    to {opacity: 0;}
-}
-
-@-webkit-keyframes reduce /* Safari 和 Chrome */
-{
-    from {opacity: 1;}
-    to {opacity: 0;}
-}
-
-@-o-keyframes reduce /* Opera */
-{
-    from {opacity: 1;}
-    to {opacity: 0;}
-}
 
 /*增加透明度动画*/
 .opacityAdd{
     animation: add 0.75s forwards;
-    -moz-animation: add 0.75s forwards;	/* Firefox */
-    -webkit-animation: add 0.75s forwards;	/* Safari 和 Chrome */
-    -o-animation: add 0.75s forwards;
 }
 
 @keyframes add
@@ -140,30 +112,9 @@
     to {opacity: 1;}
 }
 
-@-moz-keyframes add /* Firefox */
-{
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-@-webkit-keyframes add /* Safari 和 Chrome */
-{
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-@-o-keyframes add /* Opera */
-{
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
 /*选择电影动画*/
 .choseMovie {
     animation: chose 0.2s forwards;
-    -moz-animation: chose 0.2s forwards; /* Firefox */
-    -webkit-animation: chose 0.2s forwards; /* Safari 和 Chrome */
-    -o-animation: chose 0.2s forwards;
 }
 
 @keyframes chose {
@@ -180,47 +131,3 @@
     }
 }
 
-@-moz-keyframes chose /* Firefox */
-{
-    from {
-        width: 116px;
-        height:173.3px;
-    }
-    to {
-        width: 144.67px;
-        height: 216px;
-        top: 12.66px;
-        left: -14.33px;
-        margin-right: -9px;
-    }
-}
-
-@-webkit-keyframes chose /* Safari 和 Chrome */
-{
-    from {
-        width: 116px;
-        height:173.3px;
-    }
-    to {
-        width: 144.67px;
-        height: 216px;
-        top: 12.66px;
-        left: -14.33px;
-        margin-right: -9px;
-    }
-}
-
-@-o-keyframes chose /* Opera */
-{
-    from {
-        width: 116px;
-        height:173.3px;
-    }
-    to {
-        width: 144.67px;
-        height: 216px;
-        top: 12.66px;
-        left: -14.33px;
-        margin-right: -9px;
-    }
-}
