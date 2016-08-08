@@ -4,8 +4,6 @@
         <ul id="menu-item-list" ng-style="{left: menuStyleLeft, width: menuStyleWidth}">
             <li ng-repeat="menuItem in menuItems" ng-class="{'selected': selectedMenuItemIndex==$index}" repeat-finish>
                 <img ng-src="{{menuItem.pic}}">
-                <i><img ng-src="{{menuItem.icon}}"></i>
-                <span>{{menuItem.name}}</span>
             </li>
         </ul>
     </div>
