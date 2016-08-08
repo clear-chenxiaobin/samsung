@@ -12,7 +12,6 @@
 .bgAdd{
     animation: add 1.75s forwards;
     -moz-animation: add 1.75s forwards;	/* Firefox */
-    -webkit-animation: add 1.75s forwards;	/* Safari 和 Chrome */
 }
 #movie-list-container{
     width: 100%;
@@ -112,18 +111,13 @@
     to {opacity: 0;}
 }
 
-@-webkit-keyframes reduce /* Safari 和 Chrome */
-{
-    from {opacity: 1;}
-    to {opacity: 0;}
-}
+
 
 
 /*增加透明度动画*/
 .opacityAdd{
     animation: add 0.75s forwards;
     -moz-animation: add 0.75s forwards;	/* Firefox */
-    -webkit-animation: add 0.75s forwards;	/* Safari 和 Chrome */
 }
 
 @keyframes add
@@ -138,18 +132,12 @@
     to {opacity: 1;}
 }
 
-@-webkit-keyframes add /* Safari 和 Chrome */
-{
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
 
 
 /*选择电影动画*/
 .choseMovie {
     animation: chose 0.2s forwards;
     -moz-animation: chose 0.2s forwards; /* Firefox */
-    -webkit-animation: chose 0.2s forwards; /* Safari 和 Chrome */
 }
 
 @keyframes chose {
@@ -181,19 +169,5 @@
     }
 }
 
-@-webkit-keyframes chose /* Safari 和 Chrome */
-{
-    from {
-        width: 116px;
-        height:173.3px;
-    }
-    to {
-        width: 144.67px;
-        height: 216px;
-        top: 12.66px;
-        left: -14.33px;
-        margin-right: -9px;
-    }
-}
 
 
