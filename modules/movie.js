@@ -113,9 +113,40 @@ angular.module('app.movie', [])
                 ]
             }
         ]
+        //var img1,img2,img3;
+        var img = new Array(3);
+
+        function preloader() {
+            if (document.images) {
+                //var images = new Array()
+                //function preload() {
+                //    for (var i = 0; i < preload.arguments.length; i++) {
+                //        images[i] = new Image()
+                //        images[i].src = preload.arguments[i]
+                //    }
+                //}
+                //preload(
+                //    "http://domain.tld/gallery/image-001.jpg",
+                //    "http://domain.tld/gallery/image-002.jpg",
+                //    "http://domain.tld/gallery/image-003.jpg"
+                //)
+                for(var i=0;i<img.length;i++){
+                    img[i] = new Image();
+                    img[i].src = "assets/images/banner"+(i+1)+".png";
+                }
+                //img1 = new Image();
+                //img2 = new Image();
+                //img3 = new Image();
+                //img1.src = "assets/images/banner1.png";
+                //img2.src = "assets/images/banner2.png";
+                //img3.src = "assets/images/banner3.png";
+            }
+        }
+
+        window.onload = preloader();
 
         var typeID = 0;
-        var movieID = 1;
+        var movieID = 0;
         ActivityManager.showLoading();
         choseMovie(movieID);
         ActivityManager.hideLoading(500);
@@ -128,7 +159,8 @@ angular.module('app.movie', [])
             var movieDetail = document.getElementById('movie-detail-container');
             activity.removeClass(movieDetail, 'bgAdd');
             //movieDetail.style.backgroundImage = "";
-            var imageURL = $scope.movie[$scope.typeIndex].list[$scope.movieIndex].bgimg;
+            //var imageURL = $scope.movie[$scope.typeIndex].list[$scope.movieIndex].bgimg;
+            var imageURL = img[movieID].src;
             var URLStr = 'url(' + imageURL + ')';
             movieDetail.style.backgroundImage = URLStr;
             activity.addClass(movieDetail, 'bgAdd');
@@ -230,6 +262,7 @@ angular.module('app.movie', [])
                         $scope.typeIndex--;
                         rotateDown($scope.typeIndex);
                         $scope.movieIndex = 0;
+                        //setTimeout(choseMovie($scope.movieIndex),1);
                         choseMovie($scope.movieIndex);
                         activity.movieAnimate($scope.movieIndex, 'type' + $scope.typeIndex, 'choseMovie');
                     }
@@ -239,6 +272,7 @@ angular.module('app.movie', [])
                         $scope.typeIndex++;
                         rotateUp($scope.typeIndex);
                         $scope.movieIndex = 0;
+                        //setTimeout(choseMovie($scope.movieIndex),1);
                         choseMovie($scope.movieIndex);
                         activity.movieAnimate($scope.movieIndex, 'type' + $scope.typeIndex, 'choseMovie');
                     }
