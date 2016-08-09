@@ -3,6 +3,7 @@
 angular.module('app.live', [])
     .controller('LiveController', ['$scope', 'ActivityManager', 'COMMON_KEYS', 'LiveService', function ($scope, ActivityManager, COMMON_KEYS, LiveService) {
         var activity = ActivityManager.getActiveActivity();
+        var column;
         activity.initialize($scope);
         ActivityManager.showLoading();
         ActivityManager.hideLoading(500);
@@ -54,7 +55,10 @@ angular.module('app.live', [])
         })
 
         function bindChannels() {
-            $scope.liveItems = [];
+            for (var i = 0; i <10; i++) {
+                //column =
+            }
+            $scope.channels = [];
         }
 
     }])
