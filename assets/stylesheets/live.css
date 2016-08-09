@@ -1,0 +1,14 @@
+.live-list {
+    text-align: center;
+    overflow: hidden;
+}
+
+.live-list {
+    color: #ffffff;
+    height: 720px;
+    -webkit-mask-image: url("/assets/images/live_shadow.png");
+}
+
+.live-item-list > li {
+
+}

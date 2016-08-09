@@ -3,7 +3,7 @@
 angular.module('app.live', [])
     .controller('LiveController', ['$scope', 'ActivityManager', 'COMMON_KEYS', 'LiveService', function ($scope, ActivityManager, COMMON_KEYS, LiveService) {
         var activity = ActivityManager.getActiveActivity();
-        var column;
+        var channels = [];
         activity.initialize($scope);
         ActivityManager.showLoading();
         ActivityManager.hideLoading(500);
@@ -25,11 +25,14 @@ angular.module('app.live', [])
             $scope.selectedItemIndex = 0;
             $scope.logoUrl = "assets/images/icon_logo_tv.png";
             $scope.name = languageData.live.name;
+            $scope.listStyleTop = "100px";
 
             //$scope.menuFinish = function () {
             //    activity.animate(0, 'menu-item-list', 'menu-animation');
             //}
         })
+
+        bindChannels();
 
         activity.onKeyDown(function (keyCode) {
             var tempIndex = $scope.selectedIndex;
@@ -56,9 +59,14 @@ angular.module('app.live', [])
 
         function bindChannels() {
             for (var i = 0; i <10; i++) {
-                //column =
+                channels.push({
+                    index: i,
+                    icon: 'assets/images/live_icon_5.png',
+                    name: 'CCTV5',
+                    //stream: chaData[i].stream
+                });
             }
-            $scope.channels = [];
+            $scope.channels = channels;
         }
 
     }])
