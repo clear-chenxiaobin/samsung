@@ -18,9 +18,11 @@ angular.module('app.zh-CN', [])
             toolbar: {
                 left: '按',
                 selsct: '进行选择',
+                select_Live: '选择频道',
                 ok: '确认',
                 back: '返回',
                 menu: '返回菜单页',
+                play: '播放',
             },
             weather:{
                 title:'天气',
@@ -59,6 +61,9 @@ angular.module('app.zh-CN', [])
                 total:'总价',
                 submit:'提交订单',
                 cancel:'取消订单'
+            },
+            live:{
+                name:'电视直播'
             }
         }
     }])
