@@ -18,9 +18,11 @@ angular.module('app.en-US', [])
             toolbar: {
                 left: 'Press',
                 selsct: 'Select',
+                select_Live: 'Select Channal',
                 ok: 'Confirm',
                 back: 'Back',
                 menu: 'To Return The Menu',
+                play: 'Play',
             },
             weather: {
                 title: 'weather',
@@ -59,6 +61,9 @@ angular.module('app.en-US', [])
                 total:'Total Price',
                 submit:'Submit',
                 cancel:'Cancel'
+            },
+            live:{
+                name:'Live'
             }
         }
 

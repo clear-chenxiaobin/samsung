@@ -1,5 +1,5 @@
 <div ng-controller="LiveController" class="Live-content">
-    <div class="logo"><img src="assets/images/logo.png" width="100px" height="83.3px"></div>
+    <div class="currency-logo"><img ng-src="{{logoUrl}}"><span>{{name}}</span></div>
     <div class="live-item-container">
         <ul id="live-item-list" ng-style="{left: menuStyleLeft, width: menuStyleWidth}">
             <li ng-repeat="liveItem in liveItems" ng-class="{'selected': selectedItemIndex==$index}" repeat-finish>
@@ -10,15 +10,16 @@
     </div>
     <div class="toolbar">
         <span class="toolbar-select">
-            {{select.left}}<i class="tip_img toolbar-img"><img ng-src="{{select.icon}}" height="34.7px"> </i>{{select.right}}
+            {{left}}<i class="tip_img toolbar-img"><img ng-src="{{select.icon}}" height="34.7px"> </i>{{select.right}}
         </span>
         <span>|</span>
         <span class="toolbar-ok">
-            {{ok.left}}<i class="tip_img toolbar-img"><img src="{{ok.icon}}" height="34.7px"> </i>{{ok.right}}
+            {{left}}<i class="tip_img toolbar-img"><img src="{{ok.icon}}" height="34.7px"> </i>{{ok.right}}
         </span>
         <span>|</span>
         <span class="toolbar-back">
-            {{menu.left}}<i class="tip_img toolbar-img"><img src="{{menu.icon}}" height="34.7px"> </i>{{menu.right}}
+            {{left}}<i class="tip_img toolbar-img"><img src="{{menu.icon}}" height="34.7px"> </i>{{menu.right}}
         </span>
     </div>
 </div>
+

@@ -96,6 +96,27 @@ li {
     }
 }
 
+.currency-logo {
+    left: 34px;
+    top:34px;
+    position: absolute;
+    height: 41px;
+}
+
+.currency-logo img {
+    height: 41px;
+}
+
+.currency-logo>span {
+    font-size: 25.3px;
+    height: 36px;
+    line-height: 36px;
+    margin-top: 3px;
+    margin-left: 14px;
+    float: right;
+    color: #F8C7A4;
+}
+
 .toolbar {
     position: absolute;
     left: 30px;

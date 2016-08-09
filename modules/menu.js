@@ -23,18 +23,16 @@ angular.module('app.menu', [])
         activity.loadI18NResource(function (res) {
             menuBind();
             var toolvarData = MenuService.getLanguage().toolbar;
+            $scope.left = toolvarData.left;
             $scope.select = {
-                left: toolvarData.left,
                 icon: 'assets/images/icon_toolbar_select.png',
                 right: toolvarData.selsct
             };
             $scope.ok = {
-                left: toolvarData.left,
                 icon: 'assets/images/icon_toolbar_ok.png',
                 right: toolvarData.ok
             };
             $scope.menu = {
-                left: toolvarData.left,
                 icon: 'assets/images/icon_toolbar_menu.png',
                 right: toolvarData.menu
             };
