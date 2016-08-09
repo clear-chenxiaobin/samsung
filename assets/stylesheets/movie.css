@@ -98,7 +98,7 @@
     animation: reduce 0.75s forwards;
     -moz-animation: reduce 0.75s forwards;	/* Firefox */
     -webkit-animation: reduce 0.75s forwards;	/* Safari 和 Chrome */
-}
+}、；
 
 @keyframes reduce
 {
