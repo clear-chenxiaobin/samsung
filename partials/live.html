@@ -1,17 +1,17 @@
 <div ng-controller="LiveController" class="Live-content">
     <div class="currency-logo"><img ng-src="{{logoUrl}}"><span>{{name}}</span></div>
     <div class="live-item-container">
-        <div align="left" id="demo" style="overflow:hidden;height:200px;width:410px;">
-            <div id="demo1" style="width:600px; height:200px;margin:0; padding:0;">
+        <div class="live-list" ng-style="{top: listStyleTop}">
+            <div id="demo1">
                 <!-- 定义内容-->
-                <ul id="live-item-list" ng-style="{left: menuStyleLeft, width: menuStyleWidth}">
-                    <li ng-repeat="liveItem in channels" ng-class="{'selected': selectedItemIndex==$index}"
-                        repeat-finish>
-                        <!--<img ng-src="{{liveItem.pic}}">-->
-                        <label>{{liveItem.name}}</label>
+                <ul class="live-item-list" ng-style="{top: listStyleTop}">
+                    <li ng-repeat="item in channels" ng-class="{'selected': selectedItemIndex==$index}" repeat-finish>
+                        <img ng-src="{{item.icon}}">
+                        <label>{{item.name}}</label>
                     </li>
                 </ul>
             </div>
+            <div id="demo2" ></div>
         </div>
     </div>
     <div class="toolbar">
