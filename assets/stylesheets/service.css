@@ -4,6 +4,7 @@
     background-size: cover;
 }
 .service-list-container{
+    margin-left: 52px;
     margin-top: -15px;
 }
 .service_item{
@@ -14,10 +15,10 @@
     background-repeat: no-repeat;
     background-size: 360px 203px;
     margin-top: 48px;
-    -webkit-transition: -webkit-transform 0.75s;
-    -moz-transition: -moz-transform 0.75s;
-    transition: transform 0.75s;
-    -o-animation: transform 0.75s;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+    -o-animation: transform 0.3s;
 }
 /*选中放大动画*/
 .service_item_select{
