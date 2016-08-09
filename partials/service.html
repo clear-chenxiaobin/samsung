@@ -6,9 +6,9 @@
                 <img class="movie-icon" src="assets/images/icon_service1.png">
                 <p class="movie-text">酒店服务</p>
             </div>
-        </div>
-        <div class="service-list-container">
-
+            <div class="service-list-container">
+                <div ng-repeat="item in services" id="service{{$index}}" class="service_item" style="background-image:url({{item.pic}})" repeat-finish="serviceFinish();"></div>
+            </div>
         </div>
         <div class="toolbar">
         <span class="toolbar-select">

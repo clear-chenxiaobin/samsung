@@ -3,3 +3,53 @@
     height: 58.15%;
     background-size: cover;
 }
+.service-list-container{
+    margin-top: -15px;
+}
+.service_item{
+    width: 360px;
+    height: 203px;
+    margin-right: 48px;
+    float: left;
+    background-repeat: no-repeat;
+    background-size: 360px 203px;
+    margin-top: 48px;
+    -webkit-transition: -webkit-transform 0.75s;
+    -moz-transition: -moz-transform 0.75s;
+    transition: transform 0.75s;
+    -o-animation: transform 0.75s;
+}
+/*选中放大动画*/
+.service_item_select{
+    -moz-transform:scale(1.15,1.15);
+    -webkit-transform:scale(1.15,1.15);
+    -o-transform:scale(1.15,1.15);
+    transform: scale(1.15,1.15);
+    /*animation: big 0.75s forwards;*/
+    /*-moz-animation: big 0.75s forwards;	*//* Firefox */
+    /*-webkit-animation: big 0.75s forwards;	*//* Safari 和 Chrome */
+    /*-o-animation: big 0.75s forwards;*/
+}
+
+@keyframes big
+{
+    from {scale: 1;}
+    to {opacity: 0;}
+}
+
+@-moz-keyframes big /* Firefox */
+{
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+@-webkit-keyframes big /* Safari 和 Chrome */
+{
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+@-o-keyframes big /* Opera */
+{
+    from {opacity: 1;}
+    to {opacity: 0;}
+}

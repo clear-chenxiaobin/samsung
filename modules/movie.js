@@ -23,11 +23,6 @@ angular.module('app.movie', [])
             //$scope.roomNumber = i18nText.index.roomNumber + window.localStorage.room;
             //$scope.press1 = i18nText.welcome.press1;
             //$scope.press2 = i18nText.welcome.press2;
-
-            //controller里对应的处理函数
-            $scope.movieFinish = function () {
-                console.log('渲染完之后的操作')
-            }
         });
         $scope.movieFinish = function(){
             ActivityManager.getActiveActivity().rotateDown(-1);
