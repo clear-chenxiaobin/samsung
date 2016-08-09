@@ -21,12 +21,13 @@ angular.module('app.live', [])
                 icon: 'assets/images/icon_toolbar_menu.png',
                 right: languageData.toolbar.menu
             };
-            $scope.menuFinish = function () {
-                ActivityManager.getActiveActivity().animate(0, 'menu-item-list', 'menu-animation');
-            }
             $scope.selectedItemIndex = 0;
             $scope.logoUrl = "assets/images/icon_logo_tv.png";
             $scope.name = languageData.live.name;
+
+            //$scope.menuFinish = function () {
+            //    activity.animate(0, 'menu-item-list', 'menu-animation');
+            //}
         })
 
         activity.onKeyDown(function (keyCode) {
