@@ -74,5 +74,10 @@ angular.module('app.wake_up', [])
 
         ActivityManager.getActiveActivity().removeClass(target1,'click_amt');
         ActivityManager.getActiveActivity().addClass(target1,'click_amt');
+
+        setTimeout(function () {
+            ActivityManager.getActiveActivity().removeClass(target,'click_amt');
+            ActivityManager.getActiveActivity().removeClass(target1,'click_amt');
+        }, 1000);
     }
 }]);
