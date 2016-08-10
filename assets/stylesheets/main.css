@@ -101,6 +101,7 @@ li {
     top:34px;
     position: absolute;
     height: 41px;
+    z-index: 999;
 }
 
 .currency-logo img {
@@ -126,6 +127,7 @@ li {
     word-spacing: 5px;
     letter-spacing: 2px;
     opacity: 0.6;
+    z-index: 999;
 }
 
 .toolbar-img {
