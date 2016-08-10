@@ -4,8 +4,11 @@ angular.module('app.wake_up', [])
     .controller('WakeUpController', ['$scope', 'ResourceManager', 'ActivityManager', 'COMMON_KEYS','BtnService', function ($scope, ResourceManager, ActivityManager, COMMON_KEYS,BtnService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
-        $scope.selected = true;
+        $scope.selected = false;
         $scope.onSubmit = true;
+
+        var clock = $('.your-clock').FlipClock({
+        });
 
         function borderAnimate(key){
             var border = document.getElementsByClassName('btn_border')[0];
@@ -67,17 +70,18 @@ angular.module('app.wake_up', [])
 }])
 .service('BtnService', ['ActivityManager', function (ActivityManager) {
     this.clickBtn = function (btn) {
-        var target = document.getElementsByClassName(btn)[0];
-        var target1 = document.getElementsByClassName('btn_border')[0];
+        var target = $("."+btn)[0];
+        //注释掉的为边框点击动画，因与边框位移、缩放动画冲突
+        //var target1 = document.getElementsByClassName('btn_border')[0];
         ActivityManager.getActiveActivity().removeClass(target,'click_amt');
         ActivityManager.getActiveActivity().addClass(target,'click_amt');
 
-        ActivityManager.getActiveActivity().removeClass(target1,'click_amt');
-        ActivityManager.getActiveActivity().addClass(target1,'click_amt');
+        //ActivityManager.getActiveActivity().removeClass(target1,'click_amt');
+        //ActivityManager.getActiveActivity().addClass(target1,'click_amt');
 
         setTimeout(function () {
             ActivityManager.getActiveActivity().removeClass(target,'click_amt');
-            ActivityManager.getActiveActivity().removeClass(target1,'click_amt');
+            //ActivityManager.getActiveActivity().removeClass(target1,'click_amt');
         }, 1000);
     }
 }]);

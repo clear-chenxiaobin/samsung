@@ -86,7 +86,7 @@ angular.module('app.service', [])
                     }
                     break;
                 case COMMON_KEYS.KEY_DOWN:
-                    if($scope.selectedIndex<$scope.services.length-2) {
+                    if($scope.selectedIndex<$scope.services.length-3) {
                         $scope.selectedIndex += 3;
                         chose($scope.selectedIndex);
                     }

@@ -210,3 +210,7 @@
     from {width: 289px;right: 170px}
     to {width: 130px;right: 20px}
 }
+
+
+.your-clock{ margin: 0 auto; top: 200px; clear: both; width: 460px; 	}
+.flip-clock-label{color: #FFF; }

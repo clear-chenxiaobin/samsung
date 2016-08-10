@@ -10,16 +10,20 @@
 .service_item{
     width: 360px;
     height: 203px;
-    margin-right: 48px;
-    float: left;
     background-repeat: no-repeat;
     background-size: 360px 203px;
-    margin-top: 48px;
     opacity: 0.6;
     -webkit-transition: -webkit-transform 0.3s;
     -moz-transition: -moz-transform 0.3s;
     transition: transform 0.3s;
     -o-animation: transform 0.3s;
+}
+.item_container{
+    width: 360px;
+    height: 203px;
+    float: left;
+    margin-right: 48px;
+    margin-top: 48px;
 }
 /*选中放大动画*/
 .service_item_select{
