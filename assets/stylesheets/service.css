@@ -15,7 +15,7 @@
     background-repeat: no-repeat;
     background-size: 360px 203px;
     margin-top: 48px;
-    opacity: 1;
+    opacity: 0.6;
     -webkit-transition: -webkit-transform 0.3s;
     -moz-transition: -moz-transform 0.3s;
     transition: transform 0.3s;

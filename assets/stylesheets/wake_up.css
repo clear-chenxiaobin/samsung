@@ -159,25 +159,25 @@
 @keyframes change
 {
     from {width: 130px;right: 20px}
-    to {width: 290px;right: 170px}
+    to {width: 289px;right: 170px}
 }
 
 @-moz-keyframes change /* Firefox */
 {
     from {width: 130px;right: 20px}
-    to {width: 290px;right: 170px}
+    to {width: 289px;right: 170px}
 }
 
 @-webkit-keyframes change /* Safari 和 Chrome */
 {
     from {width: 130px;right: 20px}
-    to {width: 290px;right: 170px}
+    to {width: 289px;right: 170px}
 }
 
 @-o-keyframes change /* Opera */
 {
     from {width: 130px;right: 20px}
-    to {width: 290px;right: 170px}
+    to {width: 289px;right: 170px}
 }
 
 .submitAgain{
@@ -189,24 +189,24 @@
 
 @keyframes changed
 {
-    from {width: 290px;right: 170px}
+    from {width: 289px;right: 170px}
     to {width: 130px;right: 20px}
 }
 
 @-moz-keyframes changed /* Firefox */
 {
-    from {width: 290px;right: 170px}
+    from {width: 289px;right: 170px}
     to {width: 130px;right: 20px}
 }
 
 @-webkit-keyframes changed /* Safari 和 Chrome */
 {
-    from {width: 290px;right: 170px}
+    from {width: 289px;right: 170px}
     to {width: 130px;right: 20px}
 }
 
 @-o-keyframes changed /* Opera */
 {
-    from {width: 290px;right: 170px}
+    from {width: 289px;right: 170px}
     to {width: 130px;right: 20px}
 }
