@@ -51,11 +51,11 @@ angular.module('app.service', [])
             var target = document.getElementsByClassName('service_item');
             //var target1 = target[index];
             //activity.transform(target1,"rotateX(45deg)");
-            for(var i=0;i<target.length;i++){
-                if(activity.hasClass(target[i], 'service_item_select')) {
-                    activity.removeClass(target[i], 'service_item_select');
-                }
-            }
+            //for(var i=0;i<target.length;i++){
+            //    if(activity.hasClass(target[i], 'service_item_select')) {
+            //        activity.removeClass(target[i], 'service_item_select');
+            //    }
+            //}
             activity.addClass(target[index], 'service_item_select');
         }
 
