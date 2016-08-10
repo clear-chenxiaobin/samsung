@@ -21,9 +21,9 @@
 .item_container{
     width: 360px;
     height: 203px;
-    float: left;
     margin-right: 48px;
     margin-top: 48px;
+    display: inline-block;
 }
 /*选中放大动画*/
 .service_item_select{
