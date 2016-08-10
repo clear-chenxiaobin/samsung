@@ -60,22 +60,34 @@ angular.module('app.service', [])
         activity.onKeyDown(function (keyCode) {
             switch (keyCode) {
                 case COMMON_KEYS.KEY_LEFT:
-                    $scope.selectedIndex-=1;
-                    chose($scope.selectedIndex);
+                    if($scope.selectedIndex>0) {
+                        $scope.selectedIndex -= 1;
+                        chose($scope.selectedIndex);
+                    }
                     break;
                 case COMMON_KEYS.KEY_RIGHT:
-                    $scope.selectedIndex+=1;
-                    chose($scope.selectedIndex);
+                    if($scope.selectedIndex<$scope.services.length-1) {
+                        $scope.selectedIndex += 1;
+                        chose($scope.selectedIndex);
+                    }
                     break;
                 case COMMON_KEYS.KEY_MENU:
                     ActivityManager.startActivity('menu');
                     break;
                 case COMMON_KEYS.KEY_ENTER:
-                    ActivityManager.startActivity('menu');
+                    ActivityManager.go($scope.services[$scope.selectedIndex].activityId, 3);
                     break;
                 case COMMON_KEYS.KEY_UP:
+                    if($scope.selectedIndex>2) {
+                        $scope.selectedIndex -= 3;
+                        chose($scope.selectedIndex);
+                    }
                     break;
                 case COMMON_KEYS.KEY_DOWN:
+                    if($scope.selectedIndex<$scope.services.length-2) {
+                        $scope.selectedIndex += 3;
+                        chose($scope.selectedIndex);
+                    }
                     break;
                 case COMMON_KEYS.KEY_BACK:
                     activity.finish();
