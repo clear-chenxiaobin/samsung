@@ -7,7 +7,7 @@
                 <!-- 定义内容-->
                 <ul class="live-item-list">
                     <li ng-repeat="item in channels">
-                        <img ng-src="{{item.icon}}">
+                        <div class="live-item-icon"><img ng-src="{{item.icon}}"></div>
                         <label>{{item.name}}</label>
                     </li>
                 </ul>
@@ -16,7 +16,7 @@
                 <!-- 定义内容-->
                 <ul class="live-item-list">
                     <li ng-repeat="item in channels" ng-class="{'selected': selectedIndex==$index}" repeat-finish="liveFinish();">
-                        <img ng-src="{{item.icon}}">
+                        <div class="live-item-icon"><img ng-src="{{item.icon}}"></div>
                         <label>{{item.name}}</label>
                     </li>
                 </ul>
@@ -25,7 +25,7 @@
                 <!-- 定义内容-->
                 <ul class="live-item-list">
                     <li ng-repeat="item in channels">
-                        <img ng-src="{{item.icon}}">
+                        <div class="live-item-icon"><img ng-src="{{item.icon}}"></div>
                         <label>{{item.name}}</label>
                     </li>
                 </ul>

@@ -1,5 +1,4 @@
 .live-list {
-    text-align: center;
     overflow: hidden;
     position: relative;
 }
@@ -10,6 +9,7 @@
     z-index: 1;
     width: 371px;
     height: 720px;
+    left: -20px;
 }
 
 .live-item-list {
@@ -23,20 +23,49 @@
     line-height: 100px;
 }
 
-.live-item-list > li.selected > img {
-    top: 15px;
-    position: relative;
-    width: 128px;
-
-}
-
 .live-item-list > li {
     height: 80px;
     line-height: 80px;
 }
 
-.live-item-list > li > img {
-    top: 15px;
-    position: relative;
+.live-item-list > li.selected >.live-item-icon {
+    height: 100px;
+    margin-left: 30px;
+    text-align: center;
+    width: 120px;
+}
+
+.live-item-list > li >.live-item-icon {
+    height: 80px;
+    float: left;
     width: 100px;
+    margin-left: 70px;
+    text-align: center;
+}
+
+.live-item-list > li.selected > .live-item-icon > img {
+    position: relative;
+    height: 60px;
+    max-width: 120px;
+}
+
+.live-item-list > li > .live-item-icon > img {
+    position: relative;
+    height: 35px;
+    vertical-align: middle;
+}
+
+.live-item-list > li.selected > label {
+    position: relative;
+    left: 35px;
+    font-size: 28px;
+    max-height: 100px;
+}
+
+.live-item-list > li > label {
+    position: relative;
+    left: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    float: left;
 }

@@ -8,6 +8,7 @@ angular.module('app.resource', [])
 
         var locale         = 'zh-CN',
             i18nResource,
+            configurations,
             picTextDetail,
             cityIndex,
             meal,
@@ -45,6 +46,15 @@ angular.module('app.resource', [])
                     return resource[resourceKey];
                 }
             };
+        };
+
+        this.addI18NResource = function (strs) {
+            Object.keys(strs['zh-CN']).forEach(function (key) {
+                i18nResource['zh-CN'][key] = strs['zh-CN'][key];
+            });
+            Object.keys(strs['en-US']).forEach(function (key) {
+                i18nResource['en-US'][key] = strs['en-US'][key];
+            });
         };
 
         this.setPicTextDetail = function (title, detail) {
@@ -93,6 +103,32 @@ angular.module('app.resource', [])
         this.resetCart = function(){
             cart = [];
         }
+
+        this.getConfigurations = function () {
+            return {
+                mainConfigUrl: function () {
+                    return SERVER_URL + '/main.json';
+                },
+                serverUrl: function () {
+                    return SERVER_URL;
+                },
+                logoUrl: function () {
+                    return configurations.logoUrl;
+                },
+                languages: function () {
+                    return configurations.languages;
+                },
+                viewTree: function () {
+                    return configurations.viewTree;
+                },
+                billUrl: function() {
+                    return SERVER_URL + '/billing.json';
+                },
+                messageUrl: function() {
+                    return MESSAGE_URL;
+                },
+            };
+        };
 
     }])
     .constant('SERVER_URL', 'http://172.17.173.100/nativevod/now')
