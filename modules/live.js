@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.live', [])
-    .directive('repeatFinish', ['ActivityManager', function (ActivityManager) {
+    .directive('repeatFinish', [function () {
         return {
             link: function (scope, element, attr) {
                 if (scope.$last == true) {
@@ -16,11 +16,13 @@ angular.module('app.live', [])
         var channels = [];
         var stream,
             chaData;
-        var LISTTOP;
+        var LISTTOP,
+            contentHide = false;
         activity.initialize($scope);
-        activity.hide();
-        ActivityManager.showLoading();
-        ActivityManager.hideLoading(500);
+
+        contentShow();
+        //ActivityManager.showLoading();
+        //ActivityManager.hideLoading(500);
         activity.loadI18NResource(function (res) {
             var languageData = LiveService.getLanguage();
             $scope.left = languageData.toolbar.left;
@@ -61,20 +63,34 @@ angular.module('app.live', [])
 
         activity.onKeyDown(function (keyCode) {
             var tempIndex = $scope.selectedIndex;
-            if (activity.isHide()) {
+            if (contentHide) {
                 switch (keyCode) {
                     case COMMON_KEYS.KEY_UP:
-                        //cutChannel();
+                        tempIndex -= 1;
+                        if (tempIndex < 0) {
+                            $scope.listStyleTop = (LISTTOP - ($scope.channels.length - 1) * 80) + "px";
+                            tempIndex = $scope.channels.length - 1;
+                        } else {
+                            $scope.listStyleTop = (LISTTOP - tempIndex * 80) + "px";
+                        }
+                        cutChannel();
                         break;
                     case COMMON_KEYS.KEY_DOWN:
-                        //cutChannel();
+                        tempIndex += 1;
+                        if (tempIndex > $scope.channels.length - 1) {
+                            $scope.listStyleTop = LISTTOP + "px";
+                            tempIndex = 0;
+                        } else {
+                            $scope.listStyleTop = (LISTTOP - tempIndex * 80) + "px";
+                        }
+                        cutChannel();
                         break;
                     case COMMON_KEYS.KEY_ENTER:
-                        activity.show();
+                        contentShow();
                         break;
                     case COMMON_KEYS.KEY_BACK:
-                        //LiveService.stopPlay();
-                        //document.getElementsByTagName("body")[0].setAttribute("style", "background-image:(url:../assets/images/bg_window.jpg)");
+                        LiveService.stopPlay();
+                        $("body").css("background-image", "url(assets/images/bg_window.png)");
                         activity.finish();
                         break;
                 }
@@ -90,7 +106,7 @@ angular.module('app.live', [])
                     } else {
                         $scope.listStyleTop = (LISTTOP - tempIndex * 80) + "px";
                     }
-                    //cutChannel();
+                    cutChannel();
                     break;
                 case COMMON_KEYS.KEY_DOWN:
                     tempIndex += 1;
@@ -100,7 +116,7 @@ angular.module('app.live', [])
                     } else {
                         $scope.listStyleTop = (LISTTOP - tempIndex * 80) + "px";
                     }
-                    //cutChannel();
+                    cutChannel();
                     break;
                 case COMMON_KEYS.KEY_ENTER:
                     activity.hide();
@@ -114,8 +130,10 @@ angular.module('app.live', [])
 
         function bindChannels() {
             chaData = LiveService.getChannels();
+            $("body").css("background-image", "none");
             //stream = chaData[0].stream;
-            //stream = "rtp://239.45.3.177:5140";
+            stream = "udp://@229.1.1.4:8001";
+            LiveService.onLoad(stream);
             for (var i = 0; i < chaData.length; i++) {
                 channels.push({
                     index: i,
@@ -128,15 +146,28 @@ angular.module('app.live', [])
         }
 
         function cutChannel() {
+            contentShow();
             //stream = chaData[tempIndex].stream;
-            stream = "rtp://239.45.3.177:5140";
+            stream = "udp://@229.1.1.4:8001";
             LiveService.changeVideo(stream);
+
+        }
+
+        function contentShow() {
+            if (contentHide) {
+                $(".Live-content").show();
+                contentHide = false;
+            }
+            setTimeout(function(){
+                if (!contentHide) {
+                    $(".Live-content").hide();
+                    contentHide = true;
+                }
+            }, 5000);
         }
     }])
     .service('LiveService', ['$q', '$http', 'ResourceManager', function ($q, $http, ResourceManager) {
         var widgetAPI = new Common.API.Widget();
-        var pluginObj = new Common.API.Plugin();
-        var tvKey = new Common.API.TVKeyValue();
 
         var configUrl,
             conUrl = ResourceManager.getConfigurations().serverUrl(),
@@ -233,10 +264,6 @@ angular.module('app.live', [])
 
         this.onLoad = function (videoURL) {
             widgetAPI.sendReadyEvent();
-
-            pluginObj.unregistKey(tvKey.KEY_VOL_UP);
-            pluginObj.unregistKey(tvKey.KEY_VOL_DOWN);
-            pluginObj.unregistKey(tvKey.KEY_MUTE);
 
             pluginSef = document.getElementById("pluginSef");
             pluginObjectTVMW = document.getElementById("pluginObjectTVMW");
