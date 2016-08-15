@@ -15,12 +15,47 @@ angular.module('app.resource', [])
             cart = [],
             langString;
 
-        this.initialize = function () {
+        this.initialize = function (mainJSON, menuJSON) {
             i18nResource = {};
             i18nResource['zh-CN'] = {};
             i18nResource['en-US'] = {};
             i18nResource['zh-CN'].language         = 'zh-CN';
             i18nResource['en-US'].language         = 'en-US';
+
+            configurations = {};
+            configurations.welcomeBgImageUrl = SERVER_URL + mainJSON.background_video_url;
+
+            var viewTree = [], viewTreeIndex = 0;
+            menuJSON.Content.forEach(function (el, idx, arr) {
+                //var childViews = [];
+                if (el.Second) {
+                    el.Second.Content.forEach(function (el2, idx2, arr2) {
+                        var nameKey = 'menu_item_' + viewTreeIndex;
+                        viewTree.push({
+                            icon: SERVER_URL + el2.Icon_URL,
+                            nameKey: nameKey,
+                            type: el2.Type,
+                            config: SERVER_URL + el2.Json_URL
+                        });
+                        i18nResource['zh-CN'][nameKey] = el2.Name;
+                        i18nResource['en-US'][nameKey] = el2.NameEng;
+                        viewTreeIndex++;
+                    });
+                    return;
+                }
+                var nameKey = 'menu_item_' + viewTreeIndex;
+                viewTree.push({
+                    //childViews: childViews,
+                    nameKey: nameKey,
+                    type: el.Type,
+                    icon: SERVER_URL + el.Icon_URL,
+                    config: SERVER_URL + el.Json_URL
+                });
+                viewTreeIndex++;
+                i18nResource['zh-CN'][nameKey] = el.Name;
+                i18nResource['en-US'][nameKey] = el.NameEng;
+            });
+            configurations.viewTree = viewTree;
         };
 
         this.setLocale = function (_locale) {
