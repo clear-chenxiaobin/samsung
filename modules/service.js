@@ -14,6 +14,7 @@ angular.module('app.service', [])
     .controller('ServiceController', ['$scope', 'ActivityManager', 'COMMON_KEYS','MenuService', function ($scope, ActivityManager, COMMON_KEYS,MenuService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
+        var type = activity.getType();
         activity.loadI18NResource(function (res) {
             var toolvarData = MenuService.getLanguage().toolbar;
             $scope.select = {
@@ -31,10 +32,10 @@ angular.module('app.service', [])
                 icon: 'assets/images/icon_toolbar_menu.png',
                 right: toolvarData.menu
             };
-        })
+        });
         $scope.serviceFinish = function(){
             chose(0);
-        }
+        };
 
         $scope.selectedIndex = 0;
 
@@ -53,10 +54,8 @@ angular.module('app.service', [])
             //activity.transform(target1,"rotateX(45deg)");
             for(var i=0;i<target.length;i++){
                 activity.removeClass(target[i], 'service_item_select');
-                target[i].style.opacity = '0.6'
             }
             activity.addClass(target[index], 'service_item_select');
-            target[index].style.opacity = '1';
         }
 
         activity.onKeyDown(function (keyCode) {

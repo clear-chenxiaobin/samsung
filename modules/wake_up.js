@@ -4,11 +4,9 @@ angular.module('app.wake_up', [])
     .controller('WakeUpController', ['$scope', 'ResourceManager', 'ActivityManager', 'COMMON_KEYS','BtnService', function ($scope, ResourceManager, ActivityManager, COMMON_KEYS,BtnService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
-        $scope.selected = false;
+        $scope.selected = true;
         $scope.onSubmit = true;
 
-        var clock = $('.your-clock').FlipClock({
-        });
 
         function borderAnimate(key){
             var border = document.getElementsByClassName('btn_border')[0];

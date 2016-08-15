@@ -7,11 +7,18 @@ angular.module('app.activity', ['app.resource'])
     .service('ActivityManager',['ResourceManager', function (ResourceManager) {
         var activityStack = [];
 
-        function Activity(id) {
+        function Activity(id , type) {
             this.templateUrl = 'partials/' + id + '.html';
             this._hide = false;
             this._isMenu = false;
+            if(type) {
+                this.activityType = type;
+            }
         }
+
+        Activity.prototype.getType = function () {
+            return this.activityType;
+        };
 
         Activity.prototype.finish = function () {
             activityStack.pop();
@@ -190,8 +197,8 @@ angular.module('app.activity', ['app.resource'])
             this.startActivity(id);
         };
 
-        this.startActivity = function (id) {
-            var activity = new Activity(id);
+        this.startActivity = function (id ,type) {
+            var activity = new Activity(id , type);
             activityStack.push(activity);
         };
 
