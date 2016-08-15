@@ -58,6 +58,11 @@ angular.module('app',[
             keyMapping[tvKey.KEY_VOL_UP] = COMMON_KEYS.KEY_VOL_UP;
             keyMapping[tvKey.KEY_VOL_DOWN] = COMMON_KEYS.KEY_VOL_DOWN;
             keyMapping[tvKey.KEY_MUTE] = COMMON_KEYS.KEY_MUTE;
+
+            var pluginObj = new Common.API.Plugin();
+            pluginObj.unregistKey(tvKey.KEY_VOL_UP);
+            pluginObj.unregistKey(tvKey.KEY_VOL_DOWN);
+            pluginObj.unregistKey(tvKey.KEY_MUTE);
         }
 
         var handler = function(event){

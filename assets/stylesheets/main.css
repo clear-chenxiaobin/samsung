@@ -10,7 +10,7 @@ body {
     width: 1280px;
     height: 720px;
     overflow: hidden;
-    background: url("../images/bg_window.png") no-repeat;
+    background-image: url("../images/bg_window.png");
     background-size: cover;
     position: absolute;
     left: 50%;
