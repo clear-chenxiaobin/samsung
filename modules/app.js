@@ -13,7 +13,8 @@ angular.module('app',[
     'app.movie',
     'app.service',
     'app.live',
-    'app.wake_up'
+    'app.wake_up',
+    'app.wash'
 ])
     .run(['$rootScope', '$http', 'ActivityManager','ResourceManager', function ($rootScope, $http, ActivityManager,ResourceManager) {
         ActivityManager.hideLoading(500);

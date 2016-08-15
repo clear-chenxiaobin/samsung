@@ -10,25 +10,21 @@
 .service_item{
     width: 360px;
     height: 203px;
+    margin-right: 48px;
+    float: left;
     background-repeat: no-repeat;
     background-size: 360px 203px;
+    margin-top: 48px;
     opacity: 0.6;
     -webkit-transition: -webkit-transform 0.3s;
     -moz-transition: -moz-transform 0.3s;
     transition: transform 0.3s;
     -o-animation: transform 0.3s;
 }
-.item_container{
-    width: 360px;
-    height: 203px;
-    margin-right: 48px;
-    margin-top: 48px;
-    display: inline-block;
-}
 /*选中放大动画*/
 .service_item_select{
-    -moz-transform:scale(1.15,1.15);
-    -webkit-transform:scale(1.15,1.15);
-    -o-transform:scale(1.15,1.15);
-    transform: scale(1.15,1.15);
+    -moz-transform:scale(1.15,1.15); opacity : 1;
+    -webkit-transform:scale(1.15,1.15);opacity: 1;
+    -o-transform:scale(1.15,1.15);opacity: 1;
+    transform: scale(1.15,1.15);opacity: 1;
 }
