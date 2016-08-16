@@ -14,13 +14,13 @@ angular.module('app.welcome', [])
                 ResourceManager.setLocale($scope.language);
                 i18nText = ResourceManager.getLocale();
             }
-            $scope.guestNameText = i18nText.index.guestName;
-            $scope.welcomeText = i18nText.welcome.welcome_text;
-            $scope.guestName = i18nText.welcome.name;
-            $scope.roomNumber = i18nText.index.roomNumber + window.localStorage.room;
+            $scope.guestNameText = i18nText.welcome.guestName;
+            $scope.guestName = ResourceManager.getI18NResource().getString("guest_name");
+            $scope.welcomeText = ResourceManager.getI18NResource().getString("welcome_text");
             $scope.press1 = i18nText.welcome.press1;
             $scope.press2 = i18nText.welcome.press2;
-            $scope.poster = 'assets/images/bg_welcome.png'
+            $scope.logo = ResourceManager.getConfigurations().logoUrl();
+            $scope.poster = ResourceManager.getConfigurations().welcomeBgImageUrl();
         });
         var languages = ['zh-CN', 'en-US'],
             languageIndex = 0;

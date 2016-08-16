@@ -1,10 +1,12 @@
 <div ng-controller="MenuController" class="menu-content">
-    <div class="logo"><img src="assets/images/logo.png" width="100px" height="83.3px"></div>
+    <div class="logo"><img ng-src="{{logo}}"></div>
     <div class="menu-item-container">
         <ul id="menu-item-list" ng-style="{left: menuStyleLeft, width: menuStyleWidth}">
             <li ng-repeat="menuItem in menuItems" ng-class="{'selected': selectedMenuItemIndex==$index}" repeat-finish="menuFinish();">
-                <!--<div id="menutest"></div>-->
-                <img ng-src="{{menuItem.pic}}">
+                <div class="menu-item-unit">
+                    <img ng-src="{{menuItem.pic}}">
+                    <div class="menutest"></div>
+                </div>
             </li>
         </ul>
     </div>

@@ -36,6 +36,8 @@ angular.module('app.menu', [])
                 icon: 'assets/images/icon_toolbar_menu.png',
                 right: toolvarData.menu
             };
+
+            $scope.logo = MenuService.getLogo();
             $scope.menuFinish = function () {
                 ActivityManager.getActiveActivity().animate(0, 'menu-item-list', 'menu-animation');
             }
@@ -104,6 +106,10 @@ angular.module('app.menu', [])
     .service('MenuService', ['ResourceManager', function (ResourceManager) {
         this.getMenu = function () {
             return ResourceManager.getI18NResource();
+        }
+
+        this.getLogo = function () {
+            return ResourceManager.getConfigurations().logoUrl();
         }
 
         this.getLanguage = function () {

@@ -96,6 +96,11 @@ li {
     }
 }
 
+.logo > img{
+    width: 100px;
+    height: 83.3px;
+}
+
 .currency-logo {
     left: 34px;
     top:34px;

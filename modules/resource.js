@@ -9,6 +9,7 @@ angular.module('app.resource', [])
         var locale         = 'zh-CN',
             i18nResource,
             configurations,
+            welcomeData,
             picTextDetail,
             cityIndex,
             meal,
@@ -19,11 +20,16 @@ angular.module('app.resource', [])
             i18nResource = {};
             i18nResource['zh-CN'] = {};
             i18nResource['en-US'] = {};
-            i18nResource['zh-CN'].language         = 'zh-CN';
-            i18nResource['en-US'].language         = 'en-US';
+            i18nResource['zh-CN'].language           = 'zh-CN';
+            i18nResource['en-US'].language           = 'en-US';
+            i18nResource['zh-CN'].guest_name         = mainJSON.guest_name;
+            i18nResource['en-US'].guest_name         = mainJSON.guest_name_eng;
+            i18nResource['zh-CN'].welcome_text       = mainJSON.welcome_text;
+            i18nResource['en-US'].welcome_text       = mainJSON.welcome_text_eng;
 
             configurations = {};
-            configurations.welcomeBgImageUrl = SERVER_URL + mainJSON.background_video_url;
+            configurations.logoUrl                   = SERVER_URL + mainJSON.logo;
+            configurations.welcomeBgImageUrl         = SERVER_URL + mainJSON.background_video_url;
 
             var viewTree = [], viewTreeIndex = 0;
             menuJSON.Content.forEach(function (el, idx, arr) {
@@ -150,6 +156,9 @@ angular.module('app.resource', [])
                 logoUrl: function () {
                     return configurations.logoUrl;
                 },
+                welcomeBgImageUrl: function () {
+                    return configurations.welcomeBgImageUrl;
+                },
                 languages: function () {
                     return configurations.languages;
                 },
@@ -166,6 +175,6 @@ angular.module('app.resource', [])
         };
 
     }])
-    .constant('SERVER_URL', 'http://172.17.173.100/nativevod/now')
+    .constant('SERVER_URL', 'http://192.168.30.75/nativevod/now')
     .constant('MESSAGE_URL', 'http://192.168.17.101:8000/backend/GetMessage');
 
