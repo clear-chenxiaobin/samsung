@@ -5,23 +5,18 @@ angular.module('app.en-US', [])
         return{
             lang:'en-US',
             welcome: {
-                cue: 'Please select language as you like',
                 welcome_text:'Welcome to Hilton！You will enjoy comfortable guest room, tasty food, full equipments and perfect service here. Thanks for your strong support.  We are sincerely looking forward to your visit！',
-                press1:'Press',
+                press1:'',
                 press2:'Enter',
-                name:'Guest'
-            },
-            index:{
                 guestName:'Dear ',
-                roomNumber:'Room Number:'
             },
             toolbar: {
-                left: 'Press',
+                left: '',
                 selsct: 'Select',
                 select_Live: 'Select Channal',
-                ok: 'Confirm',
+                ok: 'OK',
                 back: 'Back',
-                menu: 'To Return The Menu',
+                menu: 'Menu',
                 play: 'Play',
             },
             weather: {

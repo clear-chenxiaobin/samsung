@@ -9,18 +9,59 @@ angular.module('app.resource', [])
         var locale         = 'zh-CN',
             i18nResource,
             configurations,
+            welcomeData,
             picTextDetail,
             cityIndex,
             meal,
             cart = [],
             langString;
 
-        this.initialize = function () {
+        this.initialize = function (mainJSON, menuJSON) {
             i18nResource = {};
             i18nResource['zh-CN'] = {};
             i18nResource['en-US'] = {};
-            i18nResource['zh-CN'].language         = 'zh-CN';
-            i18nResource['en-US'].language         = 'en-US';
+            i18nResource['zh-CN'].language           = 'zh-CN';
+            i18nResource['en-US'].language           = 'en-US';
+            i18nResource['zh-CN'].guest_name         = mainJSON.guest_name;
+            i18nResource['en-US'].guest_name         = mainJSON.guest_name_eng;
+            i18nResource['zh-CN'].welcome_text       = mainJSON.welcome_text;
+            i18nResource['en-US'].welcome_text       = mainJSON.welcome_text_eng;
+
+            configurations = {};
+            configurations.logoUrl                   = SERVER_URL + mainJSON.logo;
+            configurations.welcomeBgImageUrl         = SERVER_URL + mainJSON.background_video_url;
+
+            var viewTree = [], viewTreeIndex = 0;
+            menuJSON.Content.forEach(function (el, idx, arr) {
+                //var childViews = [];
+                if (el.Second) {
+                    el.Second.Content.forEach(function (el2, idx2, arr2) {
+                        var nameKey = 'menu_item_' + viewTreeIndex;
+                        viewTree.push({
+                            icon: SERVER_URL + el2.Icon_URL,
+                            nameKey: nameKey,
+                            type: el2.Type,
+                            config: SERVER_URL + el2.Json_URL
+                        });
+                        i18nResource['zh-CN'][nameKey] = el2.Name;
+                        i18nResource['en-US'][nameKey] = el2.NameEng;
+                        viewTreeIndex++;
+                    });
+                    return;
+                }
+                var nameKey = 'menu_item_' + viewTreeIndex;
+                viewTree.push({
+                    //childViews: childViews,
+                    nameKey: nameKey,
+                    type: el.Type,
+                    icon: SERVER_URL + el.Icon_URL,
+                    config: SERVER_URL + el.Json_URL
+                });
+                viewTreeIndex++;
+                i18nResource['zh-CN'][nameKey] = el.Name;
+                i18nResource['en-US'][nameKey] = el.NameEng;
+            });
+            configurations.viewTree = viewTree;
         };
 
         this.setLocale = function (_locale) {
@@ -115,6 +156,9 @@ angular.module('app.resource', [])
                 logoUrl: function () {
                     return configurations.logoUrl;
                 },
+                welcomeBgImageUrl: function () {
+                    return configurations.welcomeBgImageUrl;
+                },
                 languages: function () {
                     return configurations.languages;
                 },
@@ -131,6 +175,6 @@ angular.module('app.resource', [])
         };
 
     }])
-    .constant('SERVER_URL', 'http://172.17.173.100/nativevod/now')
+    .constant('SERVER_URL', 'http://192.168.30.75/nativevod/now')
     .constant('MESSAGE_URL', 'http://192.168.17.101:8000/backend/GetMessage');
 
