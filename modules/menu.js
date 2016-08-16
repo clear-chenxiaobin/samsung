@@ -56,9 +56,9 @@ angular.module('app.menu', [])
                 {index: 0, name: '电视直播', pic: 'assets/images/menu_tv.png', activityId: 'live'},
                 {index: 1, name: '电影点播', pic: 'assets/images/menu_movie.png', activityId: 'movie'},
                 {index: 2, name: '酒店服务', pic: 'assets/images/menu_service.png', activityId: 'service'},
-                {index: 3, name: '电影点播', pic: 'assets/images/menu_cityinfo.png', activityId: 'movie'},
-                {index: 4, name: '城市介绍', pic: 'assets/images/menu_roomfood.png', activityId: 'movie'},
-                {index: 5, name: '客房送餐', pic: 'assets/images/menu_restaraunt.png', activityId: 'movie'},
+                {index: 3, name: '城市介绍', pic: 'assets/images/menu_cityinfo.png', activityId: 'city_list'},
+                {index: 4, name: '城市介绍', pic: 'assets/images/menu_roomfood.png', activityId: 'food'},
+                {index: 5, name: '客房送餐', pic: 'assets/images/menu_restaraunt.png', activityId: 'food'},
                 {index: 6, name: '客房送餐', pic: 'assets/images/menu_restaraunt.png', activityId: 'movie'}
             ]
             $scope.selectedMenuItemIndex = 0;

@@ -1,0 +1,33 @@
+<div ng-controller="CityDetailController" class="movie-content">
+    <!--<div class="logo"><img src="assets/images/logo.png" width="100px" height="83.3px"></div>-->
+    <div class="movie-item-container">
+        <div id="service-detail-container">
+            <div class="movie-head">
+                <img class="movie-icon" src="assets/images/icon_cityinfo.png">
+                <p class="movie-text">城市介绍</p>
+            </div>
+            <div class="city-detail-title">1 东方明珠广播电视塔</div>
+            <div class="city-detail-container">
+                <img class="city-detail-big" src="assets/images/city_big.png">
+                <div class="city-detail-right">
+                    <div class="city-detail-text">东方明珠广播电视塔是上海的标志性文化景观之一，位于浦东新区陆家嘴，塔高约....</div>
+                    <img src="assets/images/city_small.png" class="city-detail-small">
+                    <p class="city-detail-subtext">&nbsp;&nbsp;旋转餐厅</p>
+                </div>
+            </div>
+        </div>
+        <div class="toolbar">
+        <span class="toolbar-select">
+            {{select.left}}<i class="tip_img toolbar-img"><img ng-src="{{select.icon}}" height="34.7px"> </i>{{select.right}}
+        </span>
+            <span>|</span>
+        <span class="toolbar-ok">
+            {{ok.left}}<i class="tip_img toolbar-img"><img src="{{ok.icon}}" height="34.7px"> </i>{{ok.right}}
+        </span>
+            <span>|</span>
+        <span class="toolbar-back">
+            {{menu.left}}<i class="tip_img toolbar-img"><img src="{{menu.icon}}" height="34.7px"> </i>{{menu.right}}
+        </span>
+        </div>
+    </div>
+</div>

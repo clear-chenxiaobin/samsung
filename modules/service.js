@@ -14,7 +14,6 @@ angular.module('app.service', [])
     .controller('ServiceController', ['$scope', 'ActivityManager', 'COMMON_KEYS','MenuService', function ($scope, ActivityManager, COMMON_KEYS,MenuService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
-        var type = activity.getType();
         activity.loadI18NResource(function (res) {
             var toolvarData = MenuService.getLanguage().toolbar;
             $scope.select = {
@@ -32,10 +31,10 @@ angular.module('app.service', [])
                 icon: 'assets/images/icon_toolbar_menu.png',
                 right: toolvarData.menu
             };
-        });
+        })
         $scope.serviceFinish = function(){
             chose(0);
-        };
+        }
 
         $scope.selectedIndex = 0;
 
