@@ -4,7 +4,7 @@ angular.module('app.wash', [])
     .controller('WashController', ['$scope', 'ResourceManager', 'ActivityManager', 'COMMON_KEYS','BtnService', function ($scope, ResourceManager, ActivityManager, COMMON_KEYS,BtnService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
-        var type = activity.getType();
+        var type = activity.getID();
         console.log(type);
         $scope.now = true;
         $scope.selected = false;
@@ -221,7 +221,7 @@ angular.module('app.wash', [])
         }
         function move(num){
             var btn = document.getElementById('time_border');
-            activity.transform(btn,"translateX("+(num*127)+"px)")
+            activity.transform(btn,"translateX("+(num*130)+"px)")
         }
         activity.onKeyDown(function (keyCode) {
             switch (keyCode) {

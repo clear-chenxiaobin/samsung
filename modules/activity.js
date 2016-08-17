@@ -7,10 +7,13 @@ angular.module('app.activity', ['app.resource'])
     .service('ActivityManager',['ResourceManager', function (ResourceManager) {
         var activityStack = [];
 
-        function Activity(id) {
-            this.templateUrl = 'partials/' + id + '.html';
+        function Activity(id , type) {
+            this.templateUrl = 'partials/' + type + '.html';
             this._hide = false;
             this._isMenu = false;
+            if(id) {
+                this.activityID = id;
+            }
         }
 
         Activity.prototype.getID = function () {
@@ -191,11 +194,7 @@ angular.module('app.activity', ['app.resource'])
             for (var i = 0; i < nPops; i++) {
                 activityStack.pop();
             }
-            if (type == 'SecondMenu') {
-                this.startActivity(type);
-            } else {
-                this.startActivity(id);
-            }
+            this.startActivity(id ,type);
         };
 
         this.startActivity = function (id ,type) {
