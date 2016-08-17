@@ -49,9 +49,9 @@ angular.module('app.menu', [])
             for (var i = 0; i < treeView.length; i++) {
                 $scope.menuItems.push({
                     pic: treeView[i].pic,
-                    //icon: getIcon(),
+                    icon: getIcon(treeView[i].nameEng),
                     type: treeView[i].type,
-                    activityId: getActivityId(treeView[i].type)
+                    activityId: getActivityId(treeView[i].nameEng)
                 });
             }
             $scope.selectedMenuItemIndex = 0;
@@ -60,25 +60,31 @@ angular.module('app.menu', [])
 
         }
 
-        function getActivityId(type) {
-            switch (type) {
+        function getActivityId(name) {
+            switch (name) {
                 case 'Live':
                     return 'live';
                     break;
-                case 'Movie_Category':
+                case 'Movie':
                     return 'movie';
                     break;
                 case 'Music':
                     return 'music';
                     break;
-                case 'Billing_blue':
-                    return 'bill';
+                case 'Service':
+                    return 'service';
                     break;
                 case 'Weather':
                     return 'weather';
                     break;
-                case 'SecondMenu':
-                    return 'service';
+                case 'Intro':
+                    return 'intro';
+                    break;
+                case 'Room Service':
+                    return 'roomService';
+                    break;
+                case 'Reservation':
+                    return 'reservation';
                     break;
             }
         }
@@ -118,7 +124,7 @@ angular.module('app.menu', [])
         });
 
         function getIcon(name) {
-            switch (type) {
+            switch (name) {
                 case 'Live':
                     return 'data:image/svg+xml;charset=utf-8, <svg width="285px" height="173px" viewBox="0 0 285 505" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">'
                         + '<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">'

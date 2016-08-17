@@ -39,6 +39,7 @@ angular.module('app.resource', [])
                         var nameKey = 'sub_menu_item_' + subViewTreeIndex;
                         childViews.push({
                             nameKey: nameKey,
+                            nameEng: el2.NameEng,
                             type: el2.Type,
                             pic: SERVER_URL + el2.Icon_URL,
                             config: SERVER_URL + el2.Json_URL
@@ -52,6 +53,7 @@ angular.module('app.resource', [])
                 viewTree.push({
                     childViews: childViews,
                     nameKey: nameKey,
+                    nameEng: el.NameEng,
                     type: el.Type,
                     pic: SERVER_URL + el.Icon_URL,
                     config: SERVER_URL + el.Json_URL
