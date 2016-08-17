@@ -117,10 +117,6 @@ angular.module('app.menu', [])
         });
     }])
     .service('MenuService', ['ResourceManager', function (ResourceManager) {
-    //    this.initialize =function () {
-    //        var treeView = ResourceManager.getConfigurations().viewTree();
-    //    }
-
         this.getMenu = function () {
             return ResourceManager.getConfigurations().viewTree();
         }

@@ -4,6 +4,8 @@ angular.module('app.wash', [])
     .controller('WashController', ['$scope', 'ResourceManager', 'ActivityManager', 'COMMON_KEYS','BtnService', function ($scope, ResourceManager, ActivityManager, COMMON_KEYS,BtnService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
+        var type = activity.getType();
+        console.log(type);
         $scope.now = true;
         $scope.selected = false;
         $scope.onSubmit = true;

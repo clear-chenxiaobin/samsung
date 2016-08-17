@@ -189,12 +189,12 @@ angular.module('app.activity', ['app.resource'])
             return element;
         }
 
-        this.go = function (id, stackIndex) {
+        this.go = function (id, stackIndex ,type) {
             var nPops = activityStack.length - stackIndex;
             for (var i = 0; i < nPops; i++) {
                 activityStack.pop();
             }
-            this.startActivity(id);
+            this.startActivity(id ,type);
         };
 
         this.startActivity = function (id ,type) {

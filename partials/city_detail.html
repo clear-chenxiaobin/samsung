@@ -1,13 +1,19 @@
-<div ng-controller="ServiceController" class="movie-content">
+<div ng-controller="CityDetailController" class="movie-content">
     <!--<div class="logo"><img src="assets/images/logo.png" width="100px" height="83.3px"></div>-->
     <div class="movie-item-container">
         <div id="service-detail-container">
             <div class="movie-head">
-                <img class="movie-icon" src="assets/images/icon_service1.png">
-                <p class="movie-text">酒店服务</p>
+                <img class="movie-icon" src="assets/images/icon_cityinfo.png">
+                <p class="movie-text">城市介绍</p>
             </div>
-            <div class="service-list-container">
-                <div ng-repeat="item in services" id="service{{$index}}" class="service_item" style="background-image:url({{item.pic}})" repeat-finish="serviceFinish();"></div>
+            <div class="city-detail-title">1 东方明珠广播电视塔</div>
+            <div class="city-detail-container">
+                <img class="city-detail-big" src="assets/images/city_big.png">
+                <div class="city-detail-right">
+                    <div class="city-detail-text">东方明珠广播电视塔是上海的标志性文化景观之一，位于浦东新区陆家嘴，塔高约....</div>
+                    <img src="assets/images/city_small.png" class="city-detail-small">
+                    <p class="city-detail-subtext">&nbsp;&nbsp;旋转餐厅</p>
+                </div>
             </div>
         </div>
         <div class="toolbar">
