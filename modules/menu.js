@@ -108,7 +108,7 @@ angular.module('app.menu', [])
                     }
                     break;
                 case COMMON_KEYS.KEY_ENTER:
-                    ActivityManager.go($scope.menuItems[$scope.selectedMenuItemIndex].activityId, 2);
+                    ActivityManager.go($scope.menuItems[$scope.selectedMenuItemIndex].activityId, 2 ,'SecondMenu');
                     activity.isMenu(false);
                     break;
                 case COMMON_KEYS.KEY_BACK:

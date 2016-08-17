@@ -8,16 +8,16 @@ angular.module('app.activity', ['app.resource'])
         var activityStack = [];
 
         function Activity(id , type) {
-            this.templateUrl = 'partials/' + id + '.html';
+            this.templateUrl = 'partials/' + type + '.html';
             this._hide = false;
             this._isMenu = false;
-            if(type) {
-                this.activityType = type;
+            if(id) {
+                this.activityID = id;
             }
         }
 
-        Activity.prototype.getType = function () {
-            return this.activityType;
+        Activity.prototype.getID = function () {
+            return this.activityID;
         };
 
         Activity.prototype.finish = function () {

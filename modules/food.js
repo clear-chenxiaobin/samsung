@@ -4,8 +4,8 @@ angular.module('app.food', [])
     .controller('FoodController', ['$scope', 'ActivityManager','ResourceManager', 'COMMON_KEYS','MenuService','$http', function ($scope, ActivityManager,ResourceManager, COMMON_KEYS,MenuService,$http) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
-        var type = activity.getType();
-        console.log(type);
+        var ID = activity.getID();
+        console.log(ID);
         activity.loadI18NResource(function (res) {
             var toolvarData = MenuService.getLanguage().toolbar;
             $scope.select = {

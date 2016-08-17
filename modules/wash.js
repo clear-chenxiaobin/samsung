@@ -148,9 +148,33 @@ angular.module('app.wash', [])
                     result = timeNow;
                     break;
                 case 'monthSub':
-                    timeNow-=2592000000;
+                    switch ($scope.month){
+                        case '02':
+                        case '04':
+                        case '05':
+                        case '08':
+                        case '09':
+                        case '11':
+                        case '01':
+                            timeNow-=2678400000;
+                            break;
+                        case '05':
+                        case '07':
+                        case '10':
+                        case '12':
+                            timeNow-=2592000000;
+                            break;
+                        case '03':
+                            if(($scope.year%4 == 0) && ($scope.year % 100 != 0 || $scope.year % 400 == 0)){
+                                timeNow-=2505600000;
+                            }else{
+                                timeNow-=2419200000;
+                            }
+                            break;
+                    }
                     if(timeNow<nowTime){
                         result = nowTime;
+                        timeNow = nowTime
                     }else {
                         result = timeNow;
                     }
@@ -197,7 +221,7 @@ angular.module('app.wash', [])
         }
         function move(num){
             var btn = document.getElementById('time_border');
-            activity.transform(btn,"translateX("+(num*130)+"px)")
+            activity.transform(btn,"translateX("+(num*127)+"px)")
         }
         activity.onKeyDown(function (keyCode) {
             switch (keyCode) {

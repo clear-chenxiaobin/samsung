@@ -34,9 +34,9 @@ angular.module('app',[
 
                 //判断localStorage中房间号是否存在，不存在则跳转至home页面设置房间号
                 if(!window.localStorage.room){
-                    ActivityManager.startActivity('room');
+                    ActivityManager.startActivity('room','room');
                 }else {
-                    ActivityManager.startActivity('welcome');
+                    ActivityManager.startActivity('welcome','welcome');
                 }
             });
         });
