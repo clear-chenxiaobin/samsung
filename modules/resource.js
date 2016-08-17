@@ -31,30 +31,29 @@ angular.module('app.resource', [])
             configurations.logoUrl                   = SERVER_URL + mainJSON.logo;
             configurations.welcomeBgImageUrl         = SERVER_URL + mainJSON.background_video_url;
 
-            var viewTree = [], viewTreeIndex = 0;
+            var viewTree = [], viewTreeIndex = 0, subViewTreeIndex = 0;
             menuJSON.Content.forEach(function (el, idx, arr) {
-                //var childViews = [];
+                var childViews = [];
                 if (el.Second) {
                     el.Second.Content.forEach(function (el2, idx2, arr2) {
-                        var nameKey = 'menu_item_' + viewTreeIndex;
-                        viewTree.push({
-                            icon: SERVER_URL + el2.Icon_URL,
+                        var nameKey = 'sub_menu_item_' + subViewTreeIndex;
+                        childViews.push({
                             nameKey: nameKey,
                             type: el2.Type,
+                            pic: SERVER_URL + el2.Icon_URL,
                             config: SERVER_URL + el2.Json_URL
                         });
                         i18nResource['zh-CN'][nameKey] = el2.Name;
                         i18nResource['en-US'][nameKey] = el2.NameEng;
-                        viewTreeIndex++;
+                        subViewTreeIndex++;
                     });
-                    return;
                 }
                 var nameKey = 'menu_item_' + viewTreeIndex;
                 viewTree.push({
-                    //childViews: childViews,
+                    childViews: childViews,
                     nameKey: nameKey,
                     type: el.Type,
-                    icon: SERVER_URL + el.Icon_URL,
+                    pic: SERVER_URL + el.Icon_URL,
                     config: SERVER_URL + el.Json_URL
                 });
                 viewTreeIndex++;
@@ -87,6 +86,7 @@ angular.module('app.resource', [])
                     return resource[resourceKey];
                 }
             };
+            //return resource;
         };
 
         this.addI18NResource = function (strs) {

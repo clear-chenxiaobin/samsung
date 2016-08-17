@@ -44,29 +44,42 @@ angular.module('app.menu', [])
         })
 
         function menuBind() {
-            //var treeView = ResourceManager.getConfigurations().viewTree();
+            var treeView = MenuService.getMenu();
             $scope.menuItems = [];
-            //for (var i = 0; i < treeView.length; i++) {
-            //    //var menuName = ResourceManager.getI18NResource().getString(treeView[i].nameKey);
-            //    $scope.menuItems.push({
-            //        name: menuName,
-            //        icon: treeView[i].icon,
-            //        activityId: getActivityId(treeView[i].type)
-            //    });
-            //}
-            $scope.menuItems = [
-                {index: 0, name: '电视直播', pic: 'assets/images/menu_tv.png', activityId: 'live'},
-                {index: 1, name: '电影点播', pic: 'assets/images/menu_movie.png', activityId: 'movie'},
-                {index: 2, name: '酒店服务', pic: 'assets/images/menu_service.png', activityId: 'service'},
-                {index: 3, name: '电影点播', pic: 'assets/images/menu_cityinfo.png', activityId: 'movie'},
-                {index: 4, name: '城市介绍', pic: 'assets/images/menu_roomfood.png', activityId: 'movie'},
-                {index: 5, name: '客房送餐', pic: 'assets/images/menu_restaraunt.png', activityId: 'movie'},
-                {index: 6, name: '客房送餐', pic: 'assets/images/menu_restaraunt.png', activityId: 'movie'}
-            ]
+            for (var i = 0; i < treeView.length; i++) {
+                $scope.menuItems.push({
+                    pic: treeView[i].pic,
+                    type: treeView[i].type,
+                    activityId: getActivityId(treeView[i].type)
+                });
+            }
             $scope.selectedMenuItemIndex = 0;
             $scope.menuStyleLeft = '78px';
             $scope.menuStyleWidth = 310 + $scope.menuItems.length * 280 + 100 + 'px';
 
+        }
+
+        function getActivityId(type) {
+            switch (type) {
+                case 'Live':
+                    return 'live';
+                    break;
+                case 'Movie_Category':
+                    return 'movie';
+                    break;
+                case 'Music':
+                    return 'music';
+                    break;
+                case 'Billing_blue':
+                    return 'bill';
+                    break;
+                case 'Weather':
+                    return 'weather';
+                    break;
+                case 'SecondMenu':
+                    return 'service';
+                    break;
+            }
         }
 
         activity.onKeyDown(function (keyCode) {
@@ -104,8 +117,12 @@ angular.module('app.menu', [])
         });
     }])
     .service('MenuService', ['ResourceManager', function (ResourceManager) {
+    //    this.initialize =function () {
+    //        var treeView = ResourceManager.getConfigurations().viewTree();
+    //    }
+
         this.getMenu = function () {
-            return ResourceManager.getI18NResource();
+            return ResourceManager.getConfigurations().viewTree();
         }
 
         this.getLogo = function () {
