@@ -4,6 +4,8 @@ angular.module('app.food', [])
     .controller('FoodController', ['$scope', 'ActivityManager','ResourceManager', 'COMMON_KEYS','MenuService','$http', function ($scope, ActivityManager,ResourceManager, COMMON_KEYS,MenuService,$http) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
+        var type = activity.getType();
+        console.log(type);
         activity.loadI18NResource(function (res) {
             var toolvarData = MenuService.getLanguage().toolbar;
             $scope.select = {
@@ -66,27 +68,6 @@ angular.module('app.food', [])
                 $scope.food = $scope.foods[$scope.selectIndex];
                 setPiece($scope.selectIndex);
             });
-            //data.Content[mealID].SubContent.forEach(function(val,idx,arr){
-            //    var meal = {};
-            //    if(lang == "en-US") {
-            //        meal = {
-            //            name: val.NameEng,
-            //            intro:val.IntroduceEng,
-            //            img:val.Picurl_abs_path,
-            //            price:val.price,
-            //            id:val.id
-            //        }
-            //    }else{
-            //        meal = {
-            //            name: val.Name,
-            //            intro:val.Introduce,
-            //            img:val.Picurl_abs_path,
-            //            price:val.priceEng,
-            //            id:val.id
-            //        }
-            //    }
-            //    $scope.foods.push(meal);
-            //})
         });
 
 

@@ -14,6 +14,8 @@ angular.module('app.service', [])
     .controller('ServiceController', ['$scope', 'ActivityManager', 'COMMON_KEYS','MenuService', function ($scope, ActivityManager, COMMON_KEYS,MenuService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
+        var type = activity.getType();
+        console.log(type);
         activity.loadI18NResource(function (res) {
             var toolvarData = MenuService.getLanguage().toolbar;
             $scope.select = {
@@ -75,7 +77,7 @@ angular.module('app.service', [])
                     ActivityManager.startActivity('menu');
                     break;
                 case COMMON_KEYS.KEY_ENTER:
-                    ActivityManager.go($scope.services[$scope.selectedIndex].activityId, 3);
+                    ActivityManager.go($scope.services[$scope.selectedIndex].activityId, 3 ,'wash');
                     break;
                 case COMMON_KEYS.KEY_UP:
                     if($scope.selectedIndex>2) {
