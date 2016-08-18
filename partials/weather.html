@@ -1,0 +1,35 @@
+<div ng-controller="WeatherController" class="movie-content">
+    <!--<div class="logo"><img src="assets/images/logo.png" width="100px" height="83.3px"></div>-->
+    <div class="movie-item-container">
+        <div id="service-detail-container">
+            <div class="movie-head">
+                <img class="movie-icon" src="assets/images/icon_food.png">
+                <p class="movie-text">天气查询</p>
+            </div>
+            <div class="weather-left-container">
+                <div class="weather-list-container">
+                    <span class="weather-title" ng-class="{'item-selected': outside==false}">国内</span>
+                    <span class="weather-title" ng-class="{'item-selected': outside==true}">国际</span>
+                </div>
+                <div class="weather-city-list"></div>
+            </div>
+            <div>
+
+            </div>
+
+        <div class="toolbar">
+        <span class="toolbar-select">
+            {{select.left}}<i class="tip_img toolbar-img"><img ng-src="{{select.icon}}" height="34.7px"> </i>{{select.right}}
+        </span>
+            <span>|</span>
+        <span class="toolbar-ok">
+            {{ok.left}}<i class="tip_img toolbar-img"><img src="{{ok.icon}}" height="34.7px"> </i>{{ok.right}}
+        </span>
+            <span>|</span>
+        <span class="toolbar-back">
+            {{menu.left}}<i class="tip_img toolbar-img"><img src="{{menu.icon}}" height="34.7px"> </i>{{menu.right}}
+        </span>
+        </div>
+    </div>
+</div>
+    </div>
