@@ -51,7 +51,8 @@ angular.module('app.menu', [])
                     pic: treeView[i].pic,
                     icon: getIcon(treeView[i].nameEng),
                     type: treeView[i].type,
-                    activityId: getActivityId(treeView[i].nameEng)
+                    activityId: getActivityId(treeView[i].nameEng),
+                    childViews:treeView[i].childViews
                 });
             }
             $scope.selectedMenuItemIndex = 0;
@@ -114,6 +115,10 @@ angular.module('app.menu', [])
                     }
                     break;
                 case COMMON_KEYS.KEY_ENTER:
+                    if ($scope.menuItems[$scope.selectedMenuItemIndex].childViews.length != 0){
+                        var childViews = JSON.stringify($scope.menuItems[$scope.selectedMenuItemIndex].childViews);
+                        ActivityManager.go($scope.menuItems[$scope.selectedMenuItemIndex].activityId, 2, $scope.menuItems[$scope.selectedMenuItemIndex].type, childViews);
+                    }
                     ActivityManager.go($scope.menuItems[$scope.selectedMenuItemIndex].activityId, 2, $scope.menuItems[$scope.selectedMenuItemIndex].type);
                     activity.isMenu(false);
                     break;

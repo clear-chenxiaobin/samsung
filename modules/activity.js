@@ -4,20 +4,23 @@
 'use strict';
 
 angular.module('app.activity', ['app.resource'])
-    .service('ActivityManager',['ResourceManager', function (ResourceManager) {
+    .service('ActivityManager', ['ResourceManager', function (ResourceManager) {
         var activityStack = [];
 
-        function Activity(id , type) {
+        function Activity(id, type, child) {
             this.templateUrl = 'partials/' + type + '.html';
             this._hide = false;
             this._isMenu = false;
-            if(id) {
-                this.activityID = id;
-            }
+            this.activityID = id;
+            this._child = child;
         }
 
         Activity.prototype.getID = function () {
             return this.activityID;
+        };
+
+        Activity.prototype.getChild = function () {
+            return this._child;
         };
 
         Activity.prototype.finish = function () {
@@ -72,53 +75,53 @@ angular.module('app.activity', ['app.resource'])
             });
         };
 
-        Activity.prototype.animate = function (num,sel,className){
+        Activity.prototype.animate = function (num, sel, className) {
             var target = document.getElementById(sel).children[num].children[0];
-            if(this.hasClass(target,className)){
+            if (this.hasClass(target, className)) {
                 this.remove(num);
             }
             this.addClass(target, className);
         }
 
-        Activity.prototype.movieAnimate = function (num,sel,className){
+        Activity.prototype.movieAnimate = function (num, sel, className) {
             var targetAll = document.getElementById(sel).children.length;
-            for(var i=0;i<targetAll;i++){
+            for (var i = 0; i < targetAll; i++) {
                 var target1 = document.getElementById(sel).children[i].children[0];
                 //target1.style='';
-                this.removeClass(target1,'opacityAdd');
+                this.removeClass(target1, 'opacityAdd');
             }
             var target = document.getElementById(sel).children[num].children[0];
             this.addClass(target, className);
         }
 
-        Activity.prototype.removeAnimate = function (num,sel,className){
+        Activity.prototype.removeAnimate = function (num, sel, className) {
             var target = document.getElementById(sel).children[num].children[0];
-            this.removeClass(target,className);
+            this.removeClass(target, className);
         }
 
-        Activity.prototype.rotateUp = function(num){
-            if(num == 0) {
+        Activity.prototype.rotateUp = function (num) {
+            if (num == 0) {
                 var number = num;
                 var target = document.getElementById('type' + number).children;
-                for(var i=0;i<target.length;i++){
-                    this.transform(target[i].children[0],"rotateX(0deg)");
+                for (var i = 0; i < target.length; i++) {
+                    this.transform(target[i].children[0], "rotateX(0deg)");
                     this.removeClass(target[i].children[0], 'opacityReduce');
                     this.addClass(target[i].children[0], 'opacityAdd');
                     target[i].children[0].style.top = '33.3px';
                 }
-            }else{
+            } else {
                 var number = num;
                 var target = document.getElementById('type' + number).children;
-                for(var i=0;i<target.length;i++){
-                    this.transform(target[i].children[0],"rotateX(0deg)");
+                for (var i = 0; i < target.length; i++) {
+                    this.transform(target[i].children[0], "rotateX(0deg)");
                     this.removeClass(target[i].children[0], 'opacityReduce');
                     this.removeClass(target[i].children[0], 'choseMovie');
                     this.addClass(target[i].children[0], 'opacityAdd');
                     target[i].children[0].style.top = '33.3px';
                 }
                 var number1 = num - 1;
-                var target1 = document.getElementById('type'+ number1).children;
-                for(var i=0;i<target1.length;i++) {
+                var target1 = document.getElementById('type' + number1).children;
+                for (var i = 0; i < target1.length; i++) {
                     this.transform(target1[i].children[0], "rotateX(90deg)");
                     this.removeClass(target1[i].children[0], 'opacityAdd');
                     this.removeClass(target1[i].children[0], 'choseMovie');
@@ -129,18 +132,18 @@ angular.module('app.activity', ['app.resource'])
         }
 
 
-        Activity.prototype.rotateDown = function(num){
-            if(num==-1){
+        Activity.prototype.rotateDown = function (num) {
+            if (num == -1) {
                 var target = document.getElementsByClassName('rotate_img');
-                for(var i=0;i<target.length;i++){
-                    this.transform(target[i],"rotateX(-90deg)");
+                for (var i = 0; i < target.length; i++) {
+                    this.transform(target[i], "rotateX(-90deg)");
                     this.addClass(target[i], 'opacityReduce');
                     target[i].style.top = '145px';
                 }
-            }else{
-                var number1 = num+1;
-                var target1 = document.getElementById('type'+ number1).children;
-                for(var i=0;i<target1.length;i++) {
+            } else {
+                var number1 = num + 1;
+                var target1 = document.getElementById('type' + number1).children;
+                for (var i = 0; i < target1.length; i++) {
                     this.transform(target1[i].children[0], "rotateX(-90deg)");
                     this.removeClass(target1[i].children[0], 'opacityAdd');
                     this.removeClass(target1[i].children[0], 'choseMovie');
@@ -149,8 +152,8 @@ angular.module('app.activity', ['app.resource'])
                 }
                 var number = num;
                 var target = document.getElementById('type' + number).children;
-                for(var i=0;i<target.length;i++){
-                    this.transform(target[i].children[0],"rotateX(0deg)");
+                for (var i = 0; i < target.length; i++) {
+                    this.transform(target[i].children[0], "rotateX(0deg)");
                     this.removeClass(target[i].children[0], 'opacityReduce');
                     this.removeClass(target[i].children[0], 'choseMovie');
                     this.addClass(target[i].children[0], 'opacityAdd');
@@ -159,9 +162,9 @@ angular.module('app.activity', ['app.resource'])
             }
         }
 
-        Activity.prototype.remove = function (num,sel,className){
+        Activity.prototype.remove = function (num, sel, className) {
             var target = document.getElementById(sel).children[num].children[0];
-            this.removeClass(target,className);
+            this.removeClass(target, className);
         }
 
         Activity.prototype.hasClass = function (obj, cls) {
@@ -181,24 +184,24 @@ angular.module('app.activity', ['app.resource'])
             }
         }
 
-        Activity.prototype.transform = function(element, value, key) {
+        Activity.prototype.transform = function (element, value, key) {
             key = key || "Transform";
-            ["Moz", "O", "Ms", "Webkit", ""].forEach(function(prefix) {
+            ["Moz", "O", "Ms", "Webkit", ""].forEach(function (prefix) {
                 element.style[prefix + key] = value;
             });
             return element;
         }
 
-        this.go = function (id, stackIndex ,type) {
+        this.go = function (id, stackIndex, type, child) {
             var nPops = activityStack.length - stackIndex;
             for (var i = 0; i < nPops; i++) {
                 activityStack.pop();
             }
-            this.startActivity(id ,type);
+            this.startActivity(id, type, child);
         };
 
-        this.startActivity = function (id ,type) {
-            var activity = new Activity(id , type);
+        this.startActivity = function (id, type, child) {
+            var activity = new Activity(id, type, child);
             activityStack.push(activity);
         };
 
@@ -210,14 +213,14 @@ angular.module('app.activity', ['app.resource'])
             return activityStack;
         };
 
-        this.hideLoading = function(time){
-            setTimeout(function(){
+        this.hideLoading = function (time) {
+            setTimeout(function () {
                 var load = document.getElementsByClassName('loading');
                 load[0].style.display = 'none';
-            },time);
+            }, time);
         };
 
-        this.showLoading = function(){
+        this.showLoading = function () {
             var load = document.getElementsByClassName('loading');
             load[0].style.display = 'block';
         }
