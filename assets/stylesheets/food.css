@@ -13,13 +13,12 @@
     line-height: 67px;
     width: 280px;
     margin-right: 6px;
-    opacity: 0.1;
-    background: #FFFFFF;
     display: inline-block;
     text-align: center;
     font-size: 25px;
-    color: #000000;
+    color: #ffffff;
     font-weight: 400;
+    background-color: rgba(255,255,255,0.1);
 }
 .food-title-text{
     color: #ffffff;
@@ -34,6 +33,7 @@
 .food-selected{
     opacity: 1;
     color: #3C3937;
+    background: #FFFFFF;
 }
 .food-detail-container{
     padding: 0 30px;

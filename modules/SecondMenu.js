@@ -11,11 +11,13 @@ angular.module('app.service', [])
             }
         }
     }])
-    .controller('ServiceController', ['$scope', 'ActivityManager', 'COMMON_KEYS','MenuService', function ($scope, ActivityManager, COMMON_KEYS,MenuService) {
+    .controller('ServiceController', ['$scope','$http', 'ActivityManager', 'COMMON_KEYS','ResourceManager','MenuService', function ($scope,$http, ActivityManager, COMMON_KEYS,ResourceManager,MenuService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
-        var type = activity.getID();
-        console.log(type);
+        var i18nText = ResourceManager.getLocale();
+        var lang = i18nText.lang;
+        var activityID = activity.getID();
+        console.log(activityID);
         activity.loadI18NResource(function (res) {
             var toolvarData = MenuService.getLanguage().toolbar;
             $scope.select = {
@@ -33,21 +35,59 @@ angular.module('app.service', [])
                 icon: 'assets/images/icon_toolbar_menu.png',
                 right: toolvarData.menu
             };
-        })
+        });
         $scope.serviceFinish = function(){
             chose(0);
-        }
+        };
 
         $scope.selectedIndex = 0;
+        $scope.services=[];
 
-        $scope.services = [
-            {index: 0, name: '叫醒', pic: 'assets/images/service1.png', activityId: 'wake_up'},
-            {index: 1, name: '洗衣', pic: 'assets/images/service2.png', activityId: 'wash'},
-            {index: 2, name: '行李寄存', pic: 'assets/images/service3.png', activityId: 'package'},
-            {index: 3, name: '租车', pic: 'assets/images/service4.png', activityId: 'car'},
-            {index: 4, name: '接机', pic: 'assets/images/service5.png', activityId: 'pick_up'},
-            {index: 5, name: '会议室', pic: 'assets/images/service6.png', activityId: 'meeting'},
-        ];
+        switch (activityID){
+            case 'service':
+                $scope.menuIndex = 3;
+                break;
+            case 'intro':
+                $scope.menuIndex = 4;
+                break;
+            case'roomService':
+                $scope.menuIndex = 5;
+                break;
+            case 'reservation':
+                $scope.menuIndex = 6;
+                break;
+        }
+        $http.get("http://192.168.30.75/nativevod/now/Main/json/MainMenu_4.json").success(function (data) {
+            $scope.serviceName = data.Content[$scope.menuIndex].Name;
+            $scope.iconUrl = data.Content[$scope.menuIndex].Icon_focus_URL_abs_path;
+            data.Content[$scope.menuIndex].Second.Content.forEach(function (val, idx, arr) {
+                var service = {};
+                if (lang == "en-US") {
+                    service = {
+                        index: idx,
+                        name: val.NameEng,
+                        pic: val.Icon_URL_abs_path,
+                        activityId: val.NameEng
+                    }
+                } else {
+                    service = {
+                        index: idx,
+                        name: val.Name,
+                        pic: val.Icon_URL_abs_path,
+                        activityId: val.NameEng
+                    }
+                }
+                $scope.services.push(service);
+            });
+        });
+        //$scope.services = [
+        //    {index: 0, name: '叫醒', pic: 'assets/images/service1.png', activityId: 'wake_up'},
+        //    {index: 1, name: '洗衣', pic: 'assets/images/service2.png', activityId: 'wash'},
+        //    {index: 2, name: '行李寄存', pic: 'assets/images/service3.png', activityId: 'package'},
+        //    {index: 3, name: '租车', pic: 'assets/images/service4.png', activityId: 'car'},
+        //    {index: 4, name: '接机', pic: 'assets/images/service5.png', activityId: 'pick_up'},
+        //    {index: 5, name: '会议室', pic: 'assets/images/service6.png', activityId: 'meeting'},
+        //];
 
         function chose(index){
             var target = document.getElementsByClassName('service_item');

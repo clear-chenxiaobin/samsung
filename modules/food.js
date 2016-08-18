@@ -41,7 +41,7 @@ angular.module('app.food', [])
         var baseUrl = "http://192.168.30.75/nativevod/now";
 
         $http.get("http://192.168.30.75/nativevod/now/Main/json/MainMenu_4.json").success(function (data) {
-            mealUrl = data.Content[4].Second.Content[mealID].Json_URL;
+            mealUrl = data.Content[5].Second.Content[mealID].Json_URL;
             $http.get(baseUrl+mealUrl).success(function (data1) {
                 data1.Content.forEach(function(val,idx,arr){
                     var meal = {};
