@@ -77,7 +77,7 @@ angular.module('app.service', [])
                     ActivityManager.startActivity('menu');
                     break;
                 case COMMON_KEYS.KEY_ENTER:
-                    ActivityManager.go($scope.services[$scope.selectedIndex].activityId, 3 ,'wake_up');
+                    ActivityManager.go($scope.services[$scope.selectedIndex].activityId, 3 ,'wash');
                     break;
                 case COMMON_KEYS.KEY_UP:
                     if($scope.selectedIndex>2) {
