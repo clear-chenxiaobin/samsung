@@ -1,0 +1,30 @@
+.music-list-container {
+    position: relative;
+    width: 1212px;
+    margin: 32px 30px;
+    top: 76px;
+}
+
+.music-img {
+    float: left;
+    width: 527px;
+    height: 527px;
+}
+
+.music-list-container > ul {
+    margin-left: 726px;
+}
+
+.music-list-container > ul > li.selected {
+    font-size: 36px;
+    opacity: 1;
+}
+
+.music-list-container > ul > li {
+    height: 45px;
+    line-height: 45px;
+    margin: 10px 0;
+    color: white;
+    font-size: 28px;
+    opacity: 0.69;
+}
