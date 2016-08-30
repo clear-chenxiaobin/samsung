@@ -34,10 +34,10 @@ angular.module('app.welcome', [])
                     ResourceManager.setLocale($scope.language);
                     break;
                 case COMMON_KEYS.KEY_MENU:
-                    ActivityManager.startActivity('menu','menu');
+                    ActivityManager.startActivity('','menu','menu');
                     break;
                 case COMMON_KEYS.KEY_ENTER:
-                    ActivityManager.startActivity('menu','menu');
+                    ActivityManager.startActivity('','menu','menu');
                     break;
                 case COMMON_KEYS.KEY_DOWN:
                     ActivityManager.showLoading();

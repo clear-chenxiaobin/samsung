@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('app.resource', [])
-    .service('ResourceManager', ['$rootScope', 'SERVER_URL', 'MESSAGE_URL', 'en-US-String','zh-CN-String', function ($rootScope, SERVER_URL, MESSAGE_URL, en_US_String,zh_CN_String) {
+    .service('ResourceManager', ['$rootScope','$http', 'SERVER_URL', 'MESSAGE_URL', 'en-US-String','zh-CN-String','TIMEZONE', function ($rootScope, $http,SERVER_URL, MESSAGE_URL, en_US_String,zh_CN_String,TIMEZONE) {
 
         var locale         = 'zh-CN',
             i18nResource,
@@ -14,7 +14,9 @@ angular.module('app.resource', [])
             cityIndex,
             meal,
             cart = [],
-            langString;
+            langString,
+            service = {},
+            time;
 
         this.initialize = function (mainJSON, menuJSON) {
             i18nResource = {};
@@ -56,7 +58,9 @@ angular.module('app.resource', [])
                     nameEng: el.NameEng,
                     type: el.Type,
                     pic: SERVER_URL + el.Icon_URL,
-                    config: SERVER_URL + el.Json_URL
+                    config: SERVER_URL + el.Json_URL,
+                    name:el.Name,
+                    icon_url:SERVER_URL+el.Icon_focus_URL
                 });
                 viewTreeIndex++;
                 i18nResource['zh-CN'][nameKey] = el.Name;
@@ -145,7 +149,26 @@ angular.module('app.resource', [])
 
         this.resetCart = function(){
             cart = [];
-        }
+        };
+
+        this.setService = function(name,icon){
+            service = {
+                name:name,
+                icon:icon
+            }
+        };
+        this.getService = function(){
+            return service;
+        };
+
+        this.getTime = function(){
+            return $http.get(SERVER_URL+"/date.json").success(function(data){
+                time = new Date(data.date+(TIMEZONE*3600000));
+            });
+        };
+        this.timeReturn = function(){
+            return time;
+        };
 
         this.getConfigurations = function () {
             return {
@@ -172,11 +195,12 @@ angular.module('app.resource', [])
                 },
                 messageUrl: function() {
                     return MESSAGE_URL;
-                },
+                }
             };
         };
 
     }])
     .constant('SERVER_URL', 'http://192.168.30.75/nativevod/now')
-    .constant('MESSAGE_URL', 'http://192.168.17.101:8000/backend/GetMessage');
+    .constant('MESSAGE_URL', 'http://192.168.17.101:8000/backend/GetMessage')
+    .constant('TIMEZONE',8);
 

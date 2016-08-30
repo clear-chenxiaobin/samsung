@@ -11,7 +11,7 @@ angular.module('app.menu', [])
             }
         }
     }])
-    .controller('MenuController', ['$scope', 'ActivityManager', 'COMMON_KEYS', 'MenuService', function ($scope, ActivityManager, COMMON_KEYS, MenuService) {
+    .controller('MenuController', ['$scope', 'ActivityManager','ResourceManager', 'COMMON_KEYS', 'MenuService', function ($scope, ActivityManager, ResourceManager, COMMON_KEYS, MenuService) {
         var activity = ActivityManager.getActiveActivity();
         var moveCount = 0,
             currentSelect = 0;
@@ -52,7 +52,9 @@ angular.module('app.menu', [])
                     icon: getIcon(treeView[i].nameEng),
                     type: treeView[i].type,
                     activityId: getActivityId(treeView[i].nameEng),
-                    childViews:treeView[i].childViews
+                    childViews:treeView[i].childViews,
+                    name:treeView[i].name,
+                    icon_url:treeView[i].icon_url
                 });
             }
             $scope.selectedMenuItemIndex = 0;
@@ -118,8 +120,10 @@ angular.module('app.menu', [])
                     if ($scope.menuItems[$scope.selectedMenuItemIndex].childViews.length != 0){
                         var childViews = JSON.stringify($scope.menuItems[$scope.selectedMenuItemIndex].childViews);
                         ActivityManager.go($scope.menuItems[$scope.selectedMenuItemIndex].activityId, 2, $scope.menuItems[$scope.selectedMenuItemIndex].type, childViews);
-                    }
-                    ActivityManager.go($scope.menuItems[$scope.selectedMenuItemIndex].activityId, 2, $scope.menuItems[$scope.selectedMenuItemIndex].type);
+                    }else {
+                        ActivityManager.go($scope.menuItems[$scope.selectedMenuItemIndex].activityId, 2, $scope.menuItems[$scope.selectedMenuItemIndex].type);
+                    };
+                    ResourceManager.setService($scope.menuItems[$scope.selectedMenuItemIndex].name,$scope.menuItems[$scope.selectedMenuItemIndex].icon_url);
                     activity.isMenu(false);
                     break;
                 case COMMON_KEYS.KEY_BACK:

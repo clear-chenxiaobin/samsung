@@ -71,9 +71,12 @@
     width: 1149px;
     height: 100%;
     position: relative;
+    overflow: hidden;
 }
 .type-container{
     position: absolute;
+    width: auto;
+    width: 500%;
 }
 .img-container{
     position: relative;
@@ -81,6 +84,9 @@
     width: 116px;
     height: 173.3px;
     margin-right: 20px;
+}
+.img-container:first-child{
+    margin-left: 15px;
 }
 .rotate_img{
     -webkit-transition: -webkit-transform 0.75s;

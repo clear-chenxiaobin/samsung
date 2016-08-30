@@ -61,18 +61,20 @@
     color: #FFFFFF;
     letter-spacing: 0px;
     margin-bottom: 25px;
+    height: 200px;
 }
 .food-detail-price{
     font-size: 30px;
     color: #FFFFFF;
     letter-spacing: 0px;
     width: 200px;
+    display: inline-block;
 }
 .food-btn-sub{
     border-radius: 6.66px 0px 0px 6.66px;
     width: 55px;
     height: 67px;
-    margin-left: 155px;
+    margin-left: 50px;
     margin-right: 5px;
     line-height: 67px;
     text-align: center;
@@ -116,4 +118,66 @@
 .food-btn{
     display: inline-block;
     background: #575C82;
+}
+
+
+.foodBot{
+    animation: food_bigger 0.75s forwards;
+    -moz-animation: food_bigger 0.75s forwards;	/* Firefox */
+    -webkit-animation: food_bigger 0.75s forwards;	/* Safari 和 Chrome */
+    -o-animation: food_bigger 0.75s forwards;
+}
+@keyframes food_bigger
+{
+    from {width: 55px;top: 261px;right: 3px}
+    to {width: 544px;top: 357px;right: 0px}
+}
+
+@-moz-keyframes food_bigger /* Firefox */
+{
+    from {width: 55px;top: 261px;right: 3px}
+    to {width: 544px;top: 357px;right: 0px}
+}
+
+@-webkit-keyframes food_bigger /* Safari 和 Chrome */
+{
+    from {width: 55px;top: 261px;right: 3px}
+    to {width: 544px;top: 357px;right: 0px}
+}
+
+@-o-keyframes food_bigger /* Opera */
+{
+    from {width: 55px;top: 261px;right: 3px}
+    to {width: 544px;top: 357px;right: 0px}
+}
+
+
+.foodTop{
+    animation: food_smaller 0.75s forwards;
+    -moz-animation: food_smaller 0.75s forwards;	/* Firefox */
+    -webkit-animation: food_smaller 0.75s forwards;	/* Safari 和 Chrome */
+    -o-animation: food_smaller 0.75s forwards;
+}
+@keyframes food_smaller
+{
+    from {width: 544px;top: 357px;right: 0px}
+    to {width: 55px;top: 261px;right: 3px}
+}
+
+@-moz-keyframes food_smaller /* Firefox */
+{
+    from {width: 544px;top: 357px;right: 0px}
+    to {width: 55px;top: 261px;right: 3px}
+}
+
+@-webkit-keyframes food_smaller /* Safari 和 Chrome */
+{
+    from {width: 544px;top: 357px;right: 0px}
+    to {width: 55px;top: 261px;right: 3px}
+}
+
+@-o-keyframes food_smaller /* Opera */
+{
+    from {width: 544px;top: 357px;right: 0px}
+    to {width: 55px;top: 261px;right: 3px}
 }

@@ -13,7 +13,7 @@ angular.module('app.room', [])
             if(roomNum !=''){
                 window.localStorage.room = roomNum;
                 activity.finish();
-                ActivityManager.startActivity('welcome');
+                ActivityManager.startActivity('welcome','welcome');
             }else{
                 alert('不能为空');
             }

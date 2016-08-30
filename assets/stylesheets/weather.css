@@ -21,6 +21,43 @@
     background: #FFFFFF;
     color: #000000;
 }
-.word{
+.weather-left-container{
+    width: 400px;
+    float: left;
+}
+.weather-city-list{
+    height: 480px;
+    width: 360px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.1);
+    margin-left: 29.5px;
+}
+.city-selected{
+    opacity: 0.9;
+    background: #FFFFFF;
+    color: #000000;
+}
+.city-list{
+    height: 50px;
+    line-height: 50px;
+    width: 360px;
+    text-align: center;
+    opacity: 0.9;
+    font-size: 25px;
+    color: #FFFFFF;
+    letter-spacing: 5px;
+}
+.weather-content-container{
+    height: 530px;
+    float: left;
+}
+.weather-content{
+    height: 530px;
+    width: 283px;
+    background-color: rgba(255,255,255,0.1);
+    float: left;
+}
 
+.weather-img{
+    width: 100%;
 }

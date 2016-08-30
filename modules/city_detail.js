@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.city_detail', [])
-    .controller('CityDetailController', ['$scope', 'ActivityManager', 'COMMON_KEYS','MenuService', function ($scope, ActivityManager, COMMON_KEYS,MenuService) {
+    .controller('CityDetailController', ['$scope', 'ActivityManager','ResourceManager', 'COMMON_KEYS','MenuService', function ($scope, ActivityManager,ResourceManager, COMMON_KEYS,MenuService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
         activity.loadI18NResource(function (res) {
@@ -22,6 +22,18 @@ angular.module('app.city_detail', [])
                 right: toolvarData.menu
             };
         });
+        var conUrl = ResourceManager.getConfigurations().serverUrl();
+        var childDataStr = activity.getChild();
+        var childData = JSON.parse(childDataStr);
+        var thisData = childData;
+        $scope.data = {
+            name:thisData.name,
+            intro:thisData.introduce,
+            bigImg:conUrl+thisData.picurl,
+            smallImg:conUrl+thisData.SubContent[0].picurl,
+            subName:thisData.SubContent[0].name
+        };
+
 
         activity.onKeyDown(function (keyCode) {
             switch (keyCode) {
