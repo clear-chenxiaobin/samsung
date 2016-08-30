@@ -40,6 +40,9 @@ angular.module('app.en-US', [])
             movie: {
                 title: 'Movie'
             },
+            music: {
+                title: 'Music'
+            },
             message: {
                 title: 'Message'
             },
@@ -58,7 +61,7 @@ angular.module('app.en-US', [])
                 cancel:'Cancel'
             },
             live:{
-                name:'Live'
+                title:'Live'
             }
         }
 

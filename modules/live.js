@@ -39,7 +39,7 @@ angular.module('app.live', [])
                 right: languageData.toolbar.menu
             };
             $scope.logoUrl = "assets/images/icon_logo_tv.png";
-            $scope.name = languageData.live.name;
+            $scope.name = languageData.live.title;
 
 
         })

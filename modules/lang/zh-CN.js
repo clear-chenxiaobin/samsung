@@ -40,6 +40,9 @@ angular.module('app.zh-CN', [])
             movie: {
                 title: '电影'
             },
+            music: {
+                title: 'Music'
+            },
             message: {
                 title: '留言'
             },
@@ -58,7 +61,7 @@ angular.module('app.zh-CN', [])
                 cancel:'取消订单'
             },
             live:{
-                name:'电视直播'
+                title:'电视直播'
             }
         }
     }])

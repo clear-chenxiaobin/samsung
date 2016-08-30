@@ -11,6 +11,7 @@ angular.module('app',[
     'app.room',
     'app.menu',
     'app.movie',
+    'app.music',
     'app.service',
     'app.live',
     'app.wake_up',

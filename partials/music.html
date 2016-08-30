@@ -1,7 +1,17 @@
 <div ng-controller="MusicController" class="music-content">
     <div class="currency-logo"><img ng-src="{{logoUrl}}"><span>{{name}}</span></div>
     <div class="music-item-container">
-        <>
+        <div class="music-list-container">
+            <div class="music-img"><img ng-src="{{}}"></div>
+            <ul>
+                <li ng-repeat="muesicItem in musicItems" ng-class="{'selected': selectedItemIndex==$index}">
+                    <span>{{muesicItem.name}}</span>
+                </li>
+            </ul>
+        </div>
+        <div>
+
+        </div>
     </div>
     <div class="toolbar">
         <span class="toolbar-select">
