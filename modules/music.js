@@ -55,6 +55,9 @@ angular.module('app.music', [])
                         tempIndex += 1;
                     }
                     break;
+                case COMMON_KEYS.KEY_ENTER:
+                    ActivityManager.startActivity('menu','menu');
+                    break;
                 case COMMON_KEYS.KEY_BACK:
                     activity.hide();
                     break;
