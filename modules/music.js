@@ -43,13 +43,23 @@ angular.module('app.music', [])
         }
 
         activity.onKeyDown(function (keyCode) {
-            var tempIndex = $scope.selectedIndex;
+            var tempIndex = $scope.selectedItemIndex;
             switch (keyCode) {
+                case COMMON_KEYS.KEY_UP:
+                    if (tempIndex > 0) {
+                        tempIndex -= 1;
+                    }
+                    break;
+                case COMMON_KEYS.KEY_DOWN:
+                    if (tempIndex < $scope.musicItems.length - 1) {
+                        tempIndex += 1;
+                    }
+                    break;
                 case COMMON_KEYS.KEY_BACK:
                     activity.hide();
                     break;
             }
-            $scope.selectedIndex = tempIndex;
+            $scope.selectedItemIndex = tempIndex;
         })
 
         function bindMusic() {
@@ -57,7 +67,7 @@ angular.module('app.music', [])
             for (var i = 0; i < musicData.length; i++) {
                 music.push({
                     name: musicData[i].name,
-                    pic:musicData[i].pic,
+                    pic: musicData[i].pic,
                     stream: musicData[i].stream
                 });
             }

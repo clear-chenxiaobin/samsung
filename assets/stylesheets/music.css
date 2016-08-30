@@ -9,10 +9,20 @@
     float: left;
     width: 527px;
     height: 527px;
+    overflow: hidden;
+}
+
+.music-img > img{
+    min-width: 527px;
+    min-height: 527px;
+    max-width: 800px;
+    max-height: 800px;
 }
 
 .music-list-container > ul {
     margin-left: 726px;
+    height: 527px;
+    overflow: hidden;
 }
 
 .music-list-container > ul > li.selected {

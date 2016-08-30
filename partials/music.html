@@ -2,7 +2,7 @@
     <div class="currency-logo"><img ng-src="{{logoUrl}}"><span>{{name}}</span></div>
     <div class="music-item-container">
         <div class="music-list-container">
-            <div class="music-img"><img ng-src="{{}}"></div>
+            <div class="music-img"><img ng-src="{{musicItems[selectedItemIndex].pic}}"></div>
             <ul>
                 <li ng-repeat="muesicItem in musicItems" ng-class="{'selected': selectedItemIndex==$index}">
                     <span>{{muesicItem.name}}</span>
