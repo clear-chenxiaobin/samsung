@@ -158,10 +158,10 @@ angular.module('app.movie', [])
             //movieDetail.style.backgroundImage = "";
             //var imageURL = $scope.movie[$scope.typeIndex].list[$scope.movieIndex].bgimg;
             var imageURL = img[typeID][movieID].src;
-            $scope.movieName = $scope.movie[typeID][movieID].name;
-            $scope.movieDirector = $scope.movie[typeID][movieID].director;
-            $scope.movieActor = $scope.movie[typeID][movieID].actor;
-            $scope.movieIntro = $scope.movie[typeID][movieID].intro;
+            $scope.movieName = $scope.movie[typeID].list[movieID].name;
+            $scope.movieDirector = $scope.movie[typeID].list[movieID].director;
+            $scope.movieActor = $scope.movie[typeID].list[movieID].actor;
+            $scope.movieIntro = $scope.movie[typeID].list[movieID].intro;
             //console.log(imageURL);
             var URLStr = 'url(' + imageURL + ')';
             movieDetail.style.backgroundImage = URLStr;
