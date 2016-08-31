@@ -19,7 +19,6 @@ angular.module('app.service', [])
         var activityID = activity.getID();
         var childDataStr = activity.getChild();
         var childData = JSON.parse(childDataStr);
-        console.log(childData);
         var data = ResourceManager.getService();
         $scope.serviceName = data.name;
         $scope.iconUrl = data.icon;
