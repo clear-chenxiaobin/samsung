@@ -72,7 +72,7 @@ angular.module('app.menu', [])
                     return 'movie';
                     break;
                 case 'Music':
-                    return 'music';
+                    return 'Music';
                     break;
                 case 'Service':
                     return 'service';
