@@ -1,0 +1,34 @@
+<div ng-controller="MusicController" class="music-content">
+    <div class="currency-logo"><img ng-src="{{logoUrl}}"><span>{{name}}</span></div>
+    <div class="music-item-container">
+        <div class="music-list-container">
+            <div class="music-img"><img ng-src="{{musicItems[selectedItemIndex].pic}}"></div>
+            <ul>
+                <li ng-repeat="muesicItem in musicItems" ng-class="{'selected': selectedItemIndex==$index}">
+                    <span>{{muesicItem.name}}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="music-player">
+            <div class="music-content">
+                <div class="music-content-bg">
+                    <img ng-src="{{musicItems[selectedItemIndex].pic}}">
+                </div>
+                <span>{{musicItems[selectedItemIndex].name}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="toolbar">
+        <span class="toolbar-select">
+            {{left}}<i class="tip_img toolbar-img"><img ng-src="{{select.icon}}" height="34.7px"> </i>{{select.right}}
+        </span>
+        <span>|</span>
+        <span class="toolbar-ok">
+            {{left}}<i class="tip_img toolbar-img"><img src="{{ok.icon}}" height="34.7px"> </i>{{ok.right}}
+        </span>
+        <span>|</span>
+        <span class="toolbar-back">
+            {{left}}<i class="tip_img toolbar-img"><img src="{{menu.icon}}" height="34.7px"> </i>{{menu.right}}
+        </span>
+    </div>
+</div>
