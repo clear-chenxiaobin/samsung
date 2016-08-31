@@ -8,6 +8,7 @@
     height: 58.15%;
     background-size: cover;
     transition: transform 1.75s;
+    background-repeat: no-repeat;
 }
 .bgAdd{
     animation: add 1.75s forwards;
@@ -229,6 +230,37 @@
         left: -14.33px;
         margin-right: -9px;
     }
+}
+
+
+.videoContro {
+    position: absolute;
+    bottom: 100px;
+    width: 1000px;
+    left: 50%;
+    margin-left: -500px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+#playProgress {
+    width: 800px;
+    height: 10px;
+    float: left;
+    position: absolute;
+    left: 50%;
+    margin-left: -400px;
+    margin-top: 5px;
+}
+
+#playtime {
+    height: 5px;
+    background-color: white;
+    display: block;
+    margin-top: 3px;
+}
+#endTime {
+    float: right;
 }
 
 

@@ -11,7 +11,7 @@ angular.module('app.movie', [])
             }
         }
     }])
-    .controller('MovieController', ['$scope', '$http','ResourceManager', 'ActivityManager', 'COMMON_KEYS','MovieService', function ($scope, $http,ResourceManager, ActivityManager, COMMON_KEYS,MovieService) {
+    .controller('MovieController', ['$scope', '$http','ResourceManager', 'ActivityManager', 'COMMON_KEYS','MovieService','MenuService', function ($scope, $http,ResourceManager, ActivityManager, COMMON_KEYS,MovieService,MenuService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
         activity.isMenu(true);
@@ -19,14 +19,31 @@ angular.module('app.movie', [])
         var lang = i18nText.lang;
         var conUrl = ResourceManager.getConfigurations().serverUrl();
         activity.loadI18NResource(function () {
-        var i18nText = ResourceManager.getLocale();
+            var i18nText = ResourceManager.getLocale();
             //$scope.guestNameText = i18nText.index.guestName;
             //$scope.welcomeText = i18nText.welcome.welcome_text;
             //$scope.guestName = i18nText.welcome.name;
             //$scope.roomNumber = i18nText.index.roomNumber + window.localStorage.room;
             //$scope.press1 = i18nText.welcome.press1;
             //$scope.press2 = i18nText.welcome.press2;
+            var toolvarData = MenuService.getLanguage().toolbar;
+            $scope.select = {
+                left: toolvarData.left,
+                icon: 'assets/images/icon_toolbar_select.png',
+                right: toolvarData.selsct
+            };
+            $scope.ok = {
+                left: toolvarData.left,
+                icon: 'assets/images/icon_toolbar_ok.png',
+                right: toolvarData.ok
+            };
+            $scope.menu = {
+                left: toolvarData.left,
+                icon: 'assets/images/icon_toolbar_menu.png',
+                right: toolvarData.menu
+            };
         });
+
         $scope.movieFinish = function(){
             ActivityManager.getActiveActivity().rotateDown(-1);
             ActivityManager.getActiveActivity().rotateUp(0);
@@ -70,8 +87,7 @@ angular.module('app.movie', [])
                                 name: value.NameEng,
                                 img: conUrl+value.Picurl,
                                 bgimg: conUrl+value.Picurl_bk,
-                                url:conUrl+value.Address,
-                                test:'123'+idx
+                                url:conUrl+value.Address
                             };
                             type.list.push(movie);
                         })
@@ -210,13 +226,10 @@ angular.module('app.movie', [])
             if (contentHide) {
                 $(".movie-content").show();
                 contentHide = false;
+            }else{
+                $(".movie-content").hide();
+                contentHide = true;
             }
-            setTimeout(function(){
-                if (!contentHide) {
-                    $(".movie-content").hide();
-                    contentHide = true;
-                }
-            }, 2000);
         }
 
         activity.onKeyDown(function (keyCode) {
@@ -226,8 +239,16 @@ angular.module('app.movie', [])
                        break;
                     case COMMON_KEYS.KEY_DOWN:
                         break;
+                    case COMMON_KEYS.KEY_LEFT:
+                        MovieService.jumpLeft();
+                        MenuService.blkjumpLeft();
+                        break;
+                    case COMMON_KEYS.KEY_RIGHT:
+                        MovieService.jumpRight();
+                        MenuService.blkjumpRight();
+                        break;
                     case COMMON_KEYS.KEY_ENTER:
-                        contentShow();
+                        MovieService.pausePlay();
                         break;
                     case COMMON_KEYS.KEY_BACK:
                         MovieService.stopPlay();
@@ -471,7 +492,7 @@ angular.module('app.movie', [])
         setTimeout(function () {
             stopFlag = false
         }, 50);
-    }
+    };
 
     /*
      *向左拖动
@@ -502,7 +523,7 @@ angular.module('app.movie', [])
         setTimeout(function () {
             stopFlag = false
         }, 50);
-    }
+    };
 
     this.blkjumpRight = function () {
         //debugConsole.log('blkjumpRight');
@@ -514,7 +535,7 @@ angular.module('app.movie', [])
         setTimeout(function () {
             FastFlog = false;
         }, 3500);
-    }
+    };
 
     this.blkjumpLeft = function () {
         var timeLength = Math.abs(parseInt(blktime * totalTime - current_Time)) / 1000;
