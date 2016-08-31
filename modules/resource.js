@@ -1,12 +1,12 @@
 /**
-* Created by 83471 on 2016/8/2.
-*/
+ * Created by 83471 on 2016/8/2.
+ */
 'use strict';
 
 angular.module('app.resource', [])
-    .service('ResourceManager', ['$rootScope','$http', 'SERVER_URL', 'MESSAGE_URL', 'en-US-String','zh-CN-String','TIMEZONE', function ($rootScope, $http,SERVER_URL, MESSAGE_URL, en_US_String,zh_CN_String,TIMEZONE) {
+    .service('ResourceManager', ['$rootScope', '$http', 'SERVER_URL', 'MESSAGE_URL', 'en-US-String', 'zh-CN-String', 'TIMEZONE', function ($rootScope, $http, SERVER_URL, MESSAGE_URL, en_US_String, zh_CN_String, TIMEZONE) {
 
-        var locale         = 'zh-CN',
+        var locale = 'zh-CN',
             i18nResource,
             configurations,
             welcomeData,
@@ -22,16 +22,16 @@ angular.module('app.resource', [])
             i18nResource = {};
             i18nResource['zh-CN'] = {};
             i18nResource['en-US'] = {};
-            i18nResource['zh-CN'].language           = 'zh-CN';
-            i18nResource['en-US'].language           = 'en-US';
-            i18nResource['zh-CN'].guest_name         = mainJSON.guest_name;
-            i18nResource['en-US'].guest_name         = mainJSON.guest_name_eng;
-            i18nResource['zh-CN'].welcome_text       = mainJSON.welcome_text;
-            i18nResource['en-US'].welcome_text       = mainJSON.welcome_text_eng;
+            i18nResource['zh-CN'].language = 'zh-CN';
+            i18nResource['en-US'].language = 'en-US';
+            i18nResource['zh-CN'].guest_name = mainJSON.guest_name;
+            i18nResource['en-US'].guest_name = mainJSON.guest_name_eng;
+            i18nResource['zh-CN'].welcome_text = mainJSON.welcome_text;
+            i18nResource['en-US'].welcome_text = mainJSON.welcome_text_eng;
 
             configurations = {};
-            configurations.logoUrl                   = SERVER_URL + mainJSON.logo;
-            configurations.welcomeBgImageUrl         = SERVER_URL + mainJSON.background_video_url;
+            configurations.logoUrl = SERVER_URL + mainJSON.logo;
+            configurations.welcomeBgImageUrl = SERVER_URL + mainJSON.background_video_url;
 
             var viewTree = [], viewTreeIndex = 0, subViewTreeIndex = 0;
             menuJSON.Content.forEach(function (el, idx, arr) {
@@ -59,8 +59,8 @@ angular.module('app.resource', [])
                     type: el.Type,
                     pic: SERVER_URL + el.Icon_URL,
                     config: SERVER_URL + el.Json_URL,
-                    name:el.Name,
-                    icon_url:SERVER_URL+el.Icon_focus_URL
+                    name: el.Name,
+                    icon_url: SERVER_URL + el.Icon_focus_URL
                 });
                 viewTreeIndex++;
                 i18nResource['zh-CN'][nameKey] = el.Name;
@@ -71,9 +71,9 @@ angular.module('app.resource', [])
 
         this.setLocale = function (_locale) {
             locale = _locale;
-            if(locale=="zh-CN"){
+            if (locale == "zh-CN") {
                 langString = zh_CN_String;
-            }else{
+            } else {
                 langString = en_US_String;
             }
             $rootScope.$broadcast('locale.change', _locale);
@@ -106,8 +106,8 @@ angular.module('app.resource', [])
 
         this.setPicTextDetail = function (title, detail) {
             picTextDetail = {
-                title : title,
-                detail : detail
+                title: title,
+                detail: detail
             };
         }
 
@@ -115,58 +115,58 @@ angular.module('app.resource', [])
             return picTextDetail;
         }
 
-        this.setCity = function(city){
+        this.setCity = function (city) {
             cityIndex = {
-                cityName:city
+                cityName: city
             };
         }
 
-        this.getCity = function(){
+        this.getCity = function () {
             return cityIndex;
         }
 
-        this.setMeal = function(id){
+        this.setMeal = function (id) {
             meal = {
-                id:id
+                id: id
             };
         }
 
-        this.getMeal = function(){
+        this.getMeal = function () {
             return meal;
         }
 
-        this.addToCart = function(id,f,n,p){
+        this.addToCart = function (id, f, n, p) {
             cart[id] = {
-                name : f ,
-                num : n ,
-                price : p
+                name: f,
+                num: n,
+                price: p
             }
         }
 
-        this.getCart = function(){
+        this.getCart = function () {
             return cart;
         }
 
-        this.resetCart = function(){
+        this.resetCart = function () {
             cart = [];
         };
 
-        this.setService = function(name,icon){
+        this.setService = function (name, icon) {
             service = {
-                name:name,
-                icon:icon
+                name: name,
+                icon: icon
             }
         };
-        this.getService = function(){
+        this.getService = function () {
             return service;
         };
 
-        this.getTime = function(){
-            return $http.get(SERVER_URL+"/date.json").success(function(data){
-                time = new Date(data.date+(TIMEZONE*3600000));
+        this.getTime = function () {
+            return $http.get(SERVER_URL + "/date.json").success(function (data) {
+                time = new Date(data.date + (TIMEZONE * 3600000));
             });
         };
-        this.timeReturn = function(){
+        this.timeReturn = function () {
             return time;
         };
 
@@ -190,10 +190,10 @@ angular.module('app.resource', [])
                 viewTree: function () {
                     return configurations.viewTree;
                 },
-                billUrl: function() {
+                billUrl: function () {
                     return SERVER_URL + '/billing.json';
                 },
-                messageUrl: function() {
+                messageUrl: function () {
                     return MESSAGE_URL;
                 }
             };
@@ -202,5 +202,5 @@ angular.module('app.resource', [])
     }])
     .constant('SERVER_URL', 'http://192.168.30.75/nativevod/now')
     .constant('MESSAGE_URL', 'http://192.168.17.101:8000/backend/GetMessage')
-    .constant('TIMEZONE',8);
+    .constant('TIMEZONE', 8);
 

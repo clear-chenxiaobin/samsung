@@ -41,7 +41,7 @@ angular.module('app.zh-CN', [])
                 title: '电影'
             },
             music: {
-                title: 'Music'
+                title: '音乐'
             },
             message: {
                 title: '留言'

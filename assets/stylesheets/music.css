@@ -49,7 +49,7 @@
     float: left;
     left: 50%;
     margin-left: -215px;
-    position: relative;
+    position: absolute;
 }
 
 .music-player > .music-content > .music-content-bg {
@@ -64,8 +64,8 @@
     height: 381px;
     border-radius: 50%;
     margin: 25px;
-    -webkit-transform:translate3d(0,0,0);
-    -webkit-animation:play 20s linear infinite;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-animation: play 30s linear infinite;
 }
 
 .music-player > .music-content > span {
@@ -76,12 +76,26 @@
     margin-top: 37px;
 }
 
-@-webkit-keyframes play{
-    0%  {
+.music-previous {
+    float: left;
+    position: relative;
+    left: 172px;
+    top: 165px;
+}
+
+.music-next {
+    float: right;
+    position: relative;
+    right: 172px;
+    top: 165px;
+}
+
+@-webkit-keyframes play {
+    0% {
         /*
         顺时针旋转
         */
-        -webkit-transform:rotate(0deg);
+        -webkit-transform: rotate(0deg);
         /*
         逆时针旋转
         */
@@ -89,7 +103,7 @@
     }
     100% {
         /*顺时针旋转*/
-        -webkit-transform:rotate(360deg);
+        -webkit-transform: rotate(360deg);
         /*逆时针旋转*/
         /*-webkit-transform:rotate(-360deg);*/
     }

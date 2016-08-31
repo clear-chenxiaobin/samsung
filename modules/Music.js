@@ -28,7 +28,7 @@ angular.module('app.music', [])
                 icon: 'assets/images/icon_toolbar_menu.png',
                 right: languageData.toolbar.menu
             };
-            $scope.logoUrl = "assets/images/icon_logo_tv.png";
+            $scope.logoUrl = MusicService.getLogoUrl();
             $scope.name = languageData.music.title;
         })
 
@@ -81,7 +81,7 @@ angular.module('app.music', [])
                     initPlayer();
                     break;
                 case COMMON_KEYS.KEY_BACK:
-                    activity.hide();
+                    activity.finish();
                     break;
             }
             $scope.selectedItemIndex = tempIndex;
@@ -121,6 +121,17 @@ angular.module('app.music', [])
 
         this.getLanguage = function () {
             return ResourceManager.getLocale();
+        }
+
+        this.getLogoUrl = function () {
+            var treeView = ResourceManager.getConfigurations().viewTree();
+            var logoUrl;
+            for (var i = 0; i < treeView.length; i++) {
+                if (treeView[i].type == 'Music') {
+                    logoUrl = treeView[i].icon_url;
+                }
+            }
+            return logoUrl;
         }
 
         this.initialize = function () {
