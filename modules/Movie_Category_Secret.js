@@ -85,6 +85,9 @@ angular.module('app.movie', [])
                         val.Second.forEach(function (value, index, array) {
                             movie = {
                                 name: value.NameEng,
+                                director:value.DirectorEng,
+                                actor:value.ActorEng,
+                                intro:value.IntroduceEng,
                                 img: conUrl+value.Picurl,
                                 bgimg: conUrl+value.Picurl_bk,
                                 url:conUrl+value.Address
@@ -100,10 +103,12 @@ angular.module('app.movie', [])
                         val.Second.forEach(function (value, index, array) {
                             movie = {
                                 name: value.Name,
+                                director:value.Director,
+                                actor:value.Actor,
+                                intro:value.Introduce,
                                 img: conUrl+value.Picurl,
                                 bgimg: conUrl+value.Picurl_bk,
-                                url:conUrl+value.Address,
-                                test:'123'+idx
+                                url:conUrl+value.Address
                             };
                             type.list.push(movie);
                         });
@@ -241,11 +246,11 @@ angular.module('app.movie', [])
                         break;
                     case COMMON_KEYS.KEY_LEFT:
                         MovieService.jumpLeft();
-                        MenuService.blkjumpLeft();
+                        MovieService.blkjumpLeft();
                         break;
                     case COMMON_KEYS.KEY_RIGHT:
                         MovieService.jumpRight();
-                        MenuService.blkjumpRight();
+                        MovieService.blkjumpRight();
                         break;
                     case COMMON_KEYS.KEY_ENTER:
                         MovieService.pausePlay();

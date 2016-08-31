@@ -234,6 +234,7 @@
 
 
 .videoContro {
+    display: inline-block;
     position: absolute;
     bottom: 100px;
     width: 1000px;
@@ -241,6 +242,9 @@
     margin-left: -500px;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
+    border-radius: 5px;
+    height: 20px;
+    line-height: 20px;
 }
 
 #playProgress {
@@ -257,10 +261,14 @@
     height: 5px;
     background-color: white;
     display: block;
-    margin-top: 3px;
+    margin-top: 2.5px;
+}
+#startTime{
+    margin-left: 10px;
 }
 #endTime {
     float: right;
+    margin-right: 10px;
 }
 
 
