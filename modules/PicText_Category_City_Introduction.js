@@ -36,19 +36,6 @@ angular.module('app.city_list', [])
         });
         $scope.selectedIndex = 0;
 
-        //$scope.city = [
-        //    {index: 0, name: '东方明珠电视塔', activityId: 'wake_up'},
-        //    {index: 1, name: '上海环球金融中心', activityId: 'wash'},
-        //    {index: 2, name: '外滩', activityId: 'package'},
-        //    {index: 3, name: '豫园', activityId: 'car'},
-        //    {index: 4, name: '人民广场', activityId: 'pick_up'},
-        //    {index: 5, name: '南京路步行街', activityId: 'meeting'},
-        //    {index: 6, name: '南京路步行街', activityId: 'meeting'},
-        //    {index: 7, name: '南京路步行街', activityId: 'meeting'},
-        //    {index: 8, name: '南京路步行街', activityId: 'meeting'},
-        //    {index: 9, name: '南京路步行街', activityId: 'meeting'},
-        //    {index: 10, name: '南京路步行街', activityId: 'meeting'},
-        //];
 
         activity.onKeyDown(function (keyCode) {
             switch (keyCode) {

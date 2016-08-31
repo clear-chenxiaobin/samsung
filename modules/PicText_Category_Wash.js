@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.wash', [])
-    .controller('WashController', ['$scope', 'ResourceManager', 'ActivityManager', 'COMMON_KEYS','BtnService', function ($scope, ResourceManager, ActivityManager, COMMON_KEYS,BtnService) {
+    .controller('WashController', ['$scope', 'ResourceManager', 'ActivityManager', 'COMMON_KEYS','BtnService','MenuService', function ($scope, ResourceManager, ActivityManager, COMMON_KEYS,BtnService,MenuService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
         var type = activity.getID();
@@ -9,6 +9,24 @@ angular.module('app.wash', [])
         var childData = JSON.parse(childDataStr);
         var thisData = childData.Content[0];
         var conUrl = ResourceManager.getConfigurations().serverUrl();
+        activity.loadI18NResource(function (res) {
+            var toolvarData = MenuService.getLanguage().toolbar;
+            $scope.select = {
+                left: toolvarData.left,
+                icon: 'assets/images/icon_toolbar_select.png',
+                right: toolvarData.selsct
+            };
+            $scope.ok = {
+                left: toolvarData.left,
+                icon: 'assets/images/icon_toolbar_ok.png',
+                right: toolvarData.ok
+            };
+            $scope.menu = {
+                left: toolvarData.left,
+                icon: 'assets/images/icon_toolbar_menu.png',
+                right: toolvarData.menu
+            };
+        });
         $scope.now = true;
         $scope.selected = false;
         $scope.onSubmit = true;
@@ -45,7 +63,7 @@ angular.module('app.wash', [])
                     activity.addClass(border,'moveUp');
                     break;
                 case 5:
-                    activity.removeClass(border,'moveUp');
+                    activity.removeClass(border,'moveDown');
                     activity.addClass(border,'submitAgain');
                     break;
             }
@@ -297,9 +315,7 @@ angular.module('app.wash', [])
                             setWashTime();
                             $scope.selected = true;
                             $scope.onSubmit = true;
-                            setTimeout(function () {
-                                borderAnimate(5);
-                            }, 1000);
+                            borderAnimate(5);
                         } else {
                             BtnService.clickBtn('other-time-btn');
                             setWashTime();
