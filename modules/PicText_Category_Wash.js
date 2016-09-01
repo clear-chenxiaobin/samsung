@@ -30,12 +30,12 @@ angular.module('app.wash', [])
             };
         });
 
-        $scope.$watch('$viewContentLoaded', function() {
-            ActivityManager.hideLoading();
-        });
-        //if(document.readyState=="complete"){
+        //$scope.$watch('$viewContentLoaded', function() {
         //    ActivityManager.hideLoading();
-        //}
+        //});
+        if(document.readyState=="complete"){
+            ActivityManager.hideLoading(500);
+        }
         $scope.now = true;
         $scope.selected = false;
         $scope.onSubmit = true;

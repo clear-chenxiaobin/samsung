@@ -22,9 +22,12 @@ angular.module('app.welcome', [])
             $scope.logo = ResourceManager.getConfigurations().logoUrl();
             $scope.poster = ResourceManager.getConfigurations().welcomeBgImageUrl();
         });
-        $scope.$watch('$viewContentLoaded', function() {
-            ActivityManager.hideLoading();
-        });
+        //$scope.$watch('$viewContentLoaded', function() {
+        //    ActivityManager.hideLoading();
+        //});
+        if(document.readyState=="complete"){
+            ActivityManager.hideLoading(500);
+        }
         var languages = ['zh-CN', 'en-US'],
             languageIndex = 0;
 

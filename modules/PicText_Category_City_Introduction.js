@@ -30,12 +30,12 @@ angular.module('app.city_list', [])
             };
         });
 
-        $scope.$watch('$viewContentLoaded', function() {
-            ActivityManager.hideLoading();
-        });
-        //if(document.readyState=="complete"){
+        //$scope.$watch('$viewContentLoaded', function() {
         //    ActivityManager.hideLoading();
-        //}
+        //});
+        if(document.readyState=="complete"){
+            ActivityManager.hideLoading(500);
+        }
 
 
         $scope.city = [];

@@ -43,12 +43,12 @@ angular.module('app.menu', [])
                 ActivityManager.getActiveActivity().animate(0, 'menu-item-list', 'menu-animation');
             }
         });
-        $scope.$watch('$viewContentLoaded', function() {
-            ActivityManager.hideLoading();
-        });
-        //if(document.readyState=="complete"){
+        //$scope.$watch('$viewContentLoaded', function() {
         //    ActivityManager.hideLoading();
-        //}
+        //});
+        if(document.readyState=="complete"){
+            ActivityManager.hideLoading(500);
+        }
 
 
         function menuBind() {

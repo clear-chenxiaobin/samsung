@@ -10,12 +10,12 @@ angular.module('app.music', [])
             musicData,
             listHide = false;
 
-        $scope.$watch('$viewContentLoaded', function() {
-            ActivityManager.hideLoading();
-        });
-        //if(document.readyState=="complete"){
+        //$scope.$watch('$viewContentLoaded', function() {
         //    ActivityManager.hideLoading();
-        //}
+        //});
+        if(document.readyState=="complete"){
+            ActivityManager.hideLoading(500);
+        }
 
 
         activity.loadI18NResource(function (res) {

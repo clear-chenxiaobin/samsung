@@ -42,12 +42,12 @@ angular.module('app.movie', [])
             $scope.name = data.name;
         });
 
-        $scope.$watch('$viewContentLoaded', function() {
-            ActivityManager.hideLoading();
-        });
-        //if(document.readyState=="complete"){
+        //$scope.$watch('$viewContentLoaded', function() {
         //    ActivityManager.hideLoading();
-        //}
+        //});
+        if(document.readyState=="complete"){
+            ActivityManager.hideLoading(500);
+        }
 
         $scope.movieFinish = function () {
             ActivityManager.getActiveActivity().rotateDown(-1);
