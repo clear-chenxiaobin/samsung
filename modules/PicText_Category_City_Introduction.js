@@ -29,6 +29,15 @@ angular.module('app.city_list', [])
                 right: toolvarData.menu
             };
         });
+
+        //$scope.$watch('$viewContentLoaded', function() {
+        //    ActivityManager.hideLoading();
+        //});
+        if(document.readyState=="complete"){
+            ActivityManager.hideLoading();
+        }
+
+
         $scope.city = [];
         var childDataStr = activity.getChild();
         var childData = JSON.parse(childDataStr);
@@ -59,6 +68,7 @@ angular.module('app.city_list', [])
                     break;
                 case COMMON_KEYS.KEY_ENTER:
                     //ActivityManager.go($scope.services[$scope.selectedIndex].activityId, 4);
+                    ActivityManager.showLoading();
                     var dataStr = JSON.stringify(thisData[$scope.selectedIndex]);
                     ActivityManager.go($scope.city[$scope.selectedIndex].acticityId, 4 ,'city_detail',dataStr);
                     break;

@@ -24,6 +24,15 @@ angular.module('app.wake_up', [])
                 right: toolvarData.menu
             };
         });
+
+        //$scope.$watch('$viewContentLoaded', function() {
+        //    ActivityManager.hideLoading();
+        //});
+        if(document.readyState=="complete"){
+            ActivityManager.hideLoading();
+        }
+
+
         $scope.selected = false;
         $scope.onSubmit = true;
         $scope.time = false;

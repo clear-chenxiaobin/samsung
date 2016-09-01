@@ -40,6 +40,15 @@ angular.module('app.service', [])
                 right: toolvarData.menu
             };
         });
+
+        //$scope.$watch('$viewContentLoaded', function() {
+        //    ActivityManager.hideLoading();
+        //});
+        if(document.readyState=="complete"){
+            ActivityManager.hideLoading();
+        }
+
+
         $scope.serviceFinish = function(){
             chose(0);
         };
@@ -114,6 +123,7 @@ angular.module('app.service', [])
                     ActivityManager.startActivity('menu');
                     break;
                 case COMMON_KEYS.KEY_ENTER:
+                    ActivityManager.showLoading();
                     ResourceManager.setMeal($scope.services[$scope.selectedIndex].name);
                     $http.get($scope.services[$scope.selectedIndex].config).success(function (data) {
                         var dataStr = JSON.stringify(data);
