@@ -46,7 +46,7 @@ angular.module('app.movie', [])
         //    ActivityManager.hideLoading();
         //});
         if(document.readyState=="complete"){
-            ActivityManager.hideLoading(500);
+            ActivityManager.hideLoading(800);
         }
 
         $scope.movieFinish = function () {

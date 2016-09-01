@@ -39,6 +39,7 @@ angular.module('app',[
                     ActivityManager.hideLoading(500);
                     ActivityManager.startActivity('room','room');
                 }else {
+                    ActivityManager.hideLoading(1000);
                     ActivityManager.startActivity('welcome','welcome');
                 }
             });

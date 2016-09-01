@@ -25,9 +25,9 @@ angular.module('app.welcome', [])
         //$scope.$watch('$viewContentLoaded', function() {
         //    ActivityManager.hideLoading();
         //});
-        if(document.readyState=="complete"){
-            ActivityManager.hideLoading(500);
-        }
+        //if(document.readyState=="complete"){
+        //    ActivityManager.hideLoading(500);
+        //}
         var languages = ['zh-CN', 'en-US'],
             languageIndex = 0;
 
