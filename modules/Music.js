@@ -13,7 +13,7 @@ angular.module('app.music', [])
         //$scope.$watch('$viewContentLoaded', function() {
         //    ActivityManager.hideLoading();
         //});
-        if(document.readyState=="complete"){
+        if (document.readyState == "complete") {
             ActivityManager.hideLoading(500);
         }
 
@@ -107,6 +107,11 @@ angular.module('app.music', [])
                     activity.finish();
                     break;
             }
+            if (tempIndex > 8) {
+                $scope.listStyleTop = (8 - tempIndex) * 55;
+            } else {
+                $scope.listStyleTop = 0
+            }
             $scope.selectedItemIndex = tempIndex;
         })
 
@@ -139,9 +144,9 @@ angular.module('app.music', [])
         //切歌
         function cutMusic(tempIndex) {
             //重新渲染
-            $timeout(function(){
+            $timeout(function () {
                 $scope.musicItems = music;
-            },0);
+            }, 0);
             $scope.playIndex = tempIndex;
             stream = musicData[tempIndex].stream;
             MusicService.changeMusic(stream);
