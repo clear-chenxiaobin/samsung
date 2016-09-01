@@ -27,7 +27,6 @@
 
 .music-list-container > ul > li.selected {
     font-size: 36px;
-    opacity: 1;
 }
 
 .music-list-container > ul > li {
@@ -36,16 +35,19 @@
     margin: 10px 0;
     color: white;
     font-size: 28px;
-    opacity: 0.69;
 }
 
-.music-list-container > ul > li.selected > span {
-    left: 49px;
+
+.music-list-container > ul > li.selected > .music-name {
+    opacity: 1;
 }
 
-.music-list-container > ul > li > span {
+.music-list-container > ul > li > .music-name {
     position: relative;
     left: 66px;
+    float: left;
+    width: 263px;
+    opacity: 0.69;
 }
 
 .music-pause.selected {
@@ -56,8 +58,18 @@
     height: 30px;
     top: 6px;
     position: relative;
-    display: none;
     float: left;
+}
+
+.music-pause img.selected {
+    display: flex;
+    float: left;
+    position: absolute;
+}
+
+.music-pause img {
+    height: 30px;
+    display: none;
 }
 
 .music-player {

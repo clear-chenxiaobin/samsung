@@ -5,8 +5,8 @@
             <div class="music-img"><img ng-src="{{musicItems[selectedItemIndex].pic}}"></div>
             <ul>
                 <li ng-repeat="muesicItem in musicItems" ng-class="{'selected': selectedItemIndex==$index}">
-                    <img src="assets/images/icon_pause.png" class="music-pause" ng-class="{'selected': playIndex==$index}">
-                    <span>{{muesicItem.name}}</span>
+                    <div class="music-pause"><img src="assets/images/icon_pause.png" ng-class="{'selected': playIndex==$index}"></div>
+                    <div class="music-name">{{muesicItem.name}}</div>
                 </li>
             </ul>
         </div>
