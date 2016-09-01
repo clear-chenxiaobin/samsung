@@ -16,11 +16,11 @@
                 <div class="food-content-right">
                     <p class="food-detail-title">{{food.name}}</p>
                     <p class="food-detail-intro">{{food.introduce}}</p>
-                    <span class="food-detail-price">${{food.price}}</span>
+                    <span class="food-detail-price">{{money}}{{food.price}}</span>
                     <span class="food-btn food-btn-sub">-</span>
                     <span class="food-btn food-btn-number">{{pieces}}</span>
                     <span class="food-btn food-btn-add">+</span>
-                    <div class="food-btn food-btn-submit">加入订单</div>
+                    <div class="food-btn food-btn-submit">{{addText}}</div>
                     <div class="btn_border" ng-hide="LEVEL==1" id="food_border" style="height: 64px;width: 55px;right: 3px;top:261px;"></div>
                 </div>
             </div>

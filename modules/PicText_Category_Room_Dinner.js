@@ -4,8 +4,6 @@ angular.module('app.food', [])
     .controller('FoodController', ['$scope', 'ActivityManager','ResourceManager', 'COMMON_KEYS','MenuService','$http','BtnService', function ($scope, ActivityManager,ResourceManager, COMMON_KEYS,MenuService,$http,BtnService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
-        var ID = activity.getID();
-        console.log(ID);
         var data = ResourceManager.getService();
         $scope.serviceName = data.name;
         $scope.iconUrl = data.icon;
@@ -55,7 +53,9 @@ angular.module('app.food', [])
                                 img:conUrl+val.picurl,
                                 price:val.category_dollor,
                                 id:val.id
-                            }
+                            };
+                            $scope.money = '$';
+                            $scope.addText = 'Add Order';
                         }else{
                             meal = {
                                 name: val.name,
@@ -63,7 +63,9 @@ angular.module('app.food', [])
                                 img:conUrl+val.picurl,
                                 price:val.category_yuan,
                                 id:val.id
-                            }
+                            };
+                            $scope.money = '￥';
+                            $scope.addText = '加入订单';
                         }
                     $scope.foods.push(meal);
                 });

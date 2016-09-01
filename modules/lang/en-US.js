@@ -38,7 +38,9 @@ angular.module('app.en-US', [])
                 title: 'City Guide'
             },
             movie: {
-                title: 'Movie'
+                title: 'Movie',
+                dire:'Director',
+                act:'Actors'
             },
             music: {
                 title: 'Music'

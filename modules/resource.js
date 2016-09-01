@@ -44,7 +44,8 @@ angular.module('app.resource', [])
                             nameEng: el2.NameEng,
                             type: el2.Type,
                             pic: SERVER_URL + el2.Icon_URL,
-                            config: SERVER_URL + el2.Json_URL
+                            config: SERVER_URL + el2.Json_URL,
+                            name:el2.Name
                         });
                         i18nResource['zh-CN'][nameKey] = el2.Name;
                         i18nResource['en-US'][nameKey] = el2.NameEng;

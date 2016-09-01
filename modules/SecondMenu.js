@@ -64,38 +64,27 @@ angular.module('app.service', [])
 
             childData.forEach(function (val, idx, arr) {
                 var service = {};
-                service = {
-                    index:idx,
-                    pic:val.pic,
-                    type:val.type,
-                    activityId:val.nameEng,
-                    config:val.config
-                };
-                //if (lang == "en-US") {
-                //    service = {
-                //        index: idx,
-                //        name: val.NameEng,
-                //        pic: val.Icon_URL_abs_path,
-                //        activityId: val.NameEng
-                //    }
-                //} else {
-                //    service = {
-                //        index: idx,
-                //        name: val.Name,
-                //        pic: val.Icon_URL_abs_path,
-                //        activityId: val.NameEng
-                //    }
-                //}
+                if(lang == "en-US") {
+                    service = {
+                        index: idx,
+                        pic: val.pic,
+                        type: val.type,
+                        activityId: val.nameEng,
+                        config: val.config,
+                        name:val.nameEng
+                    };
+                }else{
+                    service = {
+                        index: idx,
+                        pic: val.pic,
+                        type: val.type,
+                        activityId: val.nameEng,
+                        config: val.config,
+                        name:val.name
+                    };
+                }
                 $scope.services.push(service);
             });
-        //$scope.services = [
-        //    {index: 0, name: '叫醒', pic: 'assets/images/service1.png', activityId: 'wake_up'},
-        //    {index: 1, name: '洗衣', pic: 'assets/images/service2.png', activityId: 'wash'},
-        //    {index: 2, name: '行李寄存', pic: 'assets/images/service3.png', activityId: 'package'},
-        //    {index: 3, name: '租车', pic: 'assets/images/service4.png', activityId: 'car'},
-        //    {index: 4, name: '接机', pic: 'assets/images/service5.png', activityId: 'pick_up'},
-        //    {index: 5, name: '会议室', pic: 'assets/images/service6.png', activityId: 'meeting'},
-        //];
 
         function chose(index){
             var target = document.getElementsByClassName('service_item');
@@ -125,6 +114,7 @@ angular.module('app.service', [])
                     ActivityManager.startActivity('menu');
                     break;
                 case COMMON_KEYS.KEY_ENTER:
+                    ResourceManager.setMeal($scope.services[$scope.selectedIndex].name);
                     $http.get($scope.services[$scope.selectedIndex].config).success(function (data) {
                         var dataStr = JSON.stringify(data);
                         ActivityManager.go($scope.services[$scope.selectedIndex].activityId, 3 ,$scope.services[$scope.selectedIndex].type,dataStr);
@@ -147,4 +137,16 @@ angular.module('app.service', [])
                     break;
             }
         });
-    }]);
+    }])
+    //.service('SecondMenuService', ['$q', '$http', 'ResourceManager', function ($q, $http, ResourceManager){
+    //    this.getLogoUrl = function () {
+    //        var treeView = ResourceManager.getConfigurations().viewTree();
+    //        var logoUrl;
+    //        for (var i = 0; i < treeView.length; i++) {
+    //            if (treeView[i].type == 'Movie_Category_Secret') {
+    //                logoUrl = treeView[i].icon_url;
+    //            }
+    //        }
+    //        return logoUrl;
+    //    };
+    //}]);

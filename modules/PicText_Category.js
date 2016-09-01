@@ -4,6 +4,8 @@ angular.module('app.wake_up', [])
     .controller('WakeUpController', ['$scope', 'ResourceManager', 'ActivityManager', 'COMMON_KEYS','BtnService','MenuService', function ($scope, ResourceManager, ActivityManager, COMMON_KEYS,BtnService,MenuService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
+        var i18nText = ResourceManager.getLocale();
+        var lang = i18nText.lang;
         activity.loadI18NResource(function (res) {
             var toolvarData = MenuService.getLanguage().toolbar;
             $scope.select = {
@@ -33,11 +35,34 @@ angular.module('app.wake_up', [])
         var conUrl = ResourceManager.getConfigurations().serverUrl();
         var ID = activity.getID();
 
-        $scope.data = {
-            name:thisData.Name,
-            pic:conUrl+thisData.SubContent[0].Picurl,
-            intro:thisData.SubContent[0].Introduce
-        };
+
+        if (lang == "en-US") {
+            $scope.data = {
+                name:thisData.NameEng,
+                pic:conUrl+thisData.SubContent[0].Picurl,
+                intro:thisData.SubContent[0].IntroduceEng
+            };
+            $scope.submitText = 'Submit';
+            $scope.other = 'Chose Time';
+            $scope.monthText = 'month';
+            $scope.dayText = 'day';
+            $scope.hourText = 'hour';
+            $scope.minuteText = 'minute';
+            $scope.yearText = 'year';
+        }else{
+            $scope.data = {
+                name:thisData.Name,
+                pic:conUrl+thisData.SubContent[0].Picurl,
+                intro:thisData.SubContent[0].Introduce
+            };
+            $scope.submitText = '提交';
+            $scope.other = '选择时间';
+            $scope.monthText = '月';
+            $scope.dayText = '日';
+            $scope.hourText = '时';
+            $scope.minuteText = '分';
+            $scope.yearText = '年';
+        }
 
         function borderAnimate(key){
             var border = document.getElementsByClassName('btn_border')[0];
@@ -98,7 +123,7 @@ angular.module('app.wake_up', [])
                 }
             });
             var timeArray = time.split('/');
-            $scope.timeStr = $scope.year +'年'+ timeArray[0] + '月' + timeArray[1] + '日' + ' ' + timeArray[2] + ':' + timeArray[3];
+            $scope.timeStr = $scope.year + $scope.yearText + timeArray[0] + $scope.monthText + timeArray[1] + $scope.dayText + ' ' + timeArray[2] + ':' + timeArray[3];
             $scope.month = timeArray[0];
             $scope.day = timeArray[1];
             $scope.hour = timeArray[2];

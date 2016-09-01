@@ -1,9 +1,16 @@
 'use strict';
 
 angular.module('app.city_list', [])
-    .controller('CityListController', ['$scope', 'ActivityManager', 'COMMON_KEYS','MenuService', function ($scope, ActivityManager, COMMON_KEYS,MenuService) {
+    .controller('CityListController', ['$scope', 'ActivityManager', 'COMMON_KEYS','MenuService','ResourceManager', function ($scope, ActivityManager, COMMON_KEYS,MenuService,ResourceManager) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
+        var data = ResourceManager.getService();
+        $scope.serviceName = data.name;
+        $scope.iconUrl = data.icon;
+        var i18nText = ResourceManager.getLocale();
+        var lang = i18nText.lang;
+        $scope.aName = ResourceManager.getMeal().id;
+        console.log($scope.aName)
         activity.loadI18NResource(function (res) {
             var toolvarData = MenuService.getLanguage().toolbar;
             $scope.select = {
@@ -27,11 +34,19 @@ angular.module('app.city_list', [])
         var childData = JSON.parse(childDataStr);
         var thisData = childData.Content;
         thisData.forEach(function(val,idx,arr){
-            var city = {
-                index:idx,
-                name:val.name,
-                acticityId:val.name_eng
-            };
+            if(lang == "en-US") {
+                var city = {
+                    index: idx,
+                    name: val.name_eng,
+                    acticityId: val.name_eng
+                };
+            }else{
+                var city = {
+                    index: idx,
+                    name: val.name,
+                    acticityId: val.name_eng
+                };
+            }
             $scope.city.push(city);
         });
         $scope.selectedIndex = 0;

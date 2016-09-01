@@ -20,10 +20,39 @@
     width: 100%;
     height: 41.8%;
 }
+.movie-head1{
+    height: 106.7px;
+    position: relative;
+    top: 70px;
+    left: 37px;
+}
 .movie-head{
     height: 106.7px;
     position: relative;
     top: 2px;
+}
+.movie-name{
+    font-size: 32px;
+    height: 90px;
+    line-height: 100px;
+}
+.movie-dire{
+    font-size: 22px;
+    line-height: 30px;
+}
+.movie-act{
+    font-size: 22px;
+    line-height: 30px;
+    line-height: 45px;
+}
+.movie-intro{
+    height: 170px;
+    font-size: 18px;
+    line-height: 27px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
 }
 .movie-icon{
     width: 40px;
@@ -271,8 +300,8 @@
     margin-right: 10px;
 }
 .movie-txt{
-    width: 800px;
-
+    width: 530px;
+    color: #ffffff;
 }
 
 

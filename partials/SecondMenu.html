@@ -1,10 +1,10 @@
 <div ng-controller="ServiceController" class="movie-content">
-    <!--<div class="logo"><img src="assets/images/logo.png" width="100px" height="83.3px"></div>-->
+    <div class="currency-logo"><img ng-src="{{iconUrl}}"><span>{{serviceName}}</span></div>
     <div class="movie-item-container">
         <div id="service-detail-container">
             <div class="movie-head">
-                <img class="movie-icon" src="{{iconUrl}}">
-                <p class="movie-text">{{serviceName}}</p>
+                <img class="movie-icon" src="{{}}" style="display: none">
+                <p class="movie-text">{{}}</p>
             </div>
             <div class="service-list-container">
                 <div ng-repeat="item in services" id="service{{$index}}" class="service_item" style="background-image:url({{item.pic}})" repeat-finish="serviceFinish();"></div>

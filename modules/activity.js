@@ -214,10 +214,15 @@ angular.module('app.activity', ['app.resource'])
         };
 
         this.hideLoading = function (time) {
-            setTimeout(function () {
+            if(time){
+                setTimeout(function () {
+                    var load = document.getElementsByClassName('loading');
+                    load[0].style.display = 'none';
+                }, time);
+            }else{
                 var load = document.getElementsByClassName('loading');
                 load[0].style.display = 'none';
-            }, time);
+            }
         };
 
         this.showLoading = function () {

@@ -7,9 +7,9 @@
                 <p class="">{{data.intro}}</p>
                 <!--<p class="service-item-subtext">咨询电话：021-12345678</p>-->
                 <div style="position: relative">
-                    <div class="service-item-btn clock-btn" ng-show="!selected"  data-reveal-id="myModal" data-animation="fade">选择时间</div>
+                    <div class="service-item-btn clock-btn" ng-show="!selected"  data-reveal-id="myModal" data-animation="fade">{{other}}</div>
                     <div class="service-item-btn time-btn" ng-show="selected"  data-reveal-id="myModal" data-animation="fade">{{timeStr}}</div>
-                    <div class="service-item-btn submit-btn" ng-show="selected">提交</div>
+                    <div class="service-item-btn submit-btn" ng-show="selected">{{submitText}}</div>
                     <div class="btn_border" style="height: 60px;width: 440px;right: 19px;"></div>
                 </div>
             </div>
@@ -17,19 +17,19 @@
                 <div class="toast-title">{{timeStr}}</div>
                 <div class="toast-content-container">
                         <span class="toast-content-item">
-                            <p class="toast-content-title">月</p>
+                            <p class="toast-content-title">{{monthText}}</p>
                             <p class="toast-content-main" id="time-month">{{month}}</p>
                         </span>
                         <span class="toast-content-item">
-                            <p class="toast-content-title">日</p>
+                            <p class="toast-content-title">{{dayText}}</p>
                             <p class="toast-content-main" id="time-day">{{day}}</p>
                         </span>
                         <span class="toast-content-item">
-                            <p class="toast-content-title">时</p>
+                            <p class="toast-content-title">{{hourText}}</p>
                             <p class="toast-content-main" id="time-hour">{{hour}}</p>
                         </span>
                         <span class="toast-content-item">
-                            <p class="toast-content-title">分</p>
+                            <p class="toast-content-title">{{minuteText}}</p>
                             <p class="toast-content-main" id="time-minute">{{minute}}</p>
                         </span>
                     <div id="time_border"></div>

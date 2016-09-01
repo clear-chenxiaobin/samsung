@@ -22,7 +22,7 @@ angular.module('app',[
     'app.weather'
 ])
     .run(['$rootScope', '$http', 'ActivityManager','ResourceManager', function ($rootScope, $http, ActivityManager,ResourceManager) {
-        ActivityManager.hideLoading(500);
+        ActivityManager.showLoading();
         //ResourceManager.initialize();
         // 获取主配置文件
         var cfg = ResourceManager.getConfigurations();
@@ -36,6 +36,7 @@ angular.module('app',[
 
                 //判断localStorage中房间号是否存在，不存在则跳转至home页面设置房间号
                 if(!window.localStorage.room){
+                    ActivityManager.hideLoading(500);
                     ActivityManager.startActivity('room','room');
                 }else {
                     ActivityManager.startActivity('welcome','welcome');

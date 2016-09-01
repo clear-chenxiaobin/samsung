@@ -38,7 +38,9 @@ angular.module('app.zh-CN', [])
                 title: '城市介绍'
             },
             movie: {
-                title: '电影'
+                title: '电影',
+                dire:'导演',
+                act:'主演'
             },
             music: {
                 title: '音乐'

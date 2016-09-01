@@ -19,13 +19,8 @@ angular.module('app.movie', [])
         var lang = i18nText.lang;
         var conUrl = ResourceManager.getConfigurations().serverUrl();
         activity.loadI18NResource(function () {
-            var i18nText = ResourceManager.getLocale();
-            //$scope.guestNameText = i18nText.index.guestName;
-            //$scope.welcomeText = i18nText.welcome.welcome_text;
-            //$scope.guestName = i18nText.welcome.name;
-            //$scope.roomNumber = i18nText.index.roomNumber + window.localStorage.room;
-            //$scope.press1 = i18nText.welcome.press1;
-            //$scope.press2 = i18nText.welcome.press2;
+            $scope.dire = i18nText.movie.dire;
+            $scope.act = i18nText.movie.act;
             var toolvarData = MenuService.getLanguage().toolbar;
             $scope.select = {
                 left: toolvarData.left,
@@ -43,7 +38,8 @@ angular.module('app.movie', [])
                 right: toolvarData.menu
             };
             $scope.logoUrl = MovieService.getLogoUrl();
-            $scope.name = i18nText.movie.title;
+            var data = ResourceManager.getService();
+            $scope.name = data.name;
         });
 
         $scope.movieFinish = function () {
@@ -441,7 +437,7 @@ angular.module('app.movie', [])
                 }
             }
             return logoUrl;
-        }
+        };
 
         this.getMovies = function () {
             return moviesType;

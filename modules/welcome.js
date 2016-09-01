@@ -22,6 +22,9 @@ angular.module('app.welcome', [])
             $scope.logo = ResourceManager.getConfigurations().logoUrl();
             $scope.poster = ResourceManager.getConfigurations().welcomeBgImageUrl();
         });
+        $scope.$watch('$viewContentLoaded', function() {
+            ActivityManager.hideLoading();
+        });
         var languages = ['zh-CN', 'en-US'],
             languageIndex = 0;
 
@@ -37,6 +40,7 @@ angular.module('app.welcome', [])
                     ActivityManager.startActivity('','menu','menu');
                     break;
                 case COMMON_KEYS.KEY_ENTER:
+                    ActivityManager.showLoading();
                     ActivityManager.startActivity('','menu','menu');
                     break;
                 case COMMON_KEYS.KEY_DOWN:

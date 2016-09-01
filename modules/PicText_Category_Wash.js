@@ -4,6 +4,8 @@ angular.module('app.wash', [])
     .controller('WashController', ['$scope', 'ResourceManager', 'ActivityManager', 'COMMON_KEYS','BtnService','MenuService', function ($scope, ResourceManager, ActivityManager, COMMON_KEYS,BtnService,MenuService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
+        var i18nText = ResourceManager.getLocale();
+        var lang = i18nText.lang;
         var type = activity.getID();
         var childDataStr = activity.getChild();
         var childData = JSON.parse(childDataStr);
@@ -37,8 +39,43 @@ angular.module('app.wash', [])
         $scope.data={
             name:thisData.Name,
             intro:thisData.SubContent[0].Introduce,
-            img:conUrl+thisData.SubContent[0].Picurl
+            img:conUrl+thisData.SubContent[0].Picurl,
+            nameEng:thisData.NameEng
         };
+        if (lang == "en-US") {
+            $scope.Name = $scope.data.nameEng;
+        }else{
+            $scope.Name = $scope.data.name;
+        }
+        if (lang == "en-US") {
+            $scope.data={
+                name:thisData.NameEng,
+                intro:thisData.SubContent[0].IntroduceEng,
+                img:conUrl+thisData.SubContent[0].Picurl
+            };
+            $scope.nowText = 'Now';
+            $scope.submitText = 'Submit';
+            $scope.other = 'Chose Other Time';
+            $scope.monthText = 'month';
+            $scope.dayText = 'day';
+            $scope.hourText = 'hour';
+            $scope.minuteText = 'minute';
+            $scope.yearText = 'year';
+        }else{
+            $scope.data={
+                name:thisData.Name,
+                intro:thisData.SubContent[0].IntroduceEng,
+                img:conUrl+thisData.SubContent[0].Picurl
+            };
+            $scope.nowText = '现在';
+            $scope.submitText = '提交';
+            $scope.other = '选择其他时间';
+            $scope.monthText = '月';
+            $scope.dayText = '日';
+            $scope.hourText = '时';
+            $scope.minuteText = '分';
+            $scope.yearText = '年';
+        }
 
         function borderAnimate(key){
             var border = document.getElementsByClassName('btn_border')[0];
@@ -111,7 +148,7 @@ angular.module('app.wash', [])
                 }
             });
             var timeArray = time.split('/');
-            $scope.timeStr = $scope.year +'年'+ timeArray[0] + '月' + timeArray[1] + '日' + ' ' + timeArray[2] + ':' + timeArray[3];
+            $scope.timeStr = $scope.year +$scope.yearText+ timeArray[0] + $scope.monthText + timeArray[1] + $scope.dayText + ' ' + timeArray[2] + ':' + timeArray[3];
             $scope.month = timeArray[0];
             $scope.day = timeArray[1];
             $scope.hour = timeArray[2];

@@ -30,6 +30,7 @@
     letter-spacing: 0px;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 100%;
 }
 .city-detail-small{
     width: 320px;

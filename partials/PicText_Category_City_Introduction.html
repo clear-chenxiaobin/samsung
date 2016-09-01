@@ -3,11 +3,11 @@
     <div class="movie-item-container">
         <div id="service-detail-container">
             <div class="movie-head">
-                <img class="movie-icon" src="assets/images/icon_cityinfo.png">
-                <p class="movie-text">城市介绍</p>
+                <img class="movie-icon" src="{{iconUrl}}">
+                <p class="movie-text">{{serviceName}}</p>
             </div>
             <img src="assets/images/city.png" class="city-list-img">
-            <div class="city-item-title">景点（共15个）：</div>
+            <div class="city-item-title">{{aName}}（共15个）：</div>
             <div class="city-ul-container">
                 <ul class="city-list-container" ng-style="{top: listTopStyle2 + 'px'}">
                     <li ng-repeat="item in city" id="city{{$index}}" ng-class="{'list-selected': selectedIndex==$index}" class="city-item">

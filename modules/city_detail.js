@@ -4,6 +4,9 @@ angular.module('app.city_detail', [])
     .controller('CityDetailController', ['$scope', 'ActivityManager','ResourceManager', 'COMMON_KEYS','MenuService', function ($scope, ActivityManager,ResourceManager, COMMON_KEYS,MenuService) {
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
+        var data = ResourceManager.getService();
+        $scope.serviceName = data.name;
+        $scope.iconUrl = data.icon;
         activity.loadI18NResource(function (res) {
             var toolvarData = MenuService.getLanguage().toolbar;
             $scope.select = {
@@ -22,17 +25,29 @@ angular.module('app.city_detail', [])
                 right: toolvarData.menu
             };
         });
+        var i18nText = ResourceManager.getLocale();
+        var lang = i18nText.lang;
         var conUrl = ResourceManager.getConfigurations().serverUrl();
         var childDataStr = activity.getChild();
         var childData = JSON.parse(childDataStr);
         var thisData = childData;
-        $scope.data = {
-            name:thisData.name,
-            intro:thisData.introduce,
-            bigImg:conUrl+thisData.picurl,
-            smallImg:conUrl+thisData.SubContent[0].picurl,
-            subName:thisData.SubContent[0].name
-        };
+        if(lang == "en-US") {
+            $scope.data = {
+                name: thisData.name_eng,
+                intro: thisData.introduce_eng,
+                bigImg: conUrl + thisData.picurl,
+                smallImg: conUrl + thisData.SubContent[0].picurl,
+                subName: thisData.SubContent[0].name_eng
+            };
+        }else{
+            $scope.data = {
+                name: thisData.name,
+                intro: thisData.introduce,
+                bigImg: conUrl + thisData.picurl,
+                smallImg: conUrl + thisData.SubContent[0].picurl,
+                subName: thisData.SubContent[0].name
+            };
+        }
 
 
         activity.onKeyDown(function (keyCode) {
