@@ -25,12 +25,12 @@ angular.module('app.wake_up', [])
             };
         });
 
-        //$scope.$watch('$viewContentLoaded', function() {
-        //    ActivityManager.hideLoading();
-        //});
-        if(document.readyState=="complete"){
+        $scope.$watch('$viewContentLoaded', function() {
             ActivityManager.hideLoading();
-        }
+        });
+        //if(document.readyState=="complete"){
+        //    ActivityManager.hideLoading();
+        //}
 
 
         $scope.selected = false;

@@ -26,12 +26,12 @@ angular.module('app.food', [])
             };
         });
 
-        //$scope.$watch('$viewContentLoaded', function() {
-        //    ActivityManager.hideLoading();
-        //});
-        if(document.readyState=="complete"){
+        $scope.$watch('$viewContentLoaded', function() {
             ActivityManager.hideLoading();
-        }
+        });
+        //if(document.readyState=="complete"){
+        //    ActivityManager.hideLoading();
+        //}
 
 
         var i18nText = ResourceManager.getLocale();
