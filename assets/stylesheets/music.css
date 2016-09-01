@@ -20,7 +20,7 @@
 }
 
 .music-list-container > ul {
-    margin-left: 726px;
+    margin-left: 694px;
     height: 527px;
     overflow: hidden;
 }
@@ -37,6 +37,27 @@
     color: white;
     font-size: 28px;
     opacity: 0.69;
+}
+
+.music-list-container > ul > li.selected > span {
+    left: 49px;
+}
+
+.music-list-container > ul > li > span {
+    position: relative;
+    left: 66px;
+}
+
+.music-pause.selected {
+    display: inline;
+}
+
+.music-pause {
+    height: 30px;
+    top: 6px;
+    position: relative;
+    display: none;
+    float: left;
 }
 
 .music-player {
