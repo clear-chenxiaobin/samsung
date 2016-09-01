@@ -132,7 +132,7 @@ angular.module('app.live', [])
             chaData = LiveService.getChannels();
             $("body").css("background-image", "none");
             //stream = chaData[0].stream;
-            stream = "udp://@229.1.1.4:8001";
+            stream = "udp://@229.1.1.1:8001";
             LiveService.onLoad(stream);
             for (var i = 0; i < chaData.length; i++) {
                 channels.push({
@@ -148,9 +148,8 @@ angular.module('app.live', [])
         function cutChannel() {
             contentShow();
             //stream = chaData[tempIndex].stream;
-            stream = "udp://@229.1.1.4:8001";
+            stream = "udp://@229.1.1.1:8001";
             LiveService.changeVideo(stream);
-
         }
 
         function contentShow() {
