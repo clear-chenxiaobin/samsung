@@ -10,8 +10,13 @@ angular.module('app.music', [])
             musicData,
             listHide = false;
 
-        ActivityManager.showLoading();
-        ActivityManager.hideLoading(500);
+        //$scope.$watch('$viewContentLoaded', function() {
+        //    ActivityManager.hideLoading();
+        //});
+        if(document.readyState=="complete"){
+            ActivityManager.hideLoading();
+        }
+
 
         activity.loadI18NResource(function (res) {
             var languageData = MusicService.getLanguage();

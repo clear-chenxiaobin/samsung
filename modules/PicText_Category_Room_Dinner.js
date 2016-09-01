@@ -25,6 +25,15 @@ angular.module('app.food', [])
                 right: toolvarData.menu
             };
         });
+
+        //$scope.$watch('$viewContentLoaded', function() {
+        //    ActivityManager.hideLoading();
+        //});
+        if(document.readyState=="complete"){
+            ActivityManager.hideLoading();
+        }
+
+
         var i18nText = ResourceManager.getLocale();
         var lang = i18nText.lang;
 

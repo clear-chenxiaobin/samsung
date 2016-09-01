@@ -29,6 +29,13 @@ angular.module('app.wash', [])
                 right: toolvarData.menu
             };
         });
+
+        //$scope.$watch('$viewContentLoaded', function() {
+        //    ActivityManager.hideLoading();
+        //});
+        if(document.readyState=="complete"){
+            ActivityManager.hideLoading();
+        }
         $scope.now = true;
         $scope.selected = false;
         $scope.onSubmit = true;

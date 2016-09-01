@@ -20,6 +20,14 @@ angular.module('app.live', [])
             contentHide = false;
         activity.initialize($scope);
 
+        //$scope.$watch('$viewContentLoaded', function() {
+        //    ActivityManager.hideLoading();
+        //});
+        if(document.readyState=="complete"){
+            ActivityManager.hideLoading();
+        }
+
+
         contentShow();
         //ActivityManager.showLoading();
         //ActivityManager.hideLoading(500);

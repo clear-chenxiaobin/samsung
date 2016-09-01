@@ -43,9 +43,13 @@ angular.module('app.menu', [])
                 ActivityManager.getActiveActivity().animate(0, 'menu-item-list', 'menu-animation');
             }
         });
-        $scope.$watch('$viewContentLoaded', function() {
+        //$scope.$watch('$viewContentLoaded', function() {
+        //    ActivityManager.hideLoading();
+        //});
+        if(document.readyState=="complete"){
             ActivityManager.hideLoading();
-        });
+        }
+
 
         function menuBind() {
             var treeView = MenuService.getMenu();
@@ -122,6 +126,7 @@ angular.module('app.menu', [])
                     }
                     break;
                 case COMMON_KEYS.KEY_ENTER:
+                    ActivityManager.showLoading();
                     if ($scope.menuItems[$scope.selectedMenuItemIndex].childViews.length != 0){
                         var childViews = JSON.stringify($scope.menuItems[$scope.selectedMenuItemIndex].childViews);
                         ActivityManager.go($scope.menuItems[$scope.selectedMenuItemIndex].activityId, 2, $scope.menuItems[$scope.selectedMenuItemIndex].type, childViews);
