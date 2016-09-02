@@ -64,9 +64,10 @@
 }
 
 .music-pause img.selected {
+    position: absolute;
     display: flex;
     float: left;
-    position: absolute;
+    top: 3px;
 }
 
 .music-pause img {

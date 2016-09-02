@@ -165,6 +165,7 @@ angular.module('app.live', [])
                 $(".Live-content").show();
                 contentHide = false;
             }
+            clearTimeout();
             setTimeout(function(){
                 if (!contentHide) {
                     $(".Live-content").hide();
