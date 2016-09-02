@@ -6,7 +6,6 @@ angular.module('app.welcome', [])
         activity.initialize($scope);
         activity.isMenu(true);
         $scope.password = 0;
-        $scope.rn = window.localStorage.room;
         activity.loadI18NResource(function (res) {
             var i18nText;
             if(ResourceManager.getLocale()){
