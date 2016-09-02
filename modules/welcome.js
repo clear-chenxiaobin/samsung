@@ -10,6 +10,7 @@ angular.module('app.welcome', [])
             var i18nText;
             if(ResourceManager.getLocale()){
                 i18nText  = ResourceManager.getLocale();
+                $scope.language = i18nText.lang;
             }else{
                 $scope.language = 'zh-CN';
                 ResourceManager.setLocale($scope.language);
@@ -36,7 +37,7 @@ angular.module('app.welcome', [])
             switch (keyCode) {
                 case COMMON_KEYS.KEY_LEFT:
                 case COMMON_KEYS.KEY_RIGHT:
-                    $scope.password=0;
+                    $scope.password = 0;
                     languageIndex ^= 1;
                     $scope.language = languages[languageIndex];
                     ResourceManager.setLocale($scope.language);
