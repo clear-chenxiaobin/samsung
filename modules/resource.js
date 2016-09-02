@@ -11,7 +11,7 @@ angular.module('app.resource', [])
             configurations,
             welcomeData,
             picTextDetail,
-            cityIndex,
+            pic_Url,
             meal,
             cart = [],
             langString,
@@ -45,7 +45,8 @@ angular.module('app.resource', [])
                             type: el2.Type,
                             pic: SERVER_URL + el2.Icon_URL,
                             config: SERVER_URL + el2.Json_URL,
-                            name:el2.Name
+                            name:el2.Name,
+                            icon_url: SERVER_URL + el2.Icon_focus_URL
                         });
                         i18nResource['zh-CN'][nameKey] = el2.Name;
                         i18nResource['en-US'][nameKey] = el2.NameEng;
@@ -116,14 +117,14 @@ angular.module('app.resource', [])
             return picTextDetail;
         }
 
-        this.setCity = function (city) {
-            cityIndex = {
-                cityName: city
+        this.setPic = function (pic) {
+            pic_Url = {
+                url: pic
             };
         }
 
-        this.getCity = function () {
-            return cityIndex;
+        this.getPic = function () {
+            return pic_Url;
         }
 
         this.setMeal = function (id) {

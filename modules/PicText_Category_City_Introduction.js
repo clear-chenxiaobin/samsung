@@ -10,7 +10,7 @@ angular.module('app.city_list', [])
         var i18nText = ResourceManager.getLocale();
         var lang = i18nText.lang;
         $scope.aName = ResourceManager.getMeal().id;
-        console.log($scope.aName)
+        $scope.imgUrl = ResourceManager.getPic().url;
         activity.loadI18NResource(function (res) {
             var toolvarData = MenuService.getLanguage().toolbar;
             $scope.select = {
@@ -47,13 +47,13 @@ angular.module('app.city_list', [])
                 var city = {
                     index: idx,
                     name: val.name_eng,
-                    acticityId: val.name_eng
+                    activityId: val.name_eng
                 };
             }else{
                 var city = {
                     index: idx,
                     name: val.name,
-                    acticityId: val.name_eng
+                    activityId: val.name_eng
                 };
             }
             $scope.city.push(city);
@@ -70,7 +70,7 @@ angular.module('app.city_list', [])
                     //ActivityManager.go($scope.services[$scope.selectedIndex].activityId, 4);
                     ActivityManager.showLoading();
                     var dataStr = JSON.stringify(thisData[$scope.selectedIndex]);
-                    ActivityManager.go($scope.city[$scope.selectedIndex].acticityId, 4 ,'city_detail',dataStr);
+                    ActivityManager.go($scope.city[$scope.selectedIndex].activityId, 4 ,'city_detail',dataStr);
                     break;
                 case COMMON_KEYS.KEY_UP:
                     if($scope.selectedIndex>0) {
