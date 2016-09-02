@@ -21,14 +21,15 @@ angular.module('app.room', [])
             }
         };
         function changeRoomNum(){
-            var roomNumber = parseInt($scope.number);
-            document.getElementById('room').value = roomNumber;
+            //var roomNumber = parseInt($scope.number);
+            document.getElementById('room').value = $scope.number;
         }
         $scope.number = '';
         activity.onKeyDown(function (keyCode) {
             switch (keyCode) {
                 case COMMON_KEYS.KEY_BACK:
-                    activity.finish();
+                    $scope.number = '';
+                    changeRoomNum();
                     break;
                 case COMMON_KEYS.KEY_UP:
 
