@@ -75,16 +75,21 @@
     float: left;
 }
 .top-arrow{
-    width: 18.87px;
-    height: 18.87px;
+    width: 19px;
+    height: 11px;
+    background-image: url("../images/arrow_up.png");
+    margin-left: 23.85px;
+    margin-top: 15px;
 }
 .bot-arrow{
-    width: 18.87px;
-    height: 18.87px;
+    width: 19px;
+    height: 11px;
     margin-top: 18.67px;
+    background-image: url("../images/arrow_down.png");
+    margin-left: 23.85px;
 }
 .type-name{
-    margin-top: 42.6px;
+    margin-top: 27.6px;
     height: 46.67px;
     text-align: center;
     font-size: 33.33px;
