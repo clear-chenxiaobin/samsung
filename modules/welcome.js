@@ -36,10 +36,10 @@ angular.module('app.welcome', [])
             switch (keyCode) {
                 case COMMON_KEYS.KEY_LEFT:
                 case COMMON_KEYS.KEY_RIGHT:
+                    $scope.password=0;
                     languageIndex ^= 1;
                     $scope.language = languages[languageIndex];
                     ResourceManager.setLocale($scope.language);
-                    $scope.password=0;
                     break;
                 case COMMON_KEYS.KEY_MENU:
                     ActivityManager.startActivity('','menu','menu');
