@@ -78,7 +78,7 @@ angular.module('app.live', [])
                         } else {
                             $scope.listStyleTop = (LISTTOP - tempIndex * 80) + "px";
                         }
-                        cutChannel();
+                        cutChannel(tempIndex);
                         break;
                     case COMMON_KEYS.KEY_DOWN:
                         contentShow();
@@ -90,7 +90,7 @@ angular.module('app.live', [])
                         } else {
                             $scope.listStyleTop = (LISTTOP - tempIndex * 80) + "px";
                         }
-                        cutChannel();
+                        cutChannel(tempIndex);
                         break;
                     case COMMON_KEYS.KEY_ENTER:
                         contentShow();
@@ -115,7 +115,7 @@ angular.module('app.live', [])
                     } else {
                         $scope.listStyleTop = (LISTTOP - tempIndex * 80) + "px";
                     }
-                    cutChannel();
+                    cutChannel(tempIndex);
                     break;
                 case COMMON_KEYS.KEY_DOWN:
                     contentShow();
@@ -127,7 +127,7 @@ angular.module('app.live', [])
                     } else {
                         $scope.listStyleTop = (LISTTOP - tempIndex * 80) + "px";
                     }
-                    cutChannel();
+                    cutChannel(tempIndex);
                     break;
                 case COMMON_KEYS.KEY_ENTER:
                     activity.hide();
@@ -142,8 +142,8 @@ angular.module('app.live', [])
         function bindChannels() {
             chaData = LiveService.getChannels();
             $("body").css("background-image", "none");
-            //stream = chaData[0].stream;
-            stream = "udp://@229.1.1.1:8001";
+            stream = chaData[0].stream;
+            //stream = "udp://@229.1.1.1:8001";
             LiveService.onLoad(stream);
             for (var i = 0; i < chaData.length; i++) {
                 channels.push({
@@ -156,9 +156,9 @@ angular.module('app.live', [])
             $scope.channels = channels;
         }
 
-        function cutChannel() {
-            //stream = chaData[tempIndex].stream;
-            stream = "udp://@229.1.1.1:8001";
+        function cutChannel(tempIndex) {
+            stream = chaData[tempIndex].stream;
+            //stream = "udp://@229.1.1.1:8001";
             LiveService.changeVideo(stream);
         }
 
@@ -264,7 +264,7 @@ angular.module('app.live', [])
         this.getPlayUrl = function () {
             return $http.get(conUrl + '/Main/json/MainMenu_4.json').success(function (menuJSON) {
                 menuJSON.Content.forEach(function (el, idx, arr) {
-                    if (el.Name == '直播' || el.NameEng == "Live") {
+                    if (el.Type == "Live") {
                         jsonUrl = conUrl + el.Json_URL;
                         return;
                     }
