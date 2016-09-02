@@ -80,7 +80,8 @@ angular.module('app.service', [])
                         type: val.type,
                         activityId: val.nameEng,
                         config: val.config,
-                        name:val.nameEng
+                        name:val.nameEng,
+                        pic_b:val.icon_url
                     };
                 }else{
                     service = {
@@ -89,7 +90,8 @@ angular.module('app.service', [])
                         type: val.type,
                         activityId: val.nameEng,
                         config: val.config,
-                        name:val.name
+                        name:val.name,
+                        pic_b:val.icon_url
                     };
                 }
                 $scope.services.push(service);
@@ -125,6 +127,7 @@ angular.module('app.service', [])
                 case COMMON_KEYS.KEY_ENTER:
                     ActivityManager.showLoading();
                     ResourceManager.setMeal($scope.services[$scope.selectedIndex].name);
+                    ResourceManager.setPic($scope.services[$scope.selectedIndex].pic_b);
                     $http.get($scope.services[$scope.selectedIndex].config).success(function (data) {
                         var dataStr = JSON.stringify(data);
                         ActivityManager.go($scope.services[$scope.selectedIndex].activityId, 3 ,$scope.services[$scope.selectedIndex].type,dataStr);
