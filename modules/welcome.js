@@ -5,6 +5,7 @@ angular.module('app.welcome', [])
         var activity = ActivityManager.getActiveActivity();
         activity.initialize($scope);
         activity.isMenu(true);
+        $scope.password = 0;
         activity.loadI18NResource(function (res) {
             var i18nText;
             if(ResourceManager.getLocale()){
@@ -38,16 +39,60 @@ angular.module('app.welcome', [])
                     languageIndex ^= 1;
                     $scope.language = languages[languageIndex];
                     ResourceManager.setLocale($scope.language);
+                    $scope.password=0;
                     break;
                 case COMMON_KEYS.KEY_MENU:
                     ActivityManager.startActivity('','menu','menu');
                     break;
                 case COMMON_KEYS.KEY_ENTER:
-                    ActivityManager.showLoading();
-                    ActivityManager.startActivity('','menu','menu');
+                    if($scope.password==3){
+                        ActivityManager.startActivity('','room','room');
+                    }else {
+                        ActivityManager.showLoading();
+                        ActivityManager.startActivity('', 'menu', 'menu');
+                    }
                     break;
                 case COMMON_KEYS.KEY_DOWN:
-                    ActivityManager.showLoading();
+                    break;
+                case COMMON_KEYS.KEY_0:
+                    if($scope.password == 2){
+                        $scope.password = 3;
+                    }else{
+                        $scope.password = 0;
+                    }
+                    break;
+                case COMMON_KEYS.KEY_1:
+                    if($scope.password==0) {
+                        $scope.password = 1;
+                    }else if($scope.password==1){
+                        $scope.password = 2;
+                    }else{
+                        $scope.password = 0;
+                    }
+                    break;
+                case COMMON_KEYS.KEY_2:
+                    $scope.password=0;
+                    break;
+                case COMMON_KEYS.KEY_3:
+                    $scope.password=0;
+                    break;
+                case COMMON_KEYS.KEY_4:
+                    $scope.password=0;
+                    break;
+                case COMMON_KEYS.KEY_5:
+                    $scope.password=0;
+                    break;
+                case COMMON_KEYS.KEY_6:
+                    $scope.password=0;
+                    break;
+                case COMMON_KEYS.KEY_7:
+                    $scope.password=0;
+                    break;
+                case COMMON_KEYS.KEY_8:
+                    $scope.password=0;
+                    break;
+                case COMMON_KEYS.KEY_9:
+                    $scope.password=0;
                     break;
             }
         });

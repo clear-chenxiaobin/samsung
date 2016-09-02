@@ -82,6 +82,17 @@ angular.module('app',[
             keyMapping[tvKey.KEY_VOL_UP] = COMMON_KEYS.KEY_VOL_UP;
             keyMapping[tvKey.KEY_VOL_DOWN] = COMMON_KEYS.KEY_VOL_DOWN;
             keyMapping[tvKey.KEY_MUTE] = COMMON_KEYS.KEY_MUTE;
+            keyMapping[tvKey.KEY_0] = COMMON_KEYS.KEY_0;
+            keyMapping[tvKey.KEY_1] = COMMON_KEYS.KEY_1;
+            keyMapping[tvKey.KEY_2] = COMMON_KEYS.KEY_2;
+            keyMapping[tvKey.KEY_3] = COMMON_KEYS.KEY_3;
+            keyMapping[tvKey.KEY_4] = COMMON_KEYS.KEY_4;
+            keyMapping[tvKey.KEY_5] = COMMON_KEYS.KEY_5;
+            keyMapping[tvKey.KEY_6] = COMMON_KEYS.KEY_6;
+            keyMapping[tvKey.KEY_7] = COMMON_KEYS.KEY_7;
+            keyMapping[tvKey.KEY_8] = COMMON_KEYS.KEY_8;
+            keyMapping[tvKey.KEY_9] = COMMON_KEYS.KEY_9;
+
 
             var pluginObj = new Common.API.Plugin();
             pluginObj.unregistKey(tvKey.KEY_VOL_UP);
@@ -119,5 +130,15 @@ angular.module('app',[
         KEY_MENU    : 7,
         KEY_VOL_UP  : 8,
         KEY_VOL_DOWN: 9,
-        KEY_MUTE    :10
+        KEY_MUTE    :10,
+        KEY_1:11,
+        KEY_2:12,
+        KEY_3:13,
+        KEY_4:14,
+        KEY_5:15,
+        KEY_6:16,
+        KEY_7:17,
+        KEY_8:18,
+        KEY_9:19,
+        KEY_0:20
     });

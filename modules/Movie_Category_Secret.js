@@ -46,7 +46,7 @@ angular.module('app.movie', [])
         //    ActivityManager.hideLoading();
         //});
         if(document.readyState=="complete"){
-            ActivityManager.hideLoading(800);
+            ActivityManager.hideLoading(1200);
         }
 
         $scope.movieFinish = function () {
@@ -145,8 +145,6 @@ angular.module('app.movie', [])
         //window.onload = preloader();
         var typeID = 0;
         var movieID = 0;
-        ActivityManager.showLoading();
-        ActivityManager.hideLoading(500);
         //function changeMovieType(typeID) {
         //    $scope.movieList = $scope.movie[typeID].list;
         //
