@@ -11,26 +11,21 @@ angular.module('app.live', [])
             }
         }
     }])
-    .controller('LiveController', ['$scope', 'ActivityManager', 'COMMON_KEYS', 'LiveService', function ($scope, ActivityManager, COMMON_KEYS, LiveService) {
+    .controller('LiveController', ['$scope', 'ActivityManager', 'COMMON_KEYS', 'LiveService', '$timeout', function ($scope, ActivityManager, COMMON_KEYS, LiveService, $timeout) {
         var activity = ActivityManager.getActiveActivity();
         var channels = [];
         var stream,
-            chaData;
-        var LISTTOP,
-            contentHide = false;
+            chaData,
+            LISTTOP,
+            timeout;
         activity.initialize($scope);
 
-        //$scope.$watch('$viewContentLoaded', function() {
-        //    ActivityManager.hideLoading();
-        //});
-        if(document.readyState=="complete"){
+        if (document.readyState == "complete") {
             ActivityManager.hideLoading(500);
         }
 
 
         contentShow();
-        //ActivityManager.showLoading();
-        //ActivityManager.hideLoading(500);
         activity.loadI18NResource(function (res) {
             var languageData = LiveService.getLanguage();
             $scope.left = languageData.toolbar.left;
@@ -46,7 +41,7 @@ angular.module('app.live', [])
                 icon: 'assets/images/icon_toolbar_menu.png',
                 right: languageData.toolbar.menu
             };
-            $scope.logoUrl = "assets/images/icon_logo_tv.png";
+            $scope.logoUrl = LiveService.getLogoUrl();
             $scope.name = languageData.live.title;
 
 
@@ -71,9 +66,11 @@ angular.module('app.live', [])
 
         activity.onKeyDown(function (keyCode) {
             var tempIndex = $scope.selectedIndex;
-            if (contentHide) {
+            if (activity.isHide()) {
                 switch (keyCode) {
                     case COMMON_KEYS.KEY_UP:
+                        contentShow();
+                        cutLoading();
                         tempIndex -= 1;
                         if (tempIndex < 0) {
                             $scope.listStyleTop = (LISTTOP - ($scope.channels.length - 1) * 80) + "px";
@@ -84,6 +81,8 @@ angular.module('app.live', [])
                         cutChannel();
                         break;
                     case COMMON_KEYS.KEY_DOWN:
+                        contentShow();
+                        cutLoading();
                         tempIndex += 1;
                         if (tempIndex > $scope.channels.length - 1) {
                             $scope.listStyleTop = LISTTOP + "px";
@@ -107,6 +106,8 @@ angular.module('app.live', [])
             }
             switch (keyCode) {
                 case COMMON_KEYS.KEY_UP:
+                    contentShow();
+                    cutLoading();
                     tempIndex -= 1;
                     if (tempIndex < 0) {
                         $scope.listStyleTop = (LISTTOP - ($scope.channels.length - 1) * 80) + "px";
@@ -117,6 +118,8 @@ angular.module('app.live', [])
                     cutChannel();
                     break;
                 case COMMON_KEYS.KEY_DOWN:
+                    contentShow();
+                    cutLoading();
                     tempIndex += 1;
                     if (tempIndex > $scope.channels.length - 1) {
                         $scope.listStyleTop = LISTTOP + "px";
@@ -154,24 +157,26 @@ angular.module('app.live', [])
         }
 
         function cutChannel() {
-            contentShow();
             //stream = chaData[tempIndex].stream;
             stream = "udp://@229.1.1.1:8001";
             LiveService.changeVideo(stream);
         }
 
         function contentShow() {
-            if (contentHide) {
-                $(".Live-content").show();
-                contentHide = false;
-            }
-            clearTimeout();
-            setTimeout(function(){
-                if (!contentHide) {
-                    $(".Live-content").hide();
-                    contentHide = true;
-                }
+            activity.show();
+            clearTimeout(timeout);
+            timeout = setTimeout(function () {
+                //重新渲染
+                $timeout(function () {
+                    $scope.channels = channels;
+                    activity.hide();
+                }, 0);
             }, 5000);
+        }
+
+        function cutLoading() {
+            ActivityManager.showLoading();
+            ActivityManager.hideLoading(2000);
         }
     }])
     .service('LiveService', ['$q', '$http', 'ResourceManager', function ($q, $http, ResourceManager) {
@@ -235,6 +240,17 @@ angular.module('app.live', [])
 
         this.getLanguage = function () {
             return ResourceManager.getLocale();
+        }
+
+        this.getLogoUrl = function () {
+            var treeView = ResourceManager.getConfigurations().viewTree();
+            var logoUrl;
+            for (var i = 0; i < treeView.length; i++) {
+                if (treeView[i].type == 'Live') {
+                    logoUrl = treeView[i].icon_url;
+                }
+            }
+            return logoUrl;
         }
 
         this.getChannelName = function (nameKey) {

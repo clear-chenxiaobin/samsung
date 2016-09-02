@@ -40,7 +40,7 @@ angular.module('app.music', [])
         if (MusicService.getMusic().length == 0) {
             MusicService.getPlayUrl().success(function (data) {
                 MusicService.initialize().success(function (data) {
-                    console.log(MusicService.getMusic());
+                    //console.log(MusicService.getMusic());
                     bindMusic();
                 })
             })
