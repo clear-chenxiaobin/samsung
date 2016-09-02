@@ -1,8 +1,10 @@
 .music-list-container {
     position: relative;
     width: 1212px;
+    height: 527px;
     margin: 32px 30px;
     top: 76px;
+    overflow: hidden;
 }
 
 .music-img {
@@ -20,8 +22,8 @@
 }
 
 .music-list-container > ul {
-    margin-left: 694px;
-    height: 527px;
+    position: relative;
+    left: 167px;
     overflow: hidden;
 }
 
