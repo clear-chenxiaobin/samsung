@@ -189,7 +189,7 @@ angular.module('app.live', [])
         var pluginSef;
         var pluginObjectTVMW;
         //var PL_MEDIA_SOURCE = 45;   PL_WINDOW_SOURCE Value 31 is used for HDMI1 source.
-        var PL_MEDIA_SOURCE = 31;
+        var PL_MEDIA_SOURCE = 43;
 
         var SEF_EVENT_TYPE = {
             CONNECTION_FAILED: 1,
